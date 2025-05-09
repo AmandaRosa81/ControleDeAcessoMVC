@@ -1,4 +1,4 @@
-package com.senai.Projeto.View;
+package com.senai.ProjetoControleDeAcesso.View;
 
 public class Main {
     public static void main(String[] args) {
