@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -56,8 +57,8 @@ public class ProfessorDAO {
         public boolean deletar(int id) {
             Iterator<Professor> iterator = professores.iterator();
             while (iterator.hasNext()) {
-                Supervisor s = iterator.next();
-                if (s.getId() == id) {
+                Professsor p = iterator.next();
+                if (p.getId() == id) {
                     iterator.remove();
                     salvarJson();
                     return true;
