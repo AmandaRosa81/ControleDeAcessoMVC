@@ -17,6 +17,7 @@ import com.google.gson.reflect.TypeToken;
 public class ProfessorDAO {
         private List<Professor> professores;
         private final String FILE_PATH = "professores.json";
+        private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
         private List<Professor> Professores;
 
         private List<Professor> carregar() {
@@ -57,7 +58,7 @@ public class ProfessorDAO {
         public boolean deletar(int id) {
             Iterator<Professor> iterator = professores.iterator();
             while (iterator.hasNext()) {
-                Professsor p = iterator.next();
+                Professor p = iterator.next();
                 if (p.getId() == id) {
                     iterator.remove();
                     salvarJson();
