@@ -2,6 +2,8 @@ package com.senai.ProjetoControleDeAcesso.Model.DAO;
 
 import com.senai.ProjetoControleDeAcesso.Model.Professor;
 
+import java.util.List;
+
 public class ProfessorDAO {
         private List<Professor> professores;
 

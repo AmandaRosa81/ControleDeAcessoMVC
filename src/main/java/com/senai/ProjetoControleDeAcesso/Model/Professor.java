@@ -1,60 +1,24 @@
 package com.senai.ProjetoControleDeAcesso.Model;
 
 public class Professor extends Usuario{
-    public Professor(int id, String nome, String login, String senha) {
+    private String Disciplina;
+
+    public Professor(int id, String nome, String login, String senha, String disciplina) {
         super(id, nome, login, senha);
+        Disciplina = disciplina;
     }
 
-    @Override
-    public int getId() {
-        return super.getId();
+    public String getDisciplina() {
+        return Disciplina;
     }
 
-    @Override
-    public String getNome() {
-        return super.getNome();
-    }
-
-    @Override
-    public void setId(int id) {
-        super.setId(id);
-    }
-
-    @Override
-    public void setNome(String nome) {
-        super.setNome(nome);
-    }
-
-    @Override
-    public String getLogin() {
-        return super.getLogin();
-    }
-
-    @Override
-    public void setLogin(String login) {
-        super.setLogin(login);
-    }
-
-    @Override
-    public String getSenha() {
-        return super.getSenha();
-    }
-
-    @Override
-    public void setSenha(String senha) {
-        super.setSenha(senha);
+    public void setDisciplina(String disciplina) {
+        Disciplina = disciplina;
     }
 
     @Override
     public String getTipo() {
-        return "";
-    }
-
-    @Override
-    public String toString() {
-        return "Professor{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                '}';
+        return "Professor";
     }
 }
+
