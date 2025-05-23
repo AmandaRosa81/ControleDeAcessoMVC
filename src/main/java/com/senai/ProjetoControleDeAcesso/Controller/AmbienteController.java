@@ -1,6 +1,7 @@
 package com.senai.ProjetoControleDeAcesso.Controller;
 
 import com.senai.ProjetoControleDeAcesso.Model.Ambiente;
+import com.senai.ProjetoControleDeAcesso.Model.DAO.AmbienteDAO;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class AmbienteController {
     }
 
     public String removerAmbiente(String nomeAmbiente) {
-        ambienteDAO.remover(nomeAmbiente);
+        ambienteDAO.remover(Integer.parseInt(nomeAmbiente));
         return "Ambiente removido.";
     }
 

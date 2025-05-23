@@ -1,11 +1,16 @@
 package com.senai.ProjetoControleDeAcesso.Model.DAO;
 
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.senai.ProjetoControleDeAcesso.Model.Ambiente;
+
+import com.google.gson.Gson;
 
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AmbienteDAO {
@@ -36,7 +41,7 @@ public class AmbienteDAO {
     }
 
     public void inserir(Ambiente ambiente) {
-        String novoAmbiente = ambienteList;
+        String novoAmbiente = ambienteList.toString();
         ambiente.setNomeAmbiente(novoAmbiente);
         ambienteList.add(ambiente);
         salvar(ambienteList);
@@ -57,11 +62,7 @@ public class AmbienteDAO {
         salvar(ambienteList);
     }
 
-    public Optional<Horario> buscarHorarioDoAluno(int idAluno) {
-        return ambienteList.stream().filter(h -> h.getIdAluno() == idAluno).findFirst();
-    }
-
-    public List<Horario> listarTodos() {
+    public List<Ambiente> listarTodos() {
         return ambienteList;
     }
 }
