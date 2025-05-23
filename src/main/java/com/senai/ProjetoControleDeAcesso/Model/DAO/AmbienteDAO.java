@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
+
 
 public class AmbienteDAO {
     private final String caminho = "ambientes.json";
@@ -55,13 +55,6 @@ public class AmbienteDAO {
                 break;
             }
         }
-       // ambienteList.forEach(ambiente1 -> {//
-          //  if (ambiente1.getIdAmbiente()==ambiente.getIdAmbiente()){//
-                //ambiente1.setIdAmbiente(ambiente.getIdAmbiente());//
-
-               // ambiente1.setNomeAmbiente(ambiente.getNomeAmbiente());//
-          //  }//
-        //});//
         salvar(ambienteList);
     }
 
