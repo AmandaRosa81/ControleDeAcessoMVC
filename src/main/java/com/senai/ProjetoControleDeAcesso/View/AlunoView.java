@@ -28,7 +28,7 @@ public class AlunoView {
                     
                 """;
         do {
-            System.out.print(menu);
+            System.out.print(menuAluno);
             opcao = scanner.nextLine();
 
             switch (opcao) {
@@ -66,8 +66,8 @@ public class AlunoView {
     }
 
     public void listar() {
-        for (Aluno a : controller.listarAlunos()) {
-            System.out.printf("ID: %d | Nome: %s | RFID: %s\n", a.getIdAluno(), a.getNome(), a.getIdCartaoRfid());
+        for (AlunoDAO a : controller.listarAlunos()) {
+            System.out.printf("ID: %d | Nome: %s |", a.getIdAluno(), a.getNome());
         }
     }
 

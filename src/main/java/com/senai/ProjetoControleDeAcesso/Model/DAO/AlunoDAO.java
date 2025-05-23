@@ -1,49 +1,69 @@
 package com.senai.ProjetoControleDeAcesso.Model.DAO;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class AlunoDAO {
-    private int idAluno;
-    private String nome;
-    private String login;
-    private String senha;
+    private final String caminho = "alunos.json";
+    private final Gson gson = new GsonBuilder()
+            .registerTypeAdapter(LocalTime.class, new LocalTimeAdapter())
+            .create();
+    private final List<Aluno> alunos;
 
-    public AlunoDAO(int idAluno, String nome, String login, String senha) {
-        this.idAluno = idAluno;
-        this.nome = nome;
-        this.login = login;
-        this.senha = senha;
+    public AlunoDAO(){
+        alunos = carregar();
     }
 
-    public int getIdAluno() {
-        return idAluno;
+    private List<Aluno> carregar() {
+        try (FileReader reader = new FileReader(caminho)) {
+            Type listType = new TypeToken<List<Aluno>>() {}.getType();
+            return gson.fromJson(reader, listType);
+        } catch (IOException e) {
+            return new ArrayList<>();
+        }
     }
 
-    public void setIdAluno(int idAluno) {
-        this.idAluno = idAluno;
+    private void salvar(List<Aluno> lista) {
+        try (FileWriter writer = new FileWriter(caminho)) {
+            gson.toJson(lista, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public String getNome() {
-        return nome;
+    public void inserir(Aluno aluno) {
+        int novoId = alunos.stream().mapToInt(Aluno::getId).max().orElse(0) + 1;
+        aluno.setIdAluno(novoId);
+        alunos.add(aluno);
+        salvar(alunos);
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void atualizar(Aluno aluno) {
+        for (int i = 0; i < alunos.size(); i++) {
+            if (alunos.get(i).getIdAluno() == alunos.getIdAluno()) {
+                alunos.set(i, aluno);
+                break;
+            }
+        }
+        salvar(alunos);
     }
 
-    public String getLogin() {
-        return login;
+    public void remover(int idAluno) {
+        alunos.removeIf(a -> a.getIdAluno() == idAluno);
+        salvar(alunos);
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public Optional<aluno> buscarAluno(int idAluno) {
+        return alunos.stream().filter(a -> a.getIdAluno() == idAluno).findFirst();
     }
 
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public List<Aluno> listarTodos() {
+        return alunos;
     }
 }

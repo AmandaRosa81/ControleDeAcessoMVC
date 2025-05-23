@@ -1,29 +1,31 @@
 package com.senai.ProjetoControleDeAcesso.Controller;
 
+import com.senai.ProjetoControleDeAcesso.Model.DAO.AlunoDAO;
+
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Scanner;
 
 public class AlunoController {
-    private final AlunoDAO horarioDAO = new AlunoDAO();
+    private final AlunoDAO alunoDAO = new AlunoDAO();
 
-    public String cadastrarAluno(int idAluno, int idProfessor, LocalTime hora) {
-        horarioDAO.inserir(new Horario(0, idAluno, idProfessor, hora));
-        return "Horário cadastrado.";
+    public String cadastrarAluno(int idAluno, String nome, String login, String senha) {
+        alunoDAO.inserir(new AlunoDAO(idAluno, nome, login, senha));
+        return "Aluno cadastrado.";
     }
 
-    public String atualizarAluno(int id, int idAluno, int idProfessor, LocalTime hora) {
-        horarioDAO.atualizar(new Horario(id, idAluno, idProfessor, hora));
-        return "Horário atualizado.";
+    public String atualizarAluno(int idAluno, String nome, String login, String senha ) {
+        alunoDAO.atualizar(new AlunoDAO(idAluno, nome, login, senha));
+        return "Aluno atualizado.";
     }
 
-    public String removerAluno(int id) {
-        horarioDAO.remover(id);
-        return "Horário removido.";
+    public String removerAluno(int idAluno) {
+        alunoDAO.remover(idAluno);
+        return "Aluno removido.";
     }
 
-    public List<Horario> listarAlunos() {
-        return horarioDAO.listarTodos();
+    public List<AlunoDAO> listarAlunos() {
+        return alunoDAO.listarTodos();
     }
 
 }
