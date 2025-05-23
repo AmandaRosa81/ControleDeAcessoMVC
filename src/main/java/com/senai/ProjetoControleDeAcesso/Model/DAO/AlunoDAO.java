@@ -39,14 +39,14 @@ public class AlunoDAO {
 
     public void inserir(Aluno aluno) {
         int novoId = alunos.stream().mapToInt(Aluno::getId).max().orElse(0) + 1;
-        aluno.setIdAluno(novoId);
+        aluno.setId(novoId);
         alunos.add(aluno);
         salvar(alunos);
     }
 
     public void atualizar(Aluno aluno) {
         for (int i = 0; i < alunos.size(); i++) {
-            if (alunos.get(i).getIdAluno() == alunos.getIdAluno()) {
+            if (alunos.get(i).getId() == alunos.getId()) {
                 alunos.set(i, aluno);
                 break;
             }
@@ -55,12 +55,12 @@ public class AlunoDAO {
     }
 
     public void remover(int idAluno) {
-        alunos.removeIf(a -> a.getIdAluno() == idAluno);
+        alunos.removeIf(a -> a.getId() == idAluno);
         salvar(alunos);
     }
 
     public Optional<aluno> buscarAluno(int idAluno) {
-        return alunos.stream().filter(a -> a.getIdAluno() == idAluno).findFirst();
+        return alunos.stream().filter(a -> a.getId() == idAluno).findFirst();
     }
 
     public List<Aluno> listarTodos() {

@@ -10,9 +10,9 @@ public class AlunoView {
     private final AlunoController controller = new ALunoController();
 
     public static void main(String[] args) {
-    AlunoView alunoView =  new AlunoView();
+         AlunoView alunoView =  new AlunoView();
 
-    alunoView.menu();
+         alunoView.menu();
     }
 
     public void menu() {
@@ -43,33 +43,40 @@ public class AlunoView {
     }
 
     private void cadastrar() {
-        int idAluno = scannerPromptInt("ID do aluno: ");
+        int id = scannerPromptInt("ID do aluno: ");
         String nome = scannerPrompt("Nome: ");
         String login = scannerPrompt("Login: ");
         String senha = scannerPrompt("Senha: ");
 
-        System.out.println(controller.cadastrarAluno(idAluno,nome,login,senha));
+        System.out.println(controller.cadastrarAluno(id,nome,login,senha));
     }
 
     private void atualizar() {
-        int idAluno = scannerPromptInt("ID do aluno: ");
+        int id = scannerPromptInt("ID do aluno: ");
         String nome = scannerPrompt("Novo nome: ");
         String login = scannerPrompt("Novo Login: ");
         String senha = scannerPrompt("Nova Senha: ");
 
-        System.out.println(controller.atualizarAluno(idAluno, nome,login,senha));
+        System.out.println(controller.atualizarAluno(id, nome,login,senha));
     }
 
     private void remover() {
-        int idAluno = scannerPromptInt("ID do aluno: ");
-        System.out.println(controller.removerAluno(idAluno));
+        listar();
+        int id = scannerPromptInt("ID do aluno: ");
+        System.out.println(controller.removerAluno(id));
     }
 
     public void listar() {
-        for (AlunoDAO a : controller.listarAlunos()) {
-            System.out.printf("ID: %d | Nome: %s |", a.getIdAluno(), a.getNome());
+        for (Aluno a : controller.listarAlunos()) {
+            System.out.printf("ID: %d | Nome: %s |", a.getId(), a.getNome());
         }
     }
+
+    private String scannerPrompt(String msg) {
+        System.out.print(msg);
+        return scanner.nextLine();
+    }
+
 
     private int scannerPromptInt(String msg) {
         System.out.print(msg);
