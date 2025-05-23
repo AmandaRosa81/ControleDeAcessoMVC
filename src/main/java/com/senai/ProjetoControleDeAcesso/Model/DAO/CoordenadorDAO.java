@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class CoordenadorDao {
+public class CoordenadorDAO {
     private List<Coordenador> coordenadores;
     private final String FILE_PATH = "coordenador.json";
     private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -28,7 +28,7 @@ public class CoordenadorDao {
         }
     }
 
-    public CoordenadorDao(){
+    public CoordenadorDAO(){
         coordenadores = carregar();
     }
 
@@ -70,19 +70,4 @@ public class CoordenadorDao {
         }
         return false;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

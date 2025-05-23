@@ -1,11 +1,12 @@
 package com.senai.ProjetoControleDeAcesso.Controller;
 
 import com.senai.ProjetoControleDeAcesso.Model.Coordenador;
+import com.senai.ProjetoControleDeAcesso.Model.DAO.CoordenadorDAO;
 
 import java.util.List;
 
 public class CoordenadorController {
-    private coordenadorDAO coordenadorDAO = new CoordenadorDAO();
+    private final CoordenadorDAO coordenadorDAO = new CoordenadorDAO();
 
     public List<Coordenador> listarCoordenador(){
         return coordenadorDAO.listar();
