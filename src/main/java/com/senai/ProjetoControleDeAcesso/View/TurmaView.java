@@ -1,6 +1,11 @@
 package com.senai.ProjetoControleDeAcesso.View;
 
 import com.senai.ProjetoControleDeAcesso.Controller.TurmaController;
+import com.senai.ProjetoControleDeAcesso.Model.Turma;
+
+import java.util.Scanner;
+
+import static jdk.internal.org.jline.utils.Colors.h;
 
 public class TurmaView {
     private final Scanner scanner = new Scanner(System.in);
@@ -9,7 +14,7 @@ public class TurmaView {
     public void menu() {
         String opcao;
         String menuTurma = """
-                --- MENU DE TURMAS ---
+                --- MENU DAS TURMAS ---
                 
                     1. Cadastrar turma
                     2. Atualizar turma
@@ -35,32 +40,48 @@ public class TurmaView {
 
     private void cadastrar() {
         int idTurma = scannerPromptInt("ID da turma: ");
-        String nomeTurma = String.valueOf(scannerPromptInt("Nome da turma: "));
-        String curso = String.valueOf(scannerPromptInt("Nome do curso: "));
+        String nomeTurma = scannerPrompt("Nome da turma: ");
+        String curso = scannerPrompt("Nome do curso: ");
         int dataInicio = scannerPromptInt("Data do início do curso: ");
         int qtdSemanas = scannerPromptInt("Quantidade de semanas: ");
         int horarioEntrada = scannerPromptInt("Horário de entrada: ");
-        String periodo = String.valueOf(scannerPromptInt("Qual o período do curso: "));
-        System.out.println(controller.cadastrarTurma(idTurma, nomeTurma, curso, dataInicio, qtdSemanas, horarioEntrada, periodo));
+        String periodo = scannerPrompt("Qual o período do curso: ");
+        System.out.println(controller.cadastrarTurma(idTurma, nomeTurma, curso, dataInicio,
+                qtdSemanas, horarioEntrada, periodo));
     }
 
     private void atualizar() {
-        int id = scannerPromptInt("ID do horário: ");
-        int idAluno = scannerPromptInt("Novo ID do aluno: ");
-        int idProfessor = scannerPromptInt("Novo ID do professor: ");
-        LocalTime hora = scannerPromptHora("Nova hora de início (HH:mm): ");
-        System.out.println(controller.atualizarHorario(id, idAluno, idProfessor, hora));
+        String tipo = scannerPrompt(
+                "Tipo (" +
+                        "1=IdTurma, " +
+                        "2=Nome da turma, " +
+                        "3=Curso, " +
+                        "4=Data do início, " +
+                        "5=Quantidade das semanas, " +
+                        "6=Horário da entrada, " +
+                        "7=Período): ");
+        int idTurma = scannerPromptInt("ID da turma a ser atualizado: ");
+        String nomeTurma = scannerPrompt("Nome da turma a ser atualizado: ");
+        String curso = scannerPrompt("Nome do curso a ser atualizado: ");
+        int dataInicio = scannerPromptInt("Data do início do curso a ser atualizada: ");
+        int qtdSemanas = scannerPromptInt("Quantidade de semanas a ser atualizada: ");
+        int horarioEntrada = scannerPromptInt("Horário de entrada a ser atualizado: ");
+        String periodo = scannerPrompt("Qual o período do curso a ser atualizado: ");
+        System.out.println(controller.atualizarTurma(tipo, idTurma, nomeTurma, curso, dataInicio,
+                qtdSemanas, horarioEntrada, periodo));
     }
 
     private void remover() {
-        int id = scannerPromptInt("ID do horário: ");
-        System.out.println(controller.removerHorario(id));
+        int idTurma = scannerPromptInt("ID da turma a ser removida: ");
+        System.out.println(controller.removerTurma(idTurma));
     }
 
     public void listar() {
-        for (Horario h : controller.listarHorarios()) {
-            System.out.printf("ID: %d | Aluno ID: %d | Professor ID: %d | Início: %s\n",
-                    h.getId(), h.getIdAluno(), h.getIdProfessor(), h.getHoraInicio());
+        for (Turma turma : controller.listarTurmas()) {
+            System.out.printf("ID da turma: %d | Nome da turma: %s | Curso: %s | Data do início: %d | " +
+                            "Quantidade de semanas: %d | Horário entrada: %d | Período: %s\n",
+                    turma.getIdTurma(), turma.getNomeTurma(), turma.getCurso(), turma.getDataInicio(),
+                    turma.getQtdSemanas(), turma.getHorarioEntrada(), turma.getPeriodo());
         }
     }
 
@@ -69,8 +90,8 @@ public class TurmaView {
         return Integer.parseInt(scanner.nextLine());
     }
 
-    private LocalTime scannerPromptHora(String msg) {
+    private String scannerPrompt(String msg) {
         System.out.print(msg);
-        return LocalTime.parse(scanner.nextLine());
+        return scanner.nextLine();
     }
 }

@@ -13,7 +13,7 @@ public class TurmaController {
         return "Turma cadastrada.";
     }
 
-    public String atualizarTurma(int idTurma, String nomeTurma, String curso, int dataInicio, int qtdSemanas, int horarioEntrada, String periodo) {
+    public String atualizarTurma(String tipo, int idTurma, String nomeTurma, String curso, int dataInicio, int qtdSemanas, int horarioEntrada, String periodo) {
         turmaDAO.atualizar(new Turma(idTurma, nomeTurma, curso, dataInicio, qtdSemanas, horarioEntrada, periodo));
         return "Turma atualizada.";
     }
@@ -24,6 +24,6 @@ public class TurmaController {
     }
 
     public List<Turma> listarTurmas() {
-        return turmaDAO.listarTodos();
+        return turmaDAO.listarTodos();//Temos que ver se aqui nâo adicionamos as subTurmas.
     }
 }
