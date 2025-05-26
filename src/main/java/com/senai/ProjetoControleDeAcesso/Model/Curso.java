@@ -1,24 +1,34 @@
 package com.senai.ProjetoControleDeAcesso.Model;
 
 public class Curso {
-    private String titulo;
+    private int idCurso;
+    private String nomeCurso;
     private int cargaHoraria;
     private String tipo;
     private int tolerancia;
 
-    public Curso(String titulo, int cargaHoraria, String tipo, int tolerancia) {
-        this.titulo = titulo;
+    public Curso(int idCurso, String nomeCurso, int cargaHoraria, String tipo, int tolerancia) {
+        this.idCurso = idCurso;
+        this.nomeCurso = nomeCurso;
         this.cargaHoraria = cargaHoraria;
         this.tipo = tipo;
         this.tolerancia = tolerancia;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public int getIdCurso() {
+        return idCurso;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setIdCurso(int idCurso) {
+        this.idCurso = idCurso;
+    }
+
+    public String getNomeCurso() {
+        return nomeCurso;
+    }
+
+    public void setNomeCurso(String nomeCurso) {
+        this.nomeCurso = nomeCurso;
     }
 
     public int getCargaHoraria() {
@@ -48,7 +58,8 @@ public class Curso {
     @Override
     public String toString() {
         return "Curso{" +
-                "titulo='" + titulo + '\'' +
+                "idCurso=" + idCurso +
+                ", nomeCurso='" + nomeCurso + '\'' +
                 ", cargaHoraria=" + cargaHoraria +
                 ", tipo='" + tipo + '\'' +
                 ", tolerancia=" + tolerancia +

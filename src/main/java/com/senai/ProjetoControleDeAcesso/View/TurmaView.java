@@ -5,8 +5,6 @@ import com.senai.ProjetoControleDeAcesso.Model.Turma;
 
 import java.util.Scanner;
 
-import static jdk.internal.org.jline.utils.Colors.h;
-
 public class TurmaView {
     private final Scanner scanner = new Scanner(System.in);
     private final TurmaController controller = new TurmaController();

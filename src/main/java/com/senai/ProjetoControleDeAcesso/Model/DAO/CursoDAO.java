@@ -11,13 +11,14 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class CursoDAO {
     private final String caminho = "cursos.json";
     private final Gson gson = new Gson();
     private final List<Curso> cursos;
 
-    public CursoDAO{
+    public CursoDAO(){
         cursos = carregar();
     }
 
@@ -30,6 +31,13 @@ public class CursoDAO {
         }
     }
 
+    public void inserir(Curso curso) {
+        int novoId = cursos.stream().mapToInt(Curso::getIdCurso).max().orElse(0) + 1;
+        curso.setIdCurso(novoId);
+        cursos.add(curso);
+        salvar(cursos);
+    }
+
     private void salvar(List<Curso> lista) {
         try (FileWriter writer = new FileWriter(caminho)) {
             gson.toJson(lista, writer);
@@ -38,11 +46,26 @@ public class CursoDAO {
         }
     }
 
-    public void inserir(Curso curso) {
-        int novoId = cursos.stream().mapToInt(Curso::getTitulo).max().orElse(0) + 1;
-        curso.setTitulo(novoId);
-        cursos.add(curso);
+    public void atualizar(Curso curso) {
+        for (int i = 0; i < cursos.size(); i++) {
+            if (cursos.get(i).getIdCurso() == curso.getIdCurso()) {
+                cursos.set(i, curso);
+                break;
+            }
+        }
         salvar(cursos);
     }
 
+    public void remover(int id) {
+        cursos.removeIf(a -> a.getIdCurso() == id);
+        salvar(cursos);
+    }
+
+    public Optional<Curso> buscarPorId(int id) {
+        return carregar().stream().filter(p -> p.getIdCurso() == id).findFirst();
+    }
+
+    public List<Curso> listarTodos() {
+        return cursos;
+    }
 }
