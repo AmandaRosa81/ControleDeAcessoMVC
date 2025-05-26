@@ -10,6 +10,11 @@ public class CoordenadorView {
     private final Scanner scanner = new Scanner(System.in);
     private final CoordenadorController controller = new CoordenadorController();
 
+    public static void main(String[] args) {
+        CoordenadorView coordenadorView = new CoordenadorView();
+        coordenadorView.menu();
+    }
+
     public void menu() {
         String opcao;
         String menuCoorde = """
