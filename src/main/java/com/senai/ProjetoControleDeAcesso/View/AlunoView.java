@@ -1,13 +1,16 @@
 package com.senai.ProjetoControleDeAcesso.View;
 
+import com.senai.ProjetoControleDeAcesso.Controller.AlunoController;
 import com.senai.ProjetoControleDeAcesso.Controller.HorarioController;
+import com.senai.ProjetoControleDeAcesso.Model.Horario.Aluno;
+import com.senai.ProjetoControleDeAcesso.Model.Usuario;
 
 import java.time.LocalTime;
 import java.util.Scanner;
 
 public class AlunoView {
     private final Scanner scanner = new Scanner(System.in);
-    private final AlunoController controller = new ALunoController();
+    private final AlunoController alunoController = new AlunoController();
 
     public static void main(String[] args) {
          AlunoView alunoView =  new AlunoView();
@@ -18,7 +21,7 @@ public class AlunoView {
     public void menu() {
         String opcao;
         String menuAluno = """
-                --- MENU DE HORÁRIOS ---
+                --- MENU DE ALUNO ---
                 
                     1. Cadastrar aluno
                     2. Atualizar aluno
@@ -48,7 +51,7 @@ public class AlunoView {
         String login = scannerPrompt("Login: ");
         String senha = scannerPrompt("Senha: ");
 
-        System.out.println(controller.cadastrarAluno(id,nome,login,senha));
+        System.out.println(alunoController.cadastrarAluno(id,nome,login,senha));
     }
 
     private void atualizar() {
@@ -57,18 +60,18 @@ public class AlunoView {
         String login = scannerPrompt("Novo Login: ");
         String senha = scannerPrompt("Nova Senha: ");
 
-        System.out.println(controller.atualizarAluno(id, nome,login,senha));
+        System.out.println(alunoController.atualizarAluno(id, nome,login,senha));
     }
 
     private void remover() {
         listar();
         int id = scannerPromptInt("ID do aluno: ");
-        System.out.println(controller.removerAluno(id));
+        System.out.println(alunoController.removerAluno(id));
     }
 
     public void listar() {
-        for (Aluno a : controller.listarAlunos()) {
-            System.out.printf("ID: %d | Nome: %s |", a.getId(), a.getNome());
+        for (Usuario u : alunoController.listarAlunos()) {
+            System.out.printf("ID: %d | Nome: %s |", u.getId(), u.getNome());
         }
     }
 
@@ -82,6 +85,8 @@ public class AlunoView {
         System.out.print(msg);
         return Integer.parseInt(scanner.nextLine());
     }
+
+
 }
 
 
