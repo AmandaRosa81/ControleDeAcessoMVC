@@ -1,43 +1,29 @@
 package com.senai.ProjetoControleDeAcesso.Model.Horario;
 
-    public abstract class HorarioBase {
-        private String diaSemana;
-        private String horaInicio;
-        private String horaFim;
+import java.time.LocalTime;
 
-        public HorarioBase(String diaSemana, String horaInicio, String horaFim) {
-            this.diaSemana = diaSemana;
-            this.horaInicio = horaInicio;
-            this.horaFim = horaFim;
-        }
+public class HorarioBase extends Horario {
 
-        public String getDiaSemana() {
-            return diaSemana;
-        }
+    private String diaSemana;
 
-        public void setDiaSemana(String diaSemana) {
-            this.diaSemana = diaSemana;
-        }
-
-        public String getHoraInicio() {
-            return horaInicio;
-        }
-
-        public void setHoraInicio(String horaInicio) {
-            this.horaInicio = horaInicio;
-        }
-
-        public String getHoraFim() {
-            return horaFim;
-        }
-
-        public void setHoraFim(String horaFim) {
-            this.horaFim = horaFim;
-        }
-
-        @Override
-        public String toString() {
-            return diaSemana + " das " + horaInicio + " às " + horaFim;
-        }
+    public HorarioBase(int id, int idAluno, int idProfessor, LocalTime hora, String diaSemana) {
+        super(id, idAluno,idProfessor, hora);
+        this.diaSemana = diaSemana;
     }
+
+    public String getDiaSemana() {
+        return diaSemana;
+    }
+
+    public void setDiaSemana(String diaSemana) {
+        this.diaSemana = diaSemana;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", diaSemana='" + diaSemana + '\'';
+    }
+}
+
+
 
