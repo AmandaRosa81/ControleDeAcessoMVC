@@ -13,6 +13,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class AmbienteDAO {
     private final String caminho = "ambientes.json";
     private final Gson gson = new GsonBuilder()
@@ -41,16 +42,16 @@ public class AmbienteDAO {
     }
 
     public void inserir(Ambiente ambiente) {
-        String novoAmbiente = ambienteList.toString();
-        ambiente.setNomeAmbiente(novoAmbiente);
+        int novoId = ambienteList.stream().mapToInt(Ambiente::getIdAmbiente).max().orElse(0) + 1;
+        ambiente.setIdAmbiente(novoId);
         ambienteList.add(ambiente);
         salvar(ambienteList);
     }
 
     public void atualizar(Ambiente ambiente) {
         for (int i = 0; i < ambienteList.size(); i++) {
-            if (ambienteList.get(i).getId() == horario.getId()) {
-                ambienteList.set(i, horario);
+           if (ambienteList.get(i).getIdAmbiente() == ambiente.getIdAmbiente()) {
+                ambienteList.set(i, ambiente);
                 break;
             }
         }
@@ -58,7 +59,7 @@ public class AmbienteDAO {
     }
 
     public void remover(int id) {
-        ambienteList.removeIf(h -> h.getId() == id);
+        ambienteList.removeIf(a -> a.getIdAmbiente() == id);
         salvar(ambienteList);
     }
 
