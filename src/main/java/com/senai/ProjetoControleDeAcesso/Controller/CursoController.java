@@ -9,12 +9,12 @@ import java.util.List;
 public class CursoController {
     private final CursoDAO cursoDAO = new CursoDAO();
 
-    public String cadastrarCurso(int idCurso, String nomeCurso, int cargaHoraria, String tipo, int tolerancia) {
+    public String cadastrarCurso(int idCurso, String nomeCurso, String cargaHoraria, String tipo, String tolerancia) {
         cursoDAO.inserir(new Curso(idCurso, nomeCurso, cargaHoraria, tipo, tolerancia));
         return "Curso cadastrado com sucesso!";
     }
 
-    public String atualizarCurso(int idCurso, String nomeCurso, int cargaHoraria, String tipo, int tolerancia) {
+    public String atualizarCurso(int idCurso, String nomeCurso, String cargaHoraria, String tipo, String tolerancia) {
         cursoDAO.atualizar(new Curso(idCurso, nomeCurso, cargaHoraria, tipo, tolerancia));
         return "Curso atualizado com sucesso";
     }

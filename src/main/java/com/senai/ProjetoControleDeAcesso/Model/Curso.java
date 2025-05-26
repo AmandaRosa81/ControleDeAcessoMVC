@@ -1,13 +1,15 @@
 package com.senai.ProjetoControleDeAcesso.Model;
 
+import java.time.LocalTime;
+
 public class Curso {
     private int idCurso;
     private String nomeCurso;
-    private int cargaHoraria;
+    private String cargaHoraria;
     private String tipo;
-    private int tolerancia;
+    private String tolerancia;
 
-    public Curso(int idCurso, String nomeCurso, int cargaHoraria, String tipo, int tolerancia) {
+    public Curso(int idCurso, String nomeCurso, String cargaHoraria, String tipo, String tolerancia) {
         this.idCurso = idCurso;
         this.nomeCurso = nomeCurso;
         this.cargaHoraria = cargaHoraria;
@@ -31,11 +33,11 @@ public class Curso {
         this.nomeCurso = nomeCurso;
     }
 
-    public int getCargaHoraria() {
+    public String getCargaHoraria() {
         return cargaHoraria;
     }
 
-    public void setCargaHoraria(int cargaHoraria) {
+    public void setCargaHoraria(String cargaHoraria) {
         this.cargaHoraria = cargaHoraria;
     }
 
@@ -47,11 +49,11 @@ public class Curso {
         this.tipo = tipo;
     }
 
-    public int getTolerancia() {
+    public String getTolerancia() {
         return tolerancia;
     }
 
-    public void setTolerancia(int tolerancia) {
+    public void setTolerancia(String tolerancia) {
         this.tolerancia = tolerancia;
     }
 
@@ -60,9 +62,9 @@ public class Curso {
         return "Curso{" +
                 "idCurso=" + idCurso +
                 ", nomeCurso='" + nomeCurso + '\'' +
-                ", cargaHoraria=" + cargaHoraria +
+                ", cargaHoraria='" + cargaHoraria + '\'' +
                 ", tipo='" + tipo + '\'' +
-                ", tolerancia=" + tolerancia +
+                ", tolerancia='" + tolerancia + '\'' +
                 '}';
     }
 }

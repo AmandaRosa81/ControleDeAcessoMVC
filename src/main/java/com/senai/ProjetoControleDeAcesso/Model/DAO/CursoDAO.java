@@ -1,6 +1,7 @@
 package com.senai.ProjetoControleDeAcesso.Model.DAO;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.senai.ProjetoControleDeAcesso.Model.Curso;
 import com.senai.ProjetoControleDeAcesso.Model.Turma;
@@ -15,7 +16,8 @@ import java.util.Optional;
 
 public class CursoDAO {
     private final String caminho = "cursos.json";
-    private final Gson gson = new Gson();
+    private final Gson gson = new GsonBuilder()
+            .create();
     private final List<Curso> cursos;
 
     public CursoDAO(){

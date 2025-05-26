@@ -4,12 +4,12 @@ public class Turma {
     private int idTurma;
     private String nomeTurma;
     private String curso;
-    private int dataInicio;
+    private String dataInicio;
     private int qtdSemanas;
-    private int horarioEntrada;
+    private String horarioEntrada;
     private String periodo;
 
-    public Turma(int idTurma, String nomeTurma, String curso, int dataInicio, int qtdSemanas, int horarioEntrada, String periodo) {
+    public Turma(int idTurma, String nomeTurma, String curso, String dataInicio, int qtdSemanas, String horarioEntrada, String periodo) {
         this.idTurma = idTurma;
         this.nomeTurma = nomeTurma;
         this.curso = curso;
@@ -43,11 +43,11 @@ public class Turma {
         this.curso = curso;
     }
 
-    public int getDataInicio() {
+    public String getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(int dataInicio) {
+    public void setDataInicio(String dataInicio) {
         this.dataInicio = dataInicio;
     }
 
@@ -59,11 +59,11 @@ public class Turma {
         this.qtdSemanas = qtdSemanas;
     }
 
-    public int getHorarioEntrada() {
+    public String getHorarioEntrada() {
         return horarioEntrada;
     }
 
-    public void setHorarioEntrada(int horarioEntrada) {
+    public void setHorarioEntrada(String horarioEntrada) {
         this.horarioEntrada = horarioEntrada;
     }
 
@@ -81,9 +81,9 @@ public class Turma {
                 "idTurma=" + idTurma +
                 ", nomeTurma='" + nomeTurma + '\'' +
                 ", curso='" + curso + '\'' +
-                ", dataInicio=" + dataInicio +
+                ", dataInicio='" + dataInicio + '\'' +
                 ", qtdSemanas=" + qtdSemanas +
-                ", horarioEntrada=" + horarioEntrada +
+                ", horarioEntrada='" + horarioEntrada + '\'' +
                 ", periodo='" + periodo + '\'' +
                 '}';
     }

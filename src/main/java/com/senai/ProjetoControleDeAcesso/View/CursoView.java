@@ -3,6 +3,7 @@ package com.senai.ProjetoControleDeAcesso.View;
 import com.senai.ProjetoControleDeAcesso.Controller.CursoController;
 import com.senai.ProjetoControleDeAcesso.Model.Curso;
 
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class CursoView {
@@ -17,13 +18,15 @@ public class CursoView {
     public void menu() {
         String opcao;
         String menuCurso = """
-                --- MENU CURSO ---
+                ------ MENU CURSO ------
                 
                     1. Cadastrar curso
                     2. Atualizar curso
                     3. Remover curso
                     4. Listar cursos
                     0. Voltar
+                
+                -----------------------
                     
                 """;
         do {
@@ -44,30 +47,30 @@ public class CursoView {
     private void cadastrar() {
         int idCurso = scannerPromptInt("ID do curso: ");
         String nomeCurso = scannerPrompt("Nome do curso: ");
-        int cargaHoraria = scannerPromptInt("Carga horária do curso: ");
+        String cargaHoraria = scannerPrompt("Carga horária do curso: ");
         String tipo = scannerPrompt("Tipo do curso: ");
-        int tolerancia = scannerPromptInt("Tolerância do curso: ");
+        String tolerancia = scannerPrompt("Tolerância do curso: ");
         System.out.println(controller.cadastrarCurso(idCurso, nomeCurso, cargaHoraria, tipo, tolerancia));
     }
 
     private void atualizar() {
         int idCurso = scannerPromptInt("ID do curso a ser atualizado: ");
         String nomeCurso = scannerPrompt("Nome do curso a ser atualizado: ");
-        int cargaHoraria = scannerPromptInt("Carga horária do curso a ser atualizada: ");
-        String tipo = scannerPrompt("Tipo do curso a ser atualizado:: ");
-        int tolerancia = scannerPromptInt("Tolerância do curso a ser atualizada: ");
+        String cargaHoraria = scannerPrompt("Carga horária do curso a ser atualizada: ");
+        String tipo = scannerPrompt("Tipo do curso a ser atualizado: ");
+        String tolerancia = scannerPrompt("Tolerância do curso a ser atualizada: ");
         System.out.println(controller.atualizarCurso(idCurso, nomeCurso, cargaHoraria, tipo, tolerancia));
     }
 
     private void remover() {
-        int idCurso = scannerPromptInt("ID do curso a ser removido ");
+        int idCurso = scannerPromptInt("ID do curso a ser removido: ");
         System.out.println(controller.removerCurso(idCurso));
     }
 
     public void listar() {
         for (Curso c : controller.listarCursos()) {
-            System.out.printf("ID do curso: %d | Nome do curso: %s | Carga horária: %d | Tipo do curso: %s | " +
-                            "Tolerância: %d\n",
+            System.out.printf("ID do curso: %d | Nome do curso: %s | Carga horária: %s | Tipo do curso: %s | " +
+                            "Tolerância: %s\n",
                     c.getIdCurso(), c.getNomeCurso(), c.getCargaHoraria(), c.getTipo(), c.getTolerancia());
         }
     }
@@ -80,5 +83,10 @@ public class CursoView {
     private String scannerPrompt(String msg) {
         System.out.print(msg);
         return scanner.nextLine();
+    }
+
+    private LocalTime scannerPromptHora(String msg) {
+        System.out.print(msg);
+        return LocalTime.parse(scanner.nextLine());
     }
 }
