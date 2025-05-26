@@ -1,6 +1,7 @@
 package com.senai.ProjetoControleDeAcesso.Controller;
 
 import com.senai.ProjetoControleDeAcesso.Model.DAO.HorarioSemanalDAO;
+import com.senai.ProjetoControleDeAcesso.Model.Horario.HorarioPadrao;
 import com.senai.ProjetoControleDeAcesso.Model.Horario.HorarioSemanal;
 
 import java.time.LocalTime;
@@ -10,14 +11,14 @@ public class HorarioSemanalController {
 
     private final HorarioSemanalDAO horarioSemanalDAO = new HorarioSemanalDAO();
 
-    public String cadastrarHorarioSemanal(int idProfessor, int idAluno, String diaSemana, LocalTime hora) {
-        HorarioSemanal horario = new HorarioSemanal(0, idProfessor, idAluno, diaSemana, hora);
-        horarioSemanalDAO.inserir(horario);
-        return "Horário semanal cadastrado.";
-    }
 
-    public String atualizarHorarioSemanal(int id, int idProfessor, int idAluno, String diaSemana, LocalTime hora) {
-        HorarioSemanal horario = new HorarioSemanal(id, idProfessor, idAluno, diaSemana, hora);
+    public String cadastrarHorarioSemanal(int idAluno, int idProfessor, String diaSemana, LocalTime horaInicio, LocalTime horaFim, String tipo) {
+        HorarioSemanal horario = new HorarioSemanal(0, idAluno, idProfessor, diaSemana, horaInicio, horaFim, tipo);
+        horarioSemanalDAO.atualizar(horario);
+        return "Horário padrão atualizado.";
+    }
+    public String atualizarHorarioSemanal(int id, int idAluno, int idProfessor, String diaSemana, LocalTime horaInicio, LocalTime horaFim, String tipo) {
+        HorarioSemanal horario = new HorarioSemanal(id, idAluno, idProfessor, diaSemana, horaInicio, horaFim, tipo);
         horarioSemanalDAO.atualizar(horario);
         return "Horário semanal atualizado.";
     }
