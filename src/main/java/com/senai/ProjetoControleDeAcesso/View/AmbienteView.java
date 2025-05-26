@@ -43,28 +43,36 @@ public class AmbienteView {
 
     private void cadastrar() {
         String nomeAmbiente = scannerPrompt("Nome do ambiente: ");
-        System.out.println(controller.cadastrarAmbiente(nomeAmbiente));
+        int idAmbiente = scannerPromptInt("ID do ambiente: ");
+        System.out.println(controller.cadastrarAmbiente(nomeAmbiente, idAmbiente));
     }
 
     private void atualizar() {
         String nomeAmbiente = scannerPrompt("Nome do ambiente: ");
-        System.out.println(controller.atualizarAmbiente(nomeAmbiente));
+        int idAmbiente = scannerPromptInt("ID do ambiente: ");
+        System.out.println(controller.atualizarAmbiente(nomeAmbiente, idAmbiente));
     }
 
     private void remover() {
-        String nomeAmbiente = scannerPrompt("Nome do ambiente: ");
-        System.out.println(controller.removerAmbiente(nomeAmbiente));
+        listar();
+        int idAmbiente = scannerPromptInt("ID do ambiente para remover: ");
+        System.out.println(controller.removerAmbiente(idAmbiente));
     }
 
     public void listar() {
         for (Ambiente a : controller.listarAmbientes()) {
-            System.out.printf("Nome do ambiente: %s\n", a.getNomeAmbiente());
+            System.out.printf("Nome do ambiente: %s | Ambiente ID: %d |\n", a.getNomeAmbiente(), a.getIdAmbiente());
         }
     }
 
     private String scannerPrompt(String msg) {
         System.out.print(msg);
         return scanner.nextLine();
+    }
+
+    private int scannerPromptInt(String msg) {
+        System.out.print(msg);
+        return Integer.parseInt(scanner.nextLine());
     }
 
 }
