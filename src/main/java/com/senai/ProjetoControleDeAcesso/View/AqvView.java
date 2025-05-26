@@ -2,12 +2,14 @@ package com.senai.ProjetoControleDeAcesso.View;
 
 import com.senai.ProjetoControleDeAcesso.Controller.AqvController;
 import com.senai.ProjetoControleDeAcesso.Model.DAO.AqvDAO;
+import com.senai.ProjetoControleDeAcesso.Model.Usuario;
 
+import java.util.List;
 import java.util.Scanner;
 
 import static java.awt.SystemColor.menu;
 
-public class AqvView {
+public class AqvView extends Usuario {
 
     private Scanner scanner = new Scanner(System.in);
     private AqvController aqvController = new AqvController();
@@ -22,59 +24,63 @@ public class AqvView {
                 |   4. Exibir AQV          |
                 |   5. Voltar              |
                 ----------------------------
-                """;
-    }
-    do{
-        System.out.print(menuAQV);
-        opcao = scanner.nextLine();
+         
+               """;
 
-        switch (opcao) {
-            case "1" -> Cadastrar();
-            case "2" -> Atualizar();
-            case "3" -> Deletar();
-            case "4" -> Exibir();
-            case "5" -> System.out.println("Voltando...");
-            default -> System.out.println("Opção inválida.");
-        }
-    } while (!opcao.equals("0"));
+        do{
+            System.out.print(menuAQV);
+            opcao = scanner.nextLine();
+
+            switch (opcao) {
+                case "1" -> Cadastrar();
+                case "2" -> Atualizar();
+                case "3" -> Deletar();
+                case "4" -> Exibir();
+                case "5" -> System.out.println("Voltando...");
+                default -> System.out.println("Opção inválida.");
+            }
+        } while (!opcao.equals("5"));
+    }
+
 
     private void Cadastrar(){
-        int idAQV = scannerPrompInt("Id do AQV");
-        String nomeAQV = scannerPrompString("Nome do AQV");
-        String loginAQV = scannerPrompString("Login do AQV");
-        int senhaAQV = scannerPrompInt("Senha do AQV");
+        int idAQV = scannerPromptInt("Id do AQV");
+        String nomeAQV = scannerPromptString("Nome do AQV");
+        String loginAQV = scannerPromptString("Login do AQV");
+        int senhaAQV = scannerPromptInt("Senha do AQV");
         System.out.println(aqvController.CadastrarAQV(idAQV,nomeAQV,loginAQV,senhaAQV));
 
     }
     private void Atualizar(){
-        int id = scannerPrompInt("Id do AQV");
-        int idAQV = scannerPrompInt("Novo Id do AQV");
-        String nome = scannerPrompString("Nome do AQV");
-        String nomeAQV = scannerPrompString("Novo Nome do AQV");
-        int senha = scannerPrompInt("Senha do AQV");
-        int senhaAQV = scannerPrompInt("Nova Senha do AQV");
-        System.out.println(aqvController.CadastrarAQV(idAQV,nomeAQV,senhaAQV));
+        int idAQV = scannerPromptInt("Novo Id do AQV");
+        String nomeAQV = scannerPromptString("Novo Nome do AQV");
+        String loginAQV = scannerPromptString("Novo Login do AQV");
+        int senhaAQV = scannerPromptInt("Nova Senha do AQV");
+        System.out.println(aqvController.AtualizarAQV(idAQV,nomeAQV,loginAQV,senhaAQV));
 
     }
     private void Deletar(){
-        int id = scannerPromtInt("Id do AQV");
+        int id = scannerPromptInt("Id do AQV");
         System.out.println(aqvController.DeletarAQV(id));
 
     }
    public void Exibir(){
-        for (AQV aqv : aqvController.ExibirAQV()){
-       System.out.printf("ID AQV: %d | Nome AQV: %d | Login AQV: %d | Senha AQV: %s\n",
-       aqv.getId(),aqv.getNome(),aqv.getLogin(),aqv.getSenha());
+       List<AqvDAO> lista = aqvController.ExibirAQV();
+       for (AqvDAO aqvDAO : lista) {
+           System.out.printf("ID AQV: %d | Nome AQV: %s | Login AQV: %s | Senha AQV: %s\n",
+                   aqvDAO.getId(), aqvDAO.getNome(), aqvDAO.getLogin(), aqvDAO.getSenha());
 
-}
+   }
+    }
 
-}
-    private int scannerPromptInt(int id, int senha) {
-        System.out.print(id,senha);
+    private int scannerPromptInt(String mensagem) {
+        System.out.print(mensagem + ": ");
         return Integer.parseInt(scanner.nextLine());
     }
-    private String scannerPromptInt(String msg) {
-        System.out.print(msg);
-        return Integer.parseInt(scanner.nextLine());
-    }
-}
+
+private String scannerPromptString(String mensagem) {
+    System.out.print(mensagem + ": ");
+    return scanner.nextLine();
+ }
+
+  }

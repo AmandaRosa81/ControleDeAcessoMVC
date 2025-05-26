@@ -3,6 +3,8 @@ package com.senai.ProjetoControleDeAcesso.Controller;
 import com.senai.ProjetoControleDeAcesso.Model.DAO.AqvDAO;
 import com.senai.ProjetoControleDeAcesso.Model.Usuario;
 
+import java.util.List;
+
 public class AqvController {
     private AqvDAO aqvDAO = new AqvDAO();
 
@@ -11,8 +13,8 @@ public class AqvController {
         return "AQV Cadastrado";
 
     }
-    public String ExibirAQV(String nomeAQV, int idAQV,String loginAQV, int senhaAQV){
-        return aqvDAO.ExibirAQV(nomeAQV ,idAQV, loginAQV, senhaAQV);
+    public List<AqvDAO> ExibirAQV(){
+        return aqvDAO.ExibirAqv();
 
     }
     public String AtualizarAQV(String nomeAQV, int idAQV,String loginAQV, int senhaAQV){
