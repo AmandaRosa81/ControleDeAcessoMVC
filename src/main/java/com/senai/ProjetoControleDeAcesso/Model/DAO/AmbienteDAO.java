@@ -49,7 +49,8 @@ public class AmbienteDAO {
 
     public void atualizar(Ambiente ambiente) {
         for (int i = 0; i < ambienteList.size(); i++) {
-            if (ambienteList.get(i).getId() == horario.getId()) {
+            if (ambienteList.get(i)
+                    .getId() == horario.getId()) {
                 ambienteList.set(i, horario);
                 break;
             }

@@ -9,6 +9,11 @@ public class TurmaView {
     private final Scanner scanner = new Scanner(System.in);
     private final TurmaController controller = new TurmaController();
 
+    public static void main(String[] args) {
+        TurmaView turmaView = new TurmaView();
+        turmaView.menu();
+    }
+
     public void menu() {
         String opcao;
         String menuTurma = """

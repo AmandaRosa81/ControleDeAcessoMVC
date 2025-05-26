@@ -9,6 +9,11 @@ public class CursoView {
     private final Scanner scanner = new Scanner(System.in);
     private final CursoController controller = new CursoController();
 
+    public static void main(String[] args) {
+        CursoView cursoView = new CursoView();
+        cursoView.menu();
+    }
+
     public void menu() {
         String opcao;
         String menuCurso = """
