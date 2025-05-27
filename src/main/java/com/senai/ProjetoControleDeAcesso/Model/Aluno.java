@@ -1,6 +1,4 @@
-package com.senai.ProjetoControleDeAcesso.Model.Horario;
-
-import com.senai.ProjetoControleDeAcesso.Model.Usuario;
+package com.senai.ProjetoControleDeAcesso.Model;
 
 public class Aluno extends Usuario {
 
