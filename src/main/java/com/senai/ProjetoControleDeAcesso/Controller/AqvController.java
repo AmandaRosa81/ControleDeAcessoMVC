@@ -1,7 +1,6 @@
 package com.senai.ProjetoControleDeAcesso.Controller;
 
 import com.senai.ProjetoControleDeAcesso.Model.DAO.AqvDAO;
-import com.senai.ProjetoControleDeAcesso.Model.Usuario;
 
 import java.util.List;
 

@@ -3,17 +3,13 @@ package com.senai.ProjetoControleDeAcesso.Model.DAO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.senai.ProjetoControleDeAcesso.Controller.AqvController;
-import com.senai.ProjetoControleDeAcesso.Model.Usuario;
 
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class AqvDAO  {
     private final String caminho = "aqv.json";
@@ -51,7 +47,7 @@ public class AqvDAO  {
 
     public void atualizar(Usuario aqv) {
         for (int i = 0; i < AQV.size(); i++) {
-            if (AQV.get(i).getId() == aqv.getId()) {
+            if (AQV.get(i).getIdAQV() == aqv.getIdAQV()) {
                 AQV.set(i, aqv);
                 break;
             }
@@ -59,8 +55,8 @@ public class AqvDAO  {
         salvar(AQV);
     }
 
-    public void remover(int id) {
-        AQV.removeIf(h -> h.getId() == id);
+    public void remover(int idAQV) {
+        AQV.removeIf(aqv -> aqv.getId() == idAQV);
         salvar(AQV);
     }
 

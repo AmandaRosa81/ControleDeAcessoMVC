@@ -2,14 +2,11 @@ package com.senai.ProjetoControleDeAcesso.View;
 
 import com.senai.ProjetoControleDeAcesso.Controller.AqvController;
 import com.senai.ProjetoControleDeAcesso.Model.DAO.AqvDAO;
-import com.senai.ProjetoControleDeAcesso.Model.Usuario;
 
 import java.util.List;
 import java.util.Scanner;
 
-import static java.awt.SystemColor.menu;
-
-public class AqvView extends Usuario {
+public class Aqv {
 
     private Scanner scanner = new Scanner(System.in);
     private AqvController aqvController = new AqvController();
