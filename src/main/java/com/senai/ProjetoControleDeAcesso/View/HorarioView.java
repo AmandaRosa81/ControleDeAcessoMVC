@@ -10,7 +10,10 @@ import java.util.Scanner;
     public class HorarioView {
         private final Scanner scanner = new Scanner(System.in);
         private final HorarioController controller = new HorarioController();
-
+        private String scannerPromptString(String msg) {
+            System.out.print(msg);
+            return scanner.nextLine();
+        }
         public static void main(String[] args) {
             HorarioView horarioView = new HorarioView();
             horarioView.menu();
@@ -46,17 +49,26 @@ import java.util.Scanner;
         private void cadastrar() {
             int idAluno = scannerPromptInt("ID do aluno: ");
             int idProfessor = scannerPromptInt("ID do professor: ");
-            LocalTime hora = scannerPromptHora("Hora de início (HH:mm): ");
-            System.out.println(controller.cadastrarHorario(idAluno, idProfessor, hora));
+            String diaSemana = scannerPromptString("Dia da semana: ");
+            LocalTime horaInicio = scannerPromptHora("Hora de início (HH:mm): ");
+            LocalTime horaFim = scannerPromptHora("Hora de fim (HH:mm): ");
+            String tipo = scannerPromptString("Tipo: ");
+
+            System.out.println(controller.cadastrarHorario(idAluno, idProfessor, diaSemana, horaInicio, horaFim, tipo));
         }
 
         private void atualizar() {
             int id = scannerPromptInt("ID do horário: ");
             int idAluno = scannerPromptInt("Novo ID do aluno: ");
             int idProfessor = scannerPromptInt("Novo ID do professor: ");
-            LocalTime hora = scannerPromptHora("Nova hora de início (HH:mm): ");
-            System.out.println(controller.atualizarHorario(id, idAluno, idProfessor, hora));
+            String diaSemana = scannerPromptString("Novo dia da semana: ");
+            LocalTime horaInicio = scannerPromptHora("Nova hora de início (HH:mm): ");
+            LocalTime horaFim = scannerPromptHora("Nova hora de fim (HH:mm): ");
+            String tipo = scannerPromptString("Novo tipo: ");
+
+            System.out.println(controller.atualizarHorario(id, idAluno, idProfessor, diaSemana, horaInicio, horaFim, tipo));
         }
+
 
         private void remover() {
             int id = scannerPromptInt("ID do horário: ");
