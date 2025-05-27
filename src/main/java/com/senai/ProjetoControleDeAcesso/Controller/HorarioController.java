@@ -18,8 +18,8 @@ public class HorarioController {
     }
 
 
-    public String AtualizarHorario(int idAluno, int idProfessor, String diaSemana, LocalTime horaInicio, LocalTime horaFim, String tipo) {
-        HorarioSemanal novoHorario = new HorarioSemanal(0, idAluno, idProfessor, diaSemana, horaInicio, horaFim, tipo);
+    public String atualizarHorario(int id, int idAluno, int idProfessor, String diaSemana, LocalTime horaInicio, LocalTime horaFim, String tipo) {
+    HorarioSemanal novoHorario = new HorarioSemanal(0, idAluno, idProfessor, diaSemana, horaInicio, horaFim, tipo);
         horarioDAO.inserir(novoHorario);
         return "Horário cadastrado.";
     }
