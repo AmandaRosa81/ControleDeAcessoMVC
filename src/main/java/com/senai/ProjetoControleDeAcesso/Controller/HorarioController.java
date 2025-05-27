@@ -11,15 +11,19 @@ import java.util.List;
 public class HorarioController {
     private final HorarioDAO horarioDAO = new HorarioDAO();
 
-    public String cadastrarHorario(int idAluno, int idProfessor, LocalTime hora) {
-        horarioDAO.inserir(new HorarioSemanal(0, idAluno, idProfessor, hora));
+    public String cadastrarHorario(int idAluno, int idProfessor, String diaSemana, LocalTime horaInicio, LocalTime horaFim, String tipo) {
+        HorarioSemanal novoHorario = new HorarioSemanal(0, idAluno, idProfessor, diaSemana, horaInicio, horaFim, tipo);
+        horarioDAO.inserir(novoHorario);
         return "Horário cadastrado.";
     }
 
-    public String atualizarHorario(int id, int idAluno, int idProfessor, LocalTime hora) {
-        horarioDAO.atualizar(new HorarioSemanal(id, idAluno, idProfessor, hora));
-        return "Horário atualizado.";
+
+    public String AtualizarHorario(int idAluno, int idProfessor, String diaSemana, LocalTime horaInicio, LocalTime horaFim, String tipo) {
+        HorarioSemanal novoHorario = new HorarioSemanal(0, idAluno, idProfessor, diaSemana, horaInicio, horaFim, tipo);
+        horarioDAO.inserir(novoHorario);
+        return "Horário cadastrado.";
     }
+
 
     public String removerHorario(int id) {
         horarioDAO.remover(id);
