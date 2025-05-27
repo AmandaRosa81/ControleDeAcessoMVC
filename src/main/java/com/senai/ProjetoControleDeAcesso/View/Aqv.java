@@ -58,11 +58,11 @@ public class Aqv {
     }
     private void Deletar(){
         int id = scannerPromptInt("Id do AQV");
-        System.out.println(aqvController.DeletarAQV(id));
+        System.out.println(aqvController.removerAQV(id));
 
     }
    public void Exibir(){
-       List<AqvDAO> lista = aqvController.ExibirAQV();
+       List<AqvDAO> lista = aqvController.listar();
        for (AqvDAO aqvDAO : lista) {
            System.out.printf("ID AQV: %d | Nome AQV: %s | Login AQV: %s | Senha AQV: %s\n",
                    aqvDAO.getId(), aqvDAO.getNome(), aqvDAO.getLogin(), aqvDAO.getSenha());
