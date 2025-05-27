@@ -57,7 +57,7 @@ public class TurmaView {
 
     private void atualizar() {
         int idTurma = scannerPromptInt("ID da turma a ser atualizado: ");
-        String nomeTurma = scannerPrompt("Nome da turma a ser atualizado: ");
+        String nomeTurma = scannerPrompt("Nome da turma a ser atualizado: \n");
         String curso = scannerPrompt("Nome do curso a ser atualizado: ");
         String dataInicio = scannerPrompt("Data do início do curso a ser atualizada: ");
         int qtdSemanas = scannerPromptInt("Quantidade de semanas a ser atualizada: ");

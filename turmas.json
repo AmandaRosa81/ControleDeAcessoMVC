@@ -1,1 +1,2 @@
-[]
+[{"idTurma":1,"nomeTurma":"c","curso":"engenharia da computação","dataInicio":"21/07/2026","qtdSemanas":13,"horarioEntrada":"8:15","periodo":"manhã"},
+  {"idTurma":2,"nomeTurma":"b","curso":"anaslise e desenvolvimento de sistemas","dataInicio":"25/08/2026","qtdSemanas":11,"horarioEntrada":"13:30","periodo":"tarde"}]
