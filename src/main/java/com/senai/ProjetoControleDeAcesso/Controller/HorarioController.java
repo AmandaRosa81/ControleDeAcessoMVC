@@ -1,7 +1,7 @@
 package com.senai.ProjetoControleDeAcesso.Controller;
 
 
-import com.senai.ProjetoControleDeAcesso.Model.DAO.HorarioDAO;
+import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.HorarioDAO;
 import com.senai.ProjetoControleDeAcesso.Model.Horario.Horario;
 import com.senai.ProjetoControleDeAcesso.Model.Horario.HorarioSemanal;
 
