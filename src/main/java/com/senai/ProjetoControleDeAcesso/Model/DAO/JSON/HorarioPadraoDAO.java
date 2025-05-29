@@ -3,7 +3,7 @@ package com.senai.ProjetoControleDeAcesso.Model.DAO.JSON;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.senai.ProjetoControleDeAcesso.Model.DAO.LocalTimeAdapter;
+import com.senai.ProjetoControleDeAcesso.Model.Horario.LocalTimeAdapter;
 import com.senai.ProjetoControleDeAcesso.Model.Horario.HorarioPadrao;
 
 import java.io.FileReader;
