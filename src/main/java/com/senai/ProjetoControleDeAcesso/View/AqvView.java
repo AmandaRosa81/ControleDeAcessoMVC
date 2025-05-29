@@ -1,6 +1,7 @@
 package com.senai.ProjetoControleDeAcesso.View;
 
 import com.senai.ProjetoControleDeAcesso.Controller.AqvController;
+import com.senai.ProjetoControleDeAcesso.Model.Aqv;
 import com.senai.ProjetoControleDeAcesso.Model.Usuario;
 
 import java.util.List;
@@ -53,7 +54,7 @@ public class AqvView {
 
     }
     private void Atualizar(){
-        int idAQV = scannerPromptInt("Novo Id do AQV");
+        int idAQV = scannerPromptInt("Id do AQV");
         String nomeAQV = scannerPromptString("Novo Nome do AQV");
         String loginAQV = scannerPromptString("Novo Login do AQV");
         String senhaAQV = scannerPromptString("Nova Senha do AQV");
@@ -66,8 +67,8 @@ public class AqvView {
 
     }
     public void Exibir(){
-        List<Usuario> lista = aqvController.Listar();
-        for (Usuario aqvDAO : lista) {
+        List<Aqv> lista = aqvController.Listar();
+        for (Aqv aqvDAO : lista) {
             System.out.printf("ID AQV: %d | Nome AQV: %s | Login AQV: %s | Senha AQV: %s\n",
                     aqvDAO.getId(), aqvDAO.getNome(), aqvDAO.getLogin(), aqvDAO.getSenha());
 
