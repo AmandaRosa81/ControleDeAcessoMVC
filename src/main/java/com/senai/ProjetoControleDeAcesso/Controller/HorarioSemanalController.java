@@ -1,7 +1,6 @@
 package com.senai.ProjetoControleDeAcesso.Controller;
 
-import com.senai.ProjetoControleDeAcesso.Model.DAO.HorarioSemanalDAO;
-import com.senai.ProjetoControleDeAcesso.Model.Horario.HorarioPadrao;
+import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.HorarioSemanalDAO;
 import com.senai.ProjetoControleDeAcesso.Model.Horario.HorarioSemanal;
 
 import java.time.LocalTime;

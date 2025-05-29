@@ -1,11 +1,9 @@
 package com.senai.ProjetoControleDeAcesso.Controller;
 
-import com.senai.ProjetoControleDeAcesso.Model.DAO.AlunoDAO;
+import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.AlunoDAO;
 import com.senai.ProjetoControleDeAcesso.Model.Usuario;
 
-import java.time.LocalTime;
 import java.util.List;
-import java.util.Scanner;
 
 public class AlunoController {
     private final AlunoDAO alunoDAO = new AlunoDAO();

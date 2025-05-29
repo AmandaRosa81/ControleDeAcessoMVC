@@ -1,4 +1,4 @@
-package com.senai.ProjetoControleDeAcesso.Model.DAO;
+package com.senai.ProjetoControleDeAcesso.Model.Horario;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;

@@ -1,11 +1,8 @@
 package com.senai.ProjetoControleDeAcesso.View;
 
 import com.senai.ProjetoControleDeAcesso.Controller.AlunoController;
-import com.senai.ProjetoControleDeAcesso.Controller.HorarioController;
-import com.senai.ProjetoControleDeAcesso.Model.Horario.Aluno;
 import com.senai.ProjetoControleDeAcesso.Model.Usuario;
 
-import java.time.LocalTime;
 import java.util.Scanner;
 
 public class AlunoView {

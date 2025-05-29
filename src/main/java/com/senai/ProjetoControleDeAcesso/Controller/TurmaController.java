@@ -1,9 +1,8 @@
 package com.senai.ProjetoControleDeAcesso.Controller;
 
-import com.senai.ProjetoControleDeAcesso.Model.DAO.TurmaDAO;
+import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.TurmaDAO;
 import com.senai.ProjetoControleDeAcesso.Model.Turma;
 
-import java.time.LocalTime;
 import java.util.List;
 
 public class TurmaController {

@@ -2,7 +2,7 @@ package com.senai.ProjetoControleDeAcesso.Model.Horario;
 
 import java.time.LocalTime;
 
-public abstract class Horario {
+public  class Horario {
 
         private int id;
         private int idAluno;
