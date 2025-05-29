@@ -1,15 +1,19 @@
 package com.senai.ProjetoControleDeAcesso.View;
 
 import com.senai.ProjetoControleDeAcesso.Controller.AqvController;
-import com.senai.ProjetoControleDeAcesso.Model.DAO.AqvDAO;
+import com.senai.ProjetoControleDeAcesso.Model.Usuario;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class Aqv {
+public class AqvView {
+    private final Scanner scanner = new Scanner(System.in);
+    private final AqvController aqvController = new AqvController();
 
-    private Scanner scanner = new Scanner(System.in);
-    private AqvController aqvController = new AqvController();
+    public static void main(String[] args) {
+        AqvView aqvView = new AqvView();
+        aqvView.menu();
+    }
 
     public void menu(){
         String opcao;
@@ -44,7 +48,7 @@ public class Aqv {
         int idAQV = scannerPromptInt("Id do AQV");
         String nomeAQV = scannerPromptString("Nome do AQV");
         String loginAQV = scannerPromptString("Login do AQV");
-        int senhaAQV = scannerPromptInt("Senha do AQV");
+        String senhaAQV = scannerPromptString("Senha do AQV");
         System.out.println(aqvController.CadastrarAQV(idAQV,nomeAQV,loginAQV,senhaAQV));
 
     }
@@ -52,22 +56,22 @@ public class Aqv {
         int idAQV = scannerPromptInt("Novo Id do AQV");
         String nomeAQV = scannerPromptString("Novo Nome do AQV");
         String loginAQV = scannerPromptString("Novo Login do AQV");
-        int senhaAQV = scannerPromptInt("Nova Senha do AQV");
+        String senhaAQV = scannerPromptString("Nova Senha do AQV");
         System.out.println(aqvController.AtualizarAQV(idAQV,nomeAQV,loginAQV,senhaAQV));
 
     }
     private void Deletar(){
         int id = scannerPromptInt("Id do AQV");
-        System.out.println(aqvController.removerAQV(id));
+        aqvController.removerAQV(id);
 
     }
-   public void Exibir(){
-       List<AqvDAO> lista = aqvController.listar();
-       for (AqvDAO aqvDAO : lista) {
-           System.out.printf("ID AQV: %d | Nome AQV: %s | Login AQV: %s | Senha AQV: %s\n",
-                   aqvDAO.getId(), aqvDAO.getNome(), aqvDAO.getLogin(), aqvDAO.getSenha());
+    public void Exibir(){
+        List<Usuario> lista = aqvController.Listar();
+        for (Usuario aqvDAO : lista) {
+            System.out.printf("ID AQV: %d | Nome AQV: %s | Login AQV: %s | Senha AQV: %s\n",
+                    aqvDAO.getId(), aqvDAO.getNome(), aqvDAO.getLogin(), aqvDAO.getSenha());
 
-   }
+        }
     }
 
     private int scannerPromptInt(String mensagem) {
@@ -75,9 +79,10 @@ public class Aqv {
         return Integer.parseInt(scanner.nextLine());
     }
 
-private String scannerPromptString(String mensagem) {
-    System.out.print(mensagem + ": ");
-    return scanner.nextLine();
- }
+    private String scannerPromptString(String mensagem) {
+        System.out.print(mensagem + ": ");
+        return scanner.nextLine();
+    }
 
-  }
+}
+

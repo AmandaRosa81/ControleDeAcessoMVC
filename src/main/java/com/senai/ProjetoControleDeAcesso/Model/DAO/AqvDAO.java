@@ -12,7 +12,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AqvDAO extends Usuario {
+public class AqvDAO  {
     private final String caminho = "aqv.json";
     private final Gson gson = new GsonBuilder().create();
     private final List<Usuario> AQV;

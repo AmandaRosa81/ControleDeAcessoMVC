@@ -6,10 +6,11 @@ import com.senai.ProjetoControleDeAcesso.Model.Usuario;
 import java.util.List;
 
 public class AqvController {
-    private AqvDAO aqvDAO = new AqvDAO();
+    private final AqvDAO aqvDAO = new AqvDAO();
 
-    public String CadastrarAQV(String nomeAQV, int idAQV, String loginAQV, int senhaAQV) {
-        aqvDAO.inserir(new Usuario(nomeAQV, idAQV, loginAQV, senhaAQV) {
+
+    public String CadastrarAQV(int idAQV,String nomeAQV, String senhaAQV, String loginAQV ) {
+        aqvDAO.inserir(new Usuario(idAQV, nomeAQV,senhaAQV,loginAQV) {
             @Override
             public String getTipo() {
                 return "";
@@ -20,15 +21,25 @@ public class AqvController {
 
     }
 
-    public String AtualizarAQV(String nomeAQV, int idAQV, String loginAQV, int senhaAQV) {
-        aqvDAO.atualizar(new Usuario(nomeAQV, idAQV, loginAQV, senhaAQV));
+    public String AtualizarAQV(int idAQV, String nomeAQV,String loginAQV,String senhaAQV) {
+
+        aqvDAO.atualizar(new Usuario(idAQV,nomeAQV,loginAQV,senhaAQV) {
+            @Override
+            public String getTipo() {
+                return "";
+            }
+        });
+        return "O AQV foi atualizado";
 
 
     }
-        public void removerAQV(int idAQV){
-            aqvDAO.listarTodos();
-            aqvDAO.remover(idAQV);
-            return "AQV removido";
-        }
+    public String removerAQV(int idAQV){
+        aqvDAO.listarTodos();
+        aqvDAO.remover(idAQV);
+        return "AQV removido";
     }
+    public List<Usuario> Listar(){
 
+        return aqvDAO.listarTodos();
+    }
+}
