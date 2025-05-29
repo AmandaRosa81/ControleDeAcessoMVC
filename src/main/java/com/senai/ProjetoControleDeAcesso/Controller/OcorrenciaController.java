@@ -1,6 +1,6 @@
 package com.senai.ProjetoControleDeAcesso.Controller;
 
-import com.senai.ProjetoControleDeAcesso.Model.DAO.OcorrenciaDAO;
+import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.OcorrenciaDAO;
 import com.senai.ProjetoControleDeAcesso.Model.Ocorrencia;
 
 import java.util.List;

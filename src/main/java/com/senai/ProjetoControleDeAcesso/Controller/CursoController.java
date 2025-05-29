@@ -1,9 +1,8 @@
 package com.senai.ProjetoControleDeAcesso.Controller;
 
 import com.senai.ProjetoControleDeAcesso.Model.Curso;
-import com.senai.ProjetoControleDeAcesso.Model.DAO.CursoDAO;
+import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.CursoDAO;
 
-import java.time.LocalTime;
 import java.util.List;
 
 public class CursoController {

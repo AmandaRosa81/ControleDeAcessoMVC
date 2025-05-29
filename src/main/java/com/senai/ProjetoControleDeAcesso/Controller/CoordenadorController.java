@@ -1,7 +1,7 @@
 package com.senai.ProjetoControleDeAcesso.Controller;
 
 import com.senai.ProjetoControleDeAcesso.Model.Coordenador;
-import com.senai.ProjetoControleDeAcesso.Model.DAO.CoordenadorDAO;
+import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.CoordenadorDAO;
 
 import java.util.List;
 
