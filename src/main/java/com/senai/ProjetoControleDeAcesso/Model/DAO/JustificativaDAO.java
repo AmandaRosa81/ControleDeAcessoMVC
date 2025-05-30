@@ -20,16 +20,30 @@ public class JustificativaDAO {
 
     private final Gson gson = new GsonBuilder().create();
 
-
     private final List<Justificativa> justificativas;
 
     public JustificativaDAO(){justificativas = carregar();}
+
+    public void anexarJustificativa () {
+
+            for (int j = 0; j <justificativas.size() ; j++) {
+                if(justificativas.get(j).getAnexar().equals(justificativa.getAnexar())){
+                    justificativas.set(j,justificativa);
+                    break;
+                }
+            }
+
+        salvar(justificativas);
+
+    }
+
 
     private List<Justificativa> carregar() {
         try (FileReader reader = new FileReader(caminho)) {
             Type listType = new TypeToken<List<Justificativa>>() {}.getType();
             return gson.fromJson(reader, listType);
         } catch (IOException e) {
+            System.out.println("Erro xxxxxxxxxxxxxxxxxxxxx Erro");
             return new ArrayList<>();
         }
     }
@@ -42,15 +56,9 @@ public class JustificativaDAO {
         }
     }
 
-   public void anexar(Justificativa justificativa) {
-        int novaJustificativa = justificativas.stream().mapToInt(Justificativa::getAnexar).max().orElse(0) + 1;
-        justificativa.setAnexar(novoAnexo);
-        justificativas.add(justificativa);
-        salvar(justificativas);
-    }
 
-    public void remover(int anexo) {
-        justificativas.removeIf(a -> a.getAnexar() == anexo);
+    public void remover(String anexo) {
+        justificativas.removeIf(j -> j.getAnexar().equals(anexo));
         salvar(justificativas);
     }
 
@@ -58,4 +66,6 @@ public class JustificativaDAO {
     public List<Justificativa> listarTodos() {
         return justificativas;
     }
+
+
 }

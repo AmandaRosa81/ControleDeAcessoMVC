@@ -46,7 +46,7 @@ public class Justificativaview {
         } while (!opcao.equals("0"));
     }
 
-    private void anexar() {
+    protected void anexar() {
 
         System.out.println("Justificativa anexada com sucesso!!!");
     }
@@ -58,6 +58,7 @@ public class Justificativaview {
 
     private void remover() {
         System.out.println("Justificativa removida com sucesso!!!");
+        System.out.println(JustificativaController.removerAnexo(anexo));
     }
 
     public void listar() {

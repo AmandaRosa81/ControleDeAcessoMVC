@@ -1,5 +1,6 @@
 package com.senai.ProjetoControleDeAcesso.Controller;
 
+import com.senai.ProjetoControleDeAcesso.Model.Aluno;
 import com.senai.ProjetoControleDeAcesso.Model.DAO.AlunoDAO;
 import com.senai.ProjetoControleDeAcesso.Model.Usuario;
 
@@ -11,7 +12,7 @@ public class AlunoController {
     private final AlunoDAO alunoDAO = new AlunoDAO();
 
     public String cadastrarAluno(int id, String nome, String login, String senha) {
-        alunoDAO.inserir(new Usuario(id, nome, login, senha) {
+        alunoDAO.inserir(new Aluno(id, nome, login, senha) {
             @Override
             public String getTipo() {
                 return "";
@@ -21,7 +22,7 @@ public class AlunoController {
     }
 
     public String atualizarAluno(int id, String nome, String login, String senha ) {
-        alunoDAO.atualizar(new Usuario(id, nome, login, senha) {
+        alunoDAO.atualizar(new Aluno(id, nome, login, senha) {
             @Override
             public String getTipo() {
                 return "";
@@ -36,7 +37,7 @@ public class AlunoController {
         return "Aluno removido.";
     }
 
-    public List<Usuario> listarAlunos() {
+    public List<Aluno> listarAlunos() {
         return alunoDAO.listarTodos();
     }
 
