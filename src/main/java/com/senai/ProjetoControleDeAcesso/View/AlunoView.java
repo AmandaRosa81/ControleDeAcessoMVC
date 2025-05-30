@@ -40,6 +40,7 @@ public class AlunoView {
                 default -> System.out.println("Opção inválida.");
             }
         } while (!opcao.equals("0"));
+        scanner.close();
     }
 
     private void cadastrar() {

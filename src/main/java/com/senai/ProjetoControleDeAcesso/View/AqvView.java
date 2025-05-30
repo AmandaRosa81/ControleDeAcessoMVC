@@ -42,6 +42,7 @@ public class AqvView {
                 default -> System.out.println("Opção inválida.");
             }
         } while (!opcao.equals("5"));
+        scanner.close();
     }
 
 
