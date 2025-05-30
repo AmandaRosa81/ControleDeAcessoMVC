@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import com.senai.ProjetoControleDeAcesso.Model.Aluno;
 import com.senai.ProjetoControleDeAcesso.Model.Aqv;
 import com.senai.ProjetoControleDeAcesso.Model.Usuario;
+import com.senai.ProjetoControleDeAcesso.Model.Aluno;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -68,6 +69,16 @@ public class AlunoDAO {
 
     public Optional<Usuario> buscarAluno(int idAluno) {
         return alunos.stream().filter(a -> a.getId() == idAluno).findFirst();
+    }
+
+    // public Optional<Aluno> buscarPorRfid(String rfid) {
+        //return alunos.stream().filter(a -> rfid.equals(a.getIdCartaoRfid())).findFirst();//
+    //}//
+
+    public Optional<Usuario> buscarPorLoginESenha(String login, String senha) {
+        return alunos.stream()
+                .filter(a -> a.getLogin().equals(login) && a.getSenha().equals(senha))
+                .findFirst();
     }
 
     public List<Usuario> listarTodos() {
