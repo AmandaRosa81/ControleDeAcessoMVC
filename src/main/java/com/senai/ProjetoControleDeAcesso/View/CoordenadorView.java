@@ -40,6 +40,7 @@ public class CoordenadorView {
                 default -> System.out.println("Opção inválida. Tente novamente.");
             }
         } while (!opcao.equals("0"));
+        scanner.close();
     }
 
     private void cadastrar() {

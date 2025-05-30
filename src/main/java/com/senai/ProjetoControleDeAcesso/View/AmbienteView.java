@@ -9,11 +9,6 @@ public class AmbienteView {
     private final Scanner scanner = new Scanner(System.in);
     private final AmbienteController controller = new AmbienteController();
 
-    public static void main(String[] args) {
-        AmbienteView ambienteView = new AmbienteView();
-
-        ambienteView.menu();
-    }
     public void menu() {
         String opcao;
         String menuAmbiente = """
@@ -39,6 +34,7 @@ public class AmbienteView {
                 default -> System.out.println("Opção inválida.");
             }
         } while (!opcao.equals("0"));
+        scanner.close();
     }
 
     private void cadastrar() {
