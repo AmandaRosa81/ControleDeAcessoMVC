@@ -67,17 +67,6 @@ public class TurmaDAO {
         return turmas.stream().filter(a -> a.getIdTurma() == idTurma).findFirst();
     }
 
-    public Optional<Turma> buscarPorAluno(Aluno aluno) {
-        return turmas.stream()
-                .filter(t ->
-                        t.getSubturmas().stream()
-                                .anyMatch(subTurma ->
-                                        subTurma.getAlunos().stream()
-                                                .anyMatch(a -> a.equals(aluno))
-                                )
-                ).findFirst();
-    }
-
     public List<Turma> listarTodos() {
         return turmas;
     }
