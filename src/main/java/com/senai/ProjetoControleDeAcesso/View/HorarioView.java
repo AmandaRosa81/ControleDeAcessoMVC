@@ -46,6 +46,7 @@ import java.util.Scanner;
                     default -> System.out.println("Opção inválida.");
                 }
             } while (!opcao.equals("0"));
+            scanner.close();
         }
 
         private void cadastrar() {

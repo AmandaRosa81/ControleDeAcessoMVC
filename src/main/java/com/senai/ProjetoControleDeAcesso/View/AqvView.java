@@ -1,4 +1,4 @@
 package com.senai.ProjetoControleDeAcesso.View;
 
-public class Aula {
+public class AqvView {
 }

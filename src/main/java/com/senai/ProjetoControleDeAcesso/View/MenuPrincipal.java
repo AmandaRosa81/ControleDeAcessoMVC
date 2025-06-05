@@ -1,6 +1,6 @@
 package com.senai.ProjetoControleDeAcesso.View;
 
-public class Main {
+public class MenuPrincipal {
     public static void main(String[] args) {
 
     }

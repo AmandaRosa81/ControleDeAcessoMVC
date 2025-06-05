@@ -1,6 +1,6 @@
 package com.senai.ProjetoControleDeAcesso.Controller;
 
-import com.senai.ProjetoControleDeAcesso.Model.DAO.ProfessorDAO;
+import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.ProfessorDAO;
 import com.senai.ProjetoControleDeAcesso.Model.Professor;
 import java.util.List;
 
