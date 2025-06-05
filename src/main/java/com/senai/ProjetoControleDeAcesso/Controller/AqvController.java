@@ -33,4 +33,14 @@ public class AqvController {
 
         return aqvDAO.listarTodos();
     }
+
+    public List<Aqv> listarOcorrencias() {
+        return aqvDAO.listarTodos();
+    }
+
+    public boolean autorizarAluno(String nomeAluno) {
+        System.out.println("Autorizando aluno: " + nomeAluno);
+        return nomeAluno != null && !nomeAluno.isBlank();
+    }
+
 }

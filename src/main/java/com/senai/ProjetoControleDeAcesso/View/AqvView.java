@@ -2,7 +2,6 @@ package com.senai.ProjetoControleDeAcesso.View;
 
 import com.senai.ProjetoControleDeAcesso.Controller.AqvController;
 import com.senai.ProjetoControleDeAcesso.Model.Aqv;
-import com.senai.ProjetoControleDeAcesso.Model.Usuario;
 
 import java.util.List;
 import java.util.Scanner;
@@ -19,71 +18,47 @@ public class AqvView {
     public void menu(){
         String opcao;
         String menuAQV = """
-                --------MENU DE AQV---------
-                |   1. Cadastrar AQV       |
-                |   2. Atualizar AQV       |
-                |   3. Deletar AQV         |
-                |   4. Exibir AQV          |
-                |   5. Voltar              |
-                ----------------------------
-         
+                --------MENU DE AQV------------
+                |   1. Visualizar ocorrências |
+                |   2. Autorizar Aluno        |
+                |   0. Voltar                 |
+                -------------------------------
+                Escolha uma opção: 
                """;
 
-        do{
+        do {
             System.out.print(menuAQV);
             opcao = scanner.nextLine();
 
             switch (opcao) {
-                case "1" -> Cadastrar();
-                case "2" -> Atualizar();
-                case "3" -> Deletar();
-                case "4" -> Exibir();
-                case "5" -> System.out.println("Voltando...");
+                case "1" -> visualizarOcorrencias();
+                case "2" -> autorizarAluno();
+                case "0" -> System.out.println("Voltando...");
                 default -> System.out.println("Opção inválida.");
             }
-        } while (!opcao.equals("5"));
+        } while (!opcao.equals("0"));
     }
 
-
-    private void Cadastrar(){
-        int idAQV = scannerPromptInt("Id do AQV");
-        String nomeAQV = scannerPromptString("Nome do AQV");
-        String loginAQV = scannerPromptString("Login do AQV");
-        String senhaAQV = scannerPromptString("Senha do AQV");
-        System.out.println(aqvController.CadastrarAQV(idAQV,nomeAQV,loginAQV,senhaAQV));
-
-    }
-    private void Atualizar(){
-        int idAQV = scannerPromptInt("Id do AQV");
-        String nomeAQV = scannerPromptString("Novo Nome do AQV");
-        String loginAQV = scannerPromptString("Novo Login do AQV");
-        String senhaAQV = scannerPromptString("Nova Senha do AQV");
-        System.out.println(aqvController.AtualizarAQV(idAQV,nomeAQV,loginAQV,senhaAQV));
-
-    }
-    private void Deletar(){
-        int id = scannerPromptInt("Id do AQV");
-        aqvController.removerAQV(id);
-
-    }
-    public void Exibir(){
-        List<Aqv> lista = aqvController.Listar();
-        for (Aqv aqvDAO : lista) {
-            System.out.printf("ID AQV: %d | Nome AQV: %s | Login AQV: %s | Senha AQV: %s\n",
-                    aqvDAO.getId(), aqvDAO.getNome(), aqvDAO.getLogin(), aqvDAO.getSenha());
-
+    public void visualizarOcorrencias() {
+        List<Aqv> ocorrencias = aqvController.listarOcorrencias();
+        if (ocorrencias.isEmpty()) {
+            System.out.println("Nenhuma ocorrência encontrada.");
+        } else {
+            System.out.println("----- Ocorrências -----");
+            for (Aqv aqv : ocorrencias) {
+                System.out.println(aqv);
+            }
         }
     }
 
-    private int scannerPromptInt(String mensagem) {
-        System.out.print(mensagem + ": ");
-        return Integer.parseInt(scanner.nextLine());
+    public void autorizarAluno() {
+        System.out.print("Digite o nome do aluno para autorizar: ");
+        String nome = scanner.nextLine();
+        boolean sucesso = aqvController.autorizarAluno(nome);
+        if (sucesso) {
+            System.out.println("Aluno autorizado com sucesso.");
+        } else {
+            System.out.println("Erro ao autorizar aluno.");
+        }
     }
-
-    private String scannerPromptString(String mensagem) {
-        System.out.print(mensagem + ": ");
-        return scanner.nextLine();
-    }
-
 }
-
