@@ -4,6 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.senai.ProjetoControleDeAcesso.Model.Aluno;
+import com.senai.ProjetoControleDeAcesso.Model.Aqv;
+import com.senai.ProjetoControleDeAcesso.Model.Usuario;
+import com.senai.ProjetoControleDeAcesso.Model.Aluno;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -15,24 +18,26 @@ import java.util.Optional;
 
 public class AlunoDAO {
     private final String caminho = "alunos.json";
+
     private final Gson gson = new GsonBuilder().create();
 
-    private final List<Aluno> alunos;
 
-    public AlunoDAO() {
+    private final List<Usuario> alunos;
+
+    public AlunoDAO(){
         alunos = carregar();
     }
 
-    private List<Aluno> carregar() {
+    private List<Usuario> carregar() {
         try (FileReader reader = new FileReader(caminho)) {
-            Type listType = new TypeToken<List<Aluno>>() {}.getType();
+            Type listType = new TypeToken<List<Usuario>>() {}.getType();
             return gson.fromJson(reader, listType);
         } catch (IOException e) {
             return new ArrayList<>();
         }
     }
 
-    private void salvar(List<Aluno> lista) {
+    private void salvar(List<Usuario> lista) {
         try (FileWriter writer = new FileWriter(caminho)) {
             gson.toJson(lista, writer);
         } catch (IOException e) {
@@ -40,14 +45,14 @@ public class AlunoDAO {
         }
     }
 
-    public void inserir(Aluno aluno) {
-        int novoId = alunos.stream().mapToInt(Aluno::getId).max().orElse(0) + 1;
+    public void inserir(Usuario aluno) {
+        int novoId = alunos.stream().mapToInt(Usuario::getId).max().orElse(0) + 1;
         aluno.setId(novoId);
         alunos.add(aluno);
         salvar(alunos);
     }
 
-    public void atualizar(Aluno aluno) {
+    public void atualizar(Usuario aluno) {
         for (int i = 0; i < alunos.size(); i++) {
             if (alunos.get(i).getId() == aluno.getId()) {
                 alunos.set(i, aluno);
@@ -62,7 +67,7 @@ public class AlunoDAO {
         salvar(alunos);
     }
 
-    public Optional<Aluno> buscarAluno(int idAluno) {
+    public Optional<Usuario> buscarAluno(int idAluno) {
         return alunos.stream().filter(a -> a.getId() == idAluno).findFirst();
     }
 
@@ -70,13 +75,17 @@ public class AlunoDAO {
         //return alunos.stream().filter(a -> rfid.equals(a.getIdCartaoRfid())).findFirst();//
     //}//
 
-    public Optional<Aluno> buscarPorLoginESenha(String login, String senha) {
+    public Optional<Usuario> buscarPorLoginESenha(String login, String senha) {
         return alunos.stream()
                 .filter(a -> a.getLogin().equals(login) && a.getSenha().equals(senha))
                 .findFirst();
     }
 
-    public List<Aluno> listarTodos() {
+    public List<Usuario> listarTodos() {
         return alunos;
     }
+    public Optional<Usuario> buscarPorLogin(String login){
+        return alunos.stream().filter(a -> a.getLogin().equals(login)).findFirst();
+    }
+
 }
