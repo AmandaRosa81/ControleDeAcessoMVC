@@ -3,6 +3,7 @@ package com.senai.ProjetoControleDeAcesso.Model.DAO.JSON;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.senai.ProjetoControleDeAcesso.Model.Aluno;
 import com.senai.ProjetoControleDeAcesso.Model.Turma;
 
 import java.io.FileReader;

@@ -1,6 +1,7 @@
 package com.senai.ProjetoControleDeAcesso.View;
 
 import com.senai.ProjetoControleDeAcesso.Controller.TurmaController;
+import com.senai.ProjetoControleDeAcesso.Model.SubTurma;
 import com.senai.ProjetoControleDeAcesso.Model.Turma;
 
 import java.time.LocalTime;
