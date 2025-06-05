@@ -1,5 +1,7 @@
 package com.senai.ProjetoControleDeAcesso.Model;
 
+import java.time.LocalTime;
+
 public class Aluno extends Usuario {
 
     public Aluno(int id, String nome, String login, String senha) {
@@ -49,6 +51,10 @@ public class Aluno extends Usuario {
     @Override
     public String getTipo() {
         return "";
+    }
+
+    public boolean estaAtrasado(LocalTime horarioEntrada) {
+        return LocalTime.now().isAfter(horarioEntrada.plusMinutes(5));
     }
 
     @Override

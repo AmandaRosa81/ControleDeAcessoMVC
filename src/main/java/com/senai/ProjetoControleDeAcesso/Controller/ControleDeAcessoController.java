@@ -1,4 +1,54 @@
 package com.senai.ProjetoControleDeAcesso.Controller;
 
+import com.senai.ProjetoControleDeAcesso.Model.Aluno;
+import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.AlunoDAO;
+import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.HorarioDAO;
+import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.ProfessorDAO;
+import com.senai.ProjetoControleDeAcesso.Model.Horario.Horario;
+import com.senai.ProjetoControleDeAcesso.Model.Professor;
+import com.senai.ProjetoControleDeAcesso.Model.Turma;
+import com.senai.ProjetoControleDeAcesso.WebSocket.WebSocketSender;
+
+import java.util.Optional;
+
 public class ControleDeAcessoController {
+    private final AlunoDAO alunoDAO = new AlunoDAO();
+    private final HorarioDAO horarioDAO = new HorarioDAO();
+    private final ProfessorDAO professorDAO = new ProfessorDAO();
+
+    public String processarEntrada(int idAcesso) {
+        Optional<Aluno> alunoOpt = alunoDAO.buscarAluno(idAcesso);
+        if (alunoOpt.isEmpty()) {
+            return "[ACESSO NEGADO] Aluno não encontrado para RFID: " + idAcesso;
+        }
+
+        Aluno aluno = alunoOpt.get();
+
+        Optional<Turma> turmaOpt = turmaDAO.buscarPorAluno(aluno);
+
+        if (turmaOpt.isEmpty()) {
+            return "[ACESSO] Aluno: " + aluno.getNome() + " - Nenhuma turma atribuída.";
+        }
+
+        Optional<Horario> horarioOpt = horarioDAO.buscarHorarioDaTurma(tumaOpt.get().getId());
+
+        if (horarioOpt.isEmpty()) {
+            return "[ACESSO] Aluno: " + aluno.getNome() + " - Nenhum horário atribuído.";
+        }
+
+        Horario horario = horarioOpt.get();
+
+        boolean atrasado = aluno.estaAtrasado(horario.getHora());
+
+        if (atrasado) {
+            Optional<Professor> professorOpt = professorDAO.buscarPorId(horario.getIdProfessor());
+            professorOpt.ifPresent(professor -> {
+                String msg = "[ATRASO] Aluno " + aluno.getNome() + " chegou atrasado.";
+                WebSocketSender.enviarMensagem(msg);
+            });
+            return "[ATRASO DETECTADO] Aluno: " + aluno.getNome();
+        }
+
+        return "[ENTRADA AUTORIZADA] Aluno: " + aluno.getNome();
+    }
 }

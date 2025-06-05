@@ -49,6 +49,7 @@ public class ProfessorDAO {
         public List<Professor> listar(){
             return professores;
         }
+
         public void atualizar (Professor professor){
             professores.forEach(s-> {
                 if (s.getId() == professor.getId()) {
@@ -73,4 +74,8 @@ public class ProfessorDAO {
     public Optional<Professor> buscarPorLogin(String login){
         return professores.stream().filter(a -> a.getLogin().equals(login)).findFirst();
     }
+
+    public Optional<Professor> buscarPorId(int id) {
+        return carregar().stream().filter(p -> p.getId() == id).findFirst();
     }
+}

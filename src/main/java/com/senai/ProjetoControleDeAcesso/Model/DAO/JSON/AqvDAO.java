@@ -71,6 +71,8 @@ public class AqvDAO  {
     public Optional<Aqv> buscarPorLogin(String login){
         return AQV.stream().filter(a -> a.getLogin().equals(login)).findFirst();
     }
+
+
 }
 
 
