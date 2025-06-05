@@ -16,7 +16,6 @@ import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
-import static sun.net.www.protocol.http.AuthCacheValue.Type.Server;
 
 @ServerEndpoint("/ws")
 public class WebSocketSender {
@@ -52,7 +51,9 @@ public class WebSocketSender {
     }
     public static void iniciarWebSocket() throws Exception {
         Server server = new Server(8080);
-        ServletContextHandler
+        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+        context.setContextPath("/");
+        server.setHandler(context);
 
 
         JakartaWebSocketServletContainerInitializer.configure(context, (servletContext, wsContainer) -> {

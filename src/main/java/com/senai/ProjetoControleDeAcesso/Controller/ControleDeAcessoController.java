@@ -6,6 +6,7 @@ import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.HorarioDAO;
 import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.ProfessorDAO;
 import com.senai.ProjetoControleDeAcesso.Model.Horario.Horario;
 import com.senai.ProjetoControleDeAcesso.Model.Professor;
+import com.senai.ProjetoControleDeAcesso.WebSocket.WebSocketSender;
 
 import java.util.Optional;
 
@@ -14,10 +15,10 @@ public class ControleDeAcessoController {
     private final HorarioDAO horarioDAO = new HorarioDAO();
     private final ProfessorDAO professorDAO = new ProfessorDAO();
 
-    public String processarEntrada(String rfid) {
-        Optional<Aluno> alunoOpt = alunoDAO.buscarAluno(int idAluno);
+    public String processarEntrada(int idAluno) {
+        Optional<Aluno> alunoOpt = alunoDAO.buscarAluno(idAluno);
         if (alunoOpt.isEmpty()) {
-            return "[ACESSO NEGADO] Aluno não encontrado para RFID: " + rfid;
+            return "[ACESSO NEGADO] Aluno não encontrado para RFID: " + idAluno;
         }
 
         Aluno aluno = alunoOpt.get();
