@@ -9,13 +9,12 @@ import java.util.Optional;
 public class CoordenadorDAO {
 
         public void inserir(Coordenador coordenador) {
-            String sql = "INSERT INTO aluno (nome, login, senha, id_cartao) VALUES (?, ?,?,?)";
+            String sql = "INSERT INTO coordenador (nome, login, senha) VALUES (?, ?,?)";
             try (Connection conn = ConexaoMySQL.conectar();
                  PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setString(1, coordenador.getNome());
                 stmt.setString(2, coordenador.getLogin());
                 stmt.setString(3, coordenador.getSenha());
-                stmt.setString(4, coordenador.getId());
                 stmt.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -23,13 +22,13 @@ public class CoordenadorDAO {
         }
 
         public void atualizar(Coordenador coordenador) {
-            String sql = "UPDATE aluno SET nome = ?,login = ?,senha = ?, id_cartao = ? WHERE id = ?";
+            String sql = "UPDATE coordernador SET nome = ?,login = ?,senha = ?, id_cartao = ? WHERE id = ?";
             try (Connection conn = ConexaoMySQL.conectar();
                  PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setString(1, coordenador.getNome());
                 stmt.setString(2, coordenador.getLogin());
                 stmt.setString(3, coordenador.getSenha());
-                stmt.setInt(5, coordenador.getId());
+                stmt.setInt(4, coordenador.getId());
                 stmt.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -37,7 +36,7 @@ public class CoordenadorDAO {
         }
 
         public void remover(int id) {
-            String sql = "DELETE FROM aluno WHERE id = ?";
+            String sql = "DELETE FROM coordenador WHERE id = ?";
             try (Connection conn = ConexaoMySQL.conectar();
                  PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setInt(1, id);
@@ -48,7 +47,7 @@ public class CoordenadorDAO {
         }
 
         public Optional<Coordenador> buscarPorId(int id) {
-            String sql = "SELECT * FROM aluno WHERE id = ?";
+            String sql = "SELECT * FROM coordernador WHERE id = ?";
             try (Connection conn = ConexaoMySQL.conectar();
                  PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setInt(1, id);
@@ -63,7 +62,7 @@ public class CoordenadorDAO {
         }
 
         public Optional<Coordenador> buscarPorRfid(String rfid) {
-            String sql = "SELECT * FROM aluno WHERE id_cartao = ?";
+            String sql = "SELECT * FROM coordernador WHERE id_cartao = ?";
             try (Connection conn = ConexaoMySQL.conectar();
                  PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setString(1, rfid);
@@ -79,7 +78,7 @@ public class CoordenadorDAO {
 
         public List<Coordenador> listarTodos() {
             List<Coordenador> lista = new ArrayList<>();
-            String sql = "SELECT * FROM aluno";
+            String sql = "SELECT * FROM coordenador";
             try (Connection conn = ConexaoMySQL.conectar();
                  Statement stmt = conn.createStatement();
                  ResultSet rs = stmt.executeQuery(sql)) {
