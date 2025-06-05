@@ -6,6 +6,7 @@ import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.HorarioDAO;
 import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.ProfessorDAO;
 import com.senai.ProjetoControleDeAcesso.Model.Horario.Horario;
 import com.senai.ProjetoControleDeAcesso.Model.Professor;
+import com.senai.ProjetoControleDeAcesso.Model.Turma;
 import com.senai.ProjetoControleDeAcesso.WebSocket.WebSocketSender;
 
 import java.util.Optional;
@@ -15,20 +16,28 @@ public class ControleDeAcessoController {
     private final HorarioDAO horarioDAO = new HorarioDAO();
     private final ProfessorDAO professorDAO = new ProfessorDAO();
 
-    public String processarEntrada(int idAluno) {
-        Optional<Aluno> alunoOpt = alunoDAO.buscarAluno(idAluno);
+    public String processarEntrada(int idAcesso) {
+        Optional<Aluno> alunoOpt = alunoDAO.buscarAluno(idAcesso);
         if (alunoOpt.isEmpty()) {
-            return "[ACESSO NEGADO] Aluno não encontrado para RFID: " + idAluno;
+            return "[ACESSO NEGADO] Aluno não encontrado para RFID: " + idAcesso;
         }
 
         Aluno aluno = alunoOpt.get();
-        Optional<Horario> horarioOpt = horarioDAO.buscarHorarioDoAluno(aluno.getId());
+
+        Optional<Turma> turmaOpt = turmaDAO.buscarPorAluno(aluno);
+
+        if (turmaOpt.isEmpty()) {
+            return "[ACESSO] Aluno: " + aluno.getNome() + " - Nenhuma turma atribuída.";
+        }
+
+        Optional<Horario> horarioOpt = horarioDAO.buscarHorarioDaTurma(tumaOpt.get().getId());
 
         if (horarioOpt.isEmpty()) {
             return "[ACESSO] Aluno: " + aluno.getNome() + " - Nenhum horário atribuído.";
         }
 
         Horario horario = horarioOpt.get();
+
         boolean atrasado = aluno.estaAtrasado(horario.getHora());
 
         if (atrasado) {
