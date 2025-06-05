@@ -1,10 +1,13 @@
 package com.senai.ProjetoControleDeAcesso.View;
 
 import com.senai.ProjetoControleDeAcesso.Controller.TurmaController;
+import com.senai.ProjetoControleDeAcesso.Model.SubTurma;
 import com.senai.ProjetoControleDeAcesso.Model.Turma;
 
-import java.time.LocalTime;
+
 import java.util.Scanner;
+
+import static jdk.internal.org.jline.reader.impl.LineReaderImpl.CompletionType.List;
 
 public class TurmaView {
     private final Scanner scanner = new Scanner(System.in);

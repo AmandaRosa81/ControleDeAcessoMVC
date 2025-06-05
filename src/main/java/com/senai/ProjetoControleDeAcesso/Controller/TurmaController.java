@@ -1,6 +1,7 @@
 package com.senai.ProjetoControleDeAcesso.Controller;
 
 import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.TurmaDAO;
+import com.senai.ProjetoControleDeAcesso.Model.SubTurma;
 import com.senai.ProjetoControleDeAcesso.Model.Turma;
 
 import java.util.List;
@@ -8,15 +9,15 @@ import java.util.List;
 public class TurmaController {
     private final TurmaDAO turmaDAO = new TurmaDAO();
 
-    public String cadastrarTurma(int idTurma, String nomeTurma, String curso, String dataInicio, int qtdSemanas,
+    public String cadastrarTurma(int idTurma, String nomeTurma, String curso, List<SubTurma> subturmas, String dataInicio, int qtdSemanas,
                                  String horarioEntrada, String periodo){
-        turmaDAO.inserir(new Turma(idTurma, nomeTurma, curso, dataInicio, qtdSemanas, horarioEntrada, periodo));
+        turmaDAO.inserir(new Turma(idTurma, nomeTurma, curso, subturmas, dataInicio, qtdSemanas, horarioEntrada, periodo));
         return "Turma cadastrada.";
     }
 
-    public String atualizarTurma(int idTurma, String nomeTurma, String curso, String dataInicio,
+    public String atualizarTurma(int idTurma, String nomeTurma, String curso, List<SubTurma> subturmas, String dataInicio,
                                  int qtdSemanas, String horarioEntrada, String periodo) {
-        turmaDAO.atualizar(new Turma(idTurma, nomeTurma, curso, dataInicio, qtdSemanas, horarioEntrada, periodo));
+        turmaDAO.atualizar(new Turma(idTurma, nomeTurma, curso, subturmas, dataInicio, qtdSemanas, horarioEntrada, periodo));
         return "Turma atualizada.";
     }
 

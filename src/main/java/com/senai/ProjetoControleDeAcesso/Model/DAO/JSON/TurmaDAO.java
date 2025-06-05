@@ -3,6 +3,7 @@ package com.senai.ProjetoControleDeAcesso.Model.DAO.JSON;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.senai.ProjetoControleDeAcesso.Model.Aluno;
 import com.senai.ProjetoControleDeAcesso.Model.Turma;
 
 import java.io.FileReader;
@@ -64,6 +65,17 @@ public class TurmaDAO {
 
     public Optional<Turma> buscarPorId(int idTurma) {
         return turmas.stream().filter(a -> a.getIdTurma() == idTurma).findFirst();
+    }
+
+    public Optional<Turma> buscarPorAluno(Aluno aluno) {
+        return turmas.stream()
+                .filter(t ->
+                        t.getSubturmas().stream()
+                                .anyMatch(subTurma ->
+                                        subTurma.getAlunos.stream()
+                                                .anyMatch(a -> a.equals(aluno))
+                                )
+                ).findFirst();
     }
 
     public List<Turma> listarTodos() {
