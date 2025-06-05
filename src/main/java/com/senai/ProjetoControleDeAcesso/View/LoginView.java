@@ -9,22 +9,22 @@ import com.senai.ProjetoControleDeAcesso.Model.Usuario;
 import java.util.Optional;
 import java.util.Scanner;
 
-public class LoginView {
+public class LoginView  {
 
     private final Scanner scanner = new Scanner(System.in);
-    private final LoginController Controller = new LoginController();
+    private final LoginController controller = new LoginController();
 
     public Optional<Usuario> exibirLogin(){
-        System.out.println("\n==== LOGIN DO SISTEMA====");
+        System.out.println("\n_____ LOGIN DO SISTEMA_____");
         System.out.println("Login: ");
         String login = scanner.nextLine();
 
-        System.out.println("Senha: ");
+        System.out.println("___Senha:  ___");
         String senha = scanner.nextLine();
 
-        Optional<Usuario> usuario = Controller.autenticar(login, CriptografiUtil.hash(senha));
+        Optional<Usuario> usuario = controller.autenticar(login, CriptografiUtil.hash(senha));
         if (usuario.isEmpty()){
-            System.out.println("\nCredenciais invalidas. Tente novamente.\n");
+            System.out.println("____\nCredenciais invalidas. Tente novamente.\n____");
         }
         return usuario;
     }

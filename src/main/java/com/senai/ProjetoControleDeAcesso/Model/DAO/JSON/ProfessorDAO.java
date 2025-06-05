@@ -1,5 +1,6 @@
 package com.senai.ProjetoControleDeAcesso.Model.DAO.JSON;
 
+import com.senai.ProjetoControleDeAcesso.Model.Aqv;
 import com.senai.ProjetoControleDeAcesso.Model.Professor;
 
 import java.io.FileReader;
@@ -9,6 +10,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -67,4 +70,7 @@ public class ProfessorDAO {
             }
             return false;
         }
+    public Optional<Professor> buscarPorLogin(String login){
+        return professores.stream().filter(a -> a.getLogin().equals(login)).findFirst();
+    }
     }

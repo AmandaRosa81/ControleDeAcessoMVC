@@ -5,6 +5,9 @@ import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.AqvDAO;
 import com.senai.ProjetoControleDeAcesso.Model.Usuario;
 
 import java.util.List;
+import java.util.Optional;
+
+import static java.util.Arrays.stream;
 
 public class AqvController {
     private final AqvDAO aqvDAO = new AqvDAO();
@@ -32,5 +35,7 @@ public class AqvController {
     public List<Aqv> Listar(){
 
         return aqvDAO.listarTodos();
+
     }
+
 }
