@@ -1,29 +1,25 @@
-package com.senai.ProjetoControleDeAcesso.Model.DAO;
+package com.senai.ProjetoControleDeAcesso.Model.DAO.JSON;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.senai.ProjetoControleDeAcesso.Model.Aluno;
-import com.senai.ProjetoControleDeAcesso.Model.Usuario;
 
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class AlunoDAO {
     private final String caminho = "alunos.json";
-
     private final Gson gson = new GsonBuilder().create();
-
 
     private final List<Aluno> alunos;
 
-    public AlunoDAO(){
+    public AlunoDAO() {
         alunos = carregar();
     }
 
@@ -68,6 +64,16 @@ public class AlunoDAO {
 
     public Optional<Aluno> buscarAluno(int idAluno) {
         return alunos.stream().filter(a -> a.getId() == idAluno).findFirst();
+    }
+
+    // public Optional<Aluno> buscarPorRfid(String rfid) {
+        //return alunos.stream().filter(a -> rfid.equals(a.getIdCartaoRfid())).findFirst();//
+    //}//
+
+    public Optional<Aluno> buscarPorLoginESenha(String login, String senha) {
+        return alunos.stream()
+                .filter(a -> a.getLogin().equals(login) && a.getSenha().equals(senha))
+                .findFirst();
     }
 
     public List<Aluno> listarTodos() {

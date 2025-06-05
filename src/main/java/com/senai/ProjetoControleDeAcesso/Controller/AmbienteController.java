@@ -1,7 +1,7 @@
 package com.senai.ProjetoControleDeAcesso.Controller;
 
 import com.senai.ProjetoControleDeAcesso.Model.Ambiente;
-import com.senai.ProjetoControleDeAcesso.Model.DAO.AmbienteDAO;
+import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.AmbienteDAO;
 
 import java.util.List;
 
