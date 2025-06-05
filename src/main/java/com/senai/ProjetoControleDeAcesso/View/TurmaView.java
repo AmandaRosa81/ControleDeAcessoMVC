@@ -1,6 +1,7 @@
 package com.senai.ProjetoControleDeAcesso.View;
 
 import com.senai.ProjetoControleDeAcesso.Controller.TurmaController;
+import com.senai.ProjetoControleDeAcesso.Model.SubTurma;
 import com.senai.ProjetoControleDeAcesso.Model.Turma;
 
 import java.time.LocalTime;
@@ -41,6 +42,7 @@ public class TurmaView {
                 default -> System.out.println("Opção inválida.");
             }
         } while (!opcao.equals("0"));
+        scanner.close();
     }
 
     private void cadastrar() {

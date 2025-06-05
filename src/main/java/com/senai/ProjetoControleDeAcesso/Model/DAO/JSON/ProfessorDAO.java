@@ -9,6 +9,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -46,6 +48,7 @@ public class ProfessorDAO {
         public List<Professor> listar(){
             return professores;
         }
+
         public void atualizar (Professor professor){
             professores.forEach(s-> {
                 if (s.getId() == professor.getId()) {
@@ -67,4 +70,8 @@ public class ProfessorDAO {
             }
             return false;
         }
+
+    public Optional<Professor> buscarPorId(int id) {
+        return carregar().stream().filter(p -> p.getId() == id).findFirst();
     }
+}

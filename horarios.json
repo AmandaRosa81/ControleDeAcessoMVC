@@ -1,0 +1,1 @@
+[{"id":1,"idAluno":0,"idProfessor":0,"hora":"12:30:00"},{"id":2,"idAluno":1,"idProfessor":2,"hora":"08:00:00"},{"diaSemana":"segunda","horaFim":"09:00:00","tipo":"uc","id":3,"idAluno":1,"idProfessor":2,"hora":"05:00:00"},{"diaSemana":"segunda","horaFim":"18:00:00","tipo":"uc","id":4,"idAluno":2,"idProfessor":3,"hora":"09:00:00"}]
