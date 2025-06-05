@@ -47,7 +47,7 @@ public class Justificativaview {
     }
 
     protected void anexar() {
-
+        System.out.println(justificativaController.anexar());
         System.out.println("Justificativa anexada com sucesso!!!");
     }
 
@@ -57,8 +57,11 @@ public class Justificativaview {
     }
 
     private void remover() {
+        remover();
+        int id = scannerPromptInt("ID justificativa para remover: ");
+        System.out.println(justificativaController.remover(id));
         System.out.println("Justificativa removida com sucesso!!!");
-        System.out.println(JustificativaController.removerAnexo(anexo));
+
     }
 
     public void listar() {

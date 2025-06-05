@@ -2,8 +2,17 @@ package com.senai.ProjetoControleDeAcesso.Model;
 
 public class Justificativa extends JustificativaUser{
 
+    String id;
+
     public Justificativa(String anexar) {
         super(anexar);
+    }
+
+    public String getId() {
+        return id;
+    }
+    public String setId(){
+        return id;
     }
 
     @Override

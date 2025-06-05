@@ -12,14 +12,13 @@ public class JustificativaController {
     private final JustificativaDAO justificativaDAO = new JustificativaDAO();
 
 
-    public String anexarAnexo () {
+    public String anexar () {
         justificativaDAO.anexarJustificativa();
         return "Justificativa anexada!!! ";
     }
 
-    public  String removerAnexo(String anexo) {
-        justificativaDAO.listarTodos();
-        justificativaDAO.remover(anexo);
+    public  String remover(int Id) {
+        justificativaDAO.remover(Id);
         return "Anexo removido.";
     }
 
