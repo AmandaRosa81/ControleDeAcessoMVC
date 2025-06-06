@@ -49,7 +49,7 @@ public class Curso {
         this.tipo = tipo;
     }
 
-    public LocalTime getTolerancia() {
+    public int getTolerancia() {
         return tolerancia;
     }
 
