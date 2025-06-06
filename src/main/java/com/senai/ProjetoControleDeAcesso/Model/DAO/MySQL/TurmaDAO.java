@@ -10,7 +10,7 @@ import java.util.Optional;
 public class TurmaDAO {
 
     public void inserir(Turma turma) {
-        String sql = "INSERT INTO Turma (id, Turma,curso,dataInicio,horarioEntrada,periodo) VALUES (?, ?,?,?,?,?,?)";
+        String sql = "INSERT INTO Turma (nome_aula, id_turma, Turma,curso,dataInicio,horarioEntrada,periodo) VALUES (?, ?,?,?,?,?,?)";
         try (Connection conn = ConexaoMySQL.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, turma.getNomeTurma());
