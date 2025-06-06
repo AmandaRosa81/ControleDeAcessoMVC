@@ -10,14 +10,15 @@ import java.util.Optional;
 public class TurmaDAO {
 
     public void inserir(Turma turma) {
-        String sql = "INSERT INTO Turma (nome_aula, id_turma, Turma,curso,dataInicio,horarioEntrada,periodo) VALUES (?, ?,?,?,?,?,?)";
+        String sql = "INSERT INTO turma (nome_turma, curso, data_inicio, qtd_semanas, horario_entrada, periodo) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = ConexaoMySQL.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, turma.getNomeTurma());
             stmt.setString(2, turma.getCurso());
             stmt.setString(3, turma.getDataInicio());
-            stmt.setString(4, turma.getPeriodo());
+            stmt.setInt(4, turma.getQtdSemanas());
             stmt.setString(5, turma.getHorarioEntrada());
+            stmt.setString(6, turma.getPeriodo());
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -25,14 +26,15 @@ public class TurmaDAO {
     }
 
     public void atualizar(Turma turma) {
-        String sql = "UPDATE aluno SET nome = ?,login = ?,senha = ?, id_cartao = ? WHERE id = ?";
+        String sql ="UPDATE turma SET nome_turma = ?, curso = ?, data_inicio = ?, qtd_semanas = ?, horario_entrada = ?, periodo = ? WHERE id_turma = ?";
         try (Connection conn = ConexaoMySQL.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, turma.getNomeTurma());
             stmt.setString(2, turma.getCurso());
             stmt.setString(3, turma.getDataInicio());
-            stmt.setString(4, turma.getPeriodo());
-            stmt.setInt(5, turma.getIdTurma());;
+            stmt.setInt(4, turma.getQtdSemanas());
+            stmt.setString(5, turma.getPeriodo());
+            stmt.setInt(6, turma.getIdTurma());;
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -40,7 +42,7 @@ public class TurmaDAO {
     }
 
     public void remover(int id) {
-        String sql = "DELETE FROM aluno WHERE id = ?";
+        String sql = "DELETE FROM turma WHERE id = ?";
         try (Connection conn = ConexaoMySQL.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
@@ -51,25 +53,10 @@ public class TurmaDAO {
     }
 
     public Optional<Turma> buscarPorId(int id) {
-        String sql = "SELECT * FROM aluno WHERE id = ?";
+        String sql = "SELECT * FROM turma WHERE id = ?";
         try (Connection conn = ConexaoMySQL.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                return Optional.of(mapResultSet(rs));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return Optional.empty();
-    }
-
-    public Optional<Turma> buscarPorRfid(String rfid) {
-        String sql = "SELECT * FROM aluno WHERE id_cartao = ?";
-        try (Connection conn = ConexaoMySQL.conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, rfid);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 return Optional.of(mapResultSet(rs));
@@ -82,7 +69,7 @@ public class TurmaDAO {
 
     public List<Turma> listarTodos() {
         List<Turma> lista = new ArrayList<>();
-        String sql = "SELECT * FROM aluno";
+        String sql = "SELECT * FROM turma";
         try (Connection conn = ConexaoMySQL.conectar();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
@@ -96,6 +83,13 @@ public class TurmaDAO {
     }
 
     private Turma mapResultSet(ResultSet rs) throws SQLException {
-        return new Turma(rs.getInt("id"), rs.getString("Turma"), rs.getString("Curso"), rs.getString("DataInicio"), rs.getString("periodo"), rs.getString("horarioEntrada"));
+        return new Turma(rs.getInt("id_turma"),
+                rs.getString("nome_turma"),
+                rs.getString("curso"),
+                rs.getString("data_inicio"),
+                rs.getInt("qtd_semanas"),
+                rs.getString("horario_entrada"),
+                rs.getString("periodo")
+        );
     }
 }

@@ -9,7 +9,7 @@ import java.util.Optional;
 public class CoordenadorDAO {
 
         public void inserir(Coordenador coordenador) {
-            String sql = "INSERT INTO coordenador (nome, login, senha) VALUES (?, ?,?)";
+            String sql = "INSERT INTO coordenador (nome, login, senha) VALUES (?, ?, ?)";
             try (Connection conn = ConexaoMySQL.conectar();
                  PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setString(1, coordenador.getNome());
@@ -22,7 +22,7 @@ public class CoordenadorDAO {
         }
 
         public void atualizar(Coordenador coordenador) {
-            String sql = "UPDATE coordernador SET nome = ?,login = ?,senha = ?, id_cartao = ? WHERE id = ?";
+            String sql = "UPDATE coordenador SET nome = ?, login = ?, senha = ? WHERE id = ?";
             try (Connection conn = ConexaoMySQL.conectar();
                  PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setString(1, coordenador.getNome());
@@ -51,21 +51,6 @@ public class CoordenadorDAO {
             try (Connection conn = ConexaoMySQL.conectar();
                  PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setInt(1, id);
-                ResultSet rs = stmt.executeQuery();
-                if (rs.next()) {
-                    return Optional.of(mapResultSet(rs));
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            return Optional.empty();
-        }
-
-        public Optional<Coordenador> buscarPorRfid(String rfid) {
-            String sql = "SELECT * FROM coordernador WHERE id_cartao = ?";
-            try (Connection conn = ConexaoMySQL.conectar();
-                 PreparedStatement stmt = conn.prepareStatement(sql)) {
-                stmt.setString(1, rfid);
                 ResultSet rs = stmt.executeQuery();
                 if (rs.next()) {
                     return Optional.of(mapResultSet(rs));
