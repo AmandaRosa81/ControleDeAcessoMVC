@@ -17,6 +17,7 @@ public class ControleDeAcessoController {
     private final AlunoDAO alunoDAO = new AlunoDAO();
     private final HorarioDAO horarioDAO = new HorarioDAO();
     private final ProfessorDAO professorDAO = new ProfessorDAO();
+    private final TurmaDAO turmaDAO = new TurmaDAO();
 
     public String processarEntrada(int idAluno) {
         Optional<Aluno> alunoOpt = alunoDAO.buscarAluno(idAluno);
@@ -26,7 +27,7 @@ public class ControleDeAcessoController {
 
         Aluno aluno = alunoOpt.get();
 
-        Optional<Turma> turmaOpt = TurmaDAO.buscarPorAluno(aluno);
+        Optional<Turma> turmaOpt = turmaDAO.buscarPorAluno(aluno);
 
         if (turmaOpt.isEmpty()) {
             return "[ACESSO] Aluno: " + aluno.getNome() + " - Nenhuma turma atribuída.";
@@ -40,10 +41,10 @@ public class ControleDeAcessoController {
 
         Horario horario = horarioOpt.get();
 
-        //LocalTime horarioEntrada = turmaOpt.get().getHorarioEntrada();
-        //int tolerancia = turmaOpt.get().getCurso().getTolerancia();
+        LocalTime horarioEntrada = LocalTime.parse(turmaOpt.get().getHorarioEntrada());
+        int tolerancia = turmaOpt.get().getCurso().getTolerancia();
 
-        boolean atrasado = aluno.estaAtrasado(horario.getHora());
+        boolean atrasado = aluno.estaAtrasado(horarioEntrada,tolerancia);
 
         if (atrasado) {
             Optional<Professor> professorOpt = professorDAO.buscarPorId(horario.getIdProfessor());
