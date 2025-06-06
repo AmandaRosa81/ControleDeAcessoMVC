@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.senai.ProjetoControleDeAcesso.Model.Aluno;
+import com.senai.ProjetoControleDeAcesso.Model.SubTurma;
 import com.senai.ProjetoControleDeAcesso.Model.Turma;
 
 import java.io.FileReader;
@@ -72,7 +73,7 @@ public class TurmaDAO {
                 .filter(t ->
                         t.getSubturmas().stream()
                                 .anyMatch(subTurma ->
-                                        subTurma.getAlunos.stream()
+                                        subTurma.getAlunos().stream()
                                                 .anyMatch(a -> a.equals(aluno))
                                 )
                 ).findFirst();
@@ -80,6 +81,20 @@ public class TurmaDAO {
 
     public List<Turma> listarTodos() {
         return turmas;
+    }
+
+    public void adicionarAlunosNaSubturma(SubTurma subTurma, List<Aluno> alunos) {
+        turmas.stream()
+                .filter(turma ->
+                        turma.getSubturmas().contains(subTurma)
+                ).findFirst().flatMap(
+                        turma -> turma.getSubturmas().stream()
+                                .filter(
+                                        s -> s.equals(subTurma)
+                                ).findFirst()
+                ).ifPresent(
+                        s -> s.getAlunos().addAll(alunos)
+                );
     }
 }
 

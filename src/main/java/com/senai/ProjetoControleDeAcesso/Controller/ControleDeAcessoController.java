@@ -26,7 +26,7 @@ public class ControleDeAcessoController {
 
         Aluno aluno = alunoOpt.get();
 
-        Optional<Turma> turmaOpt = TurmaDAO.buscarPorAluno (aluno);
+        Optional<Turma> turmaOpt = TurmaDAO.buscarPorAluno(aluno);
 
         if (turmaOpt.isEmpty()) {
             return "[ACESSO] Aluno: " + aluno.getNome() + " - Nenhuma turma atribuída.";
