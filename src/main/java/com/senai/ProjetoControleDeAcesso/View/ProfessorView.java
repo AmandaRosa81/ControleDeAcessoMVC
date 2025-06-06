@@ -6,19 +6,14 @@ import java.util.Scanner;
 
 public class ProfessorView {
 
-    private static final Scanner scanner = new Scanner(System.in);
-    private final HorarioView horarioView = new HorarioView();
-
     public static void main(String[] args) {
-        Professor professor = new Professor();
-        professor.setNome("%s");
-        ProfessorView professorView = new ProfessorView();
-        professorView.menu(professor);
+        menu();
     }
 
-    public void menu(Professor professor) {
-        System.out.printf("Bem vind@ %s \n", professor.getNome());
-
+    public static void menu() {
+        System.out.printf("Bem vind@");
+        final Scanner scanner = new Scanner(System.in);
+        final HorarioView horarioView = new HorarioView();
 
         String opcao;
         do {
@@ -34,7 +29,7 @@ public class ProfessorView {
             opcao = scanner.nextLine();
 
             switch (opcao) {
-                case "1" -> visualizarGrade(professor);
+                case "1" -> visualizarGrade();
                 case "2" -> horarioView.menu();
                 case "3" -> receberNotificacoes();
                 case "4" -> {
@@ -51,11 +46,12 @@ public class ProfessorView {
         scanner.close();
     }
 
-    private void visualizarGrade(Professor professor) {
+    private static void visualizarGrade() {
+        Professor professor = new Professor();
         System.out.printf("Exibindo grade de aulas do professor %s...\n", professor.getNome());
     }
 
-    private void receberNotificacoes() {
+    private static void receberNotificacoes() {
         System.out.println("Recebendo notificações de atraso...");
     }
 }

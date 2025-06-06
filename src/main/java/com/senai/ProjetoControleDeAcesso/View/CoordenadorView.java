@@ -11,12 +11,12 @@ public class CoordenadorView {
         final Scanner scanner = new Scanner(System.in);
         String opcao;
         String menuAmbiente = """
-                --- MENU DE ADM ---
+                --- MENU DE GERENCIAMENTO DE USUÁRIOS ---
                 
                     1. AQV
                     2. Aluno
                     3. Coordenador
-                    4. Ambiente
+                    4. Professor
                     0. Voltar
                     
                 """;
@@ -28,7 +28,7 @@ public class CoordenadorView {
                 case "1" -> menuAQV();
                 case "2" -> menuAluno();
                 case "3" -> menuCoordenador();
-                case "4" -> menuAmbiente();
+                case "4" -> menuProfessor();
                 case "0" -> System.out.println("Voltando...");
                 default -> System.out.println("Opção inválida.");
             }
@@ -49,9 +49,9 @@ public class CoordenadorView {
         CoordenadorADM coordenadorADM = new CoordenadorADM();
         coordenadorADM.menu();
     }
-    public static void menuAmbiente (){
-        AmbienteView ambienteView = new AmbienteView();
-        ambienteView.menu();
+    public static void menuProfessor (){
+        ProfessorADM professorADM = new ProfessorADM();
+        professorADM.menu();
     }
 
 }
