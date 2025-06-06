@@ -1,4 +1,32 @@
 package com.senai.ProjetoControleDeAcesso.View;
 
-public class LoginView {
-}
+import com.senai.ProjetoControleDeAcesso.Controller.AqvController;
+import com.senai.ProjetoControleDeAcesso.Controller.CoordenadorController;
+import com.senai.ProjetoControleDeAcesso.Controller.ProfessorController;
+import com.senai.ProjetoControleDeAcesso.LoginController;
+import com.senai.ProjetoControleDeAcesso.Model.Usuario;
+
+import java.util.Optional;
+import java.util.Scanner;
+
+public class LoginView  {
+
+    private final Scanner scanner = new Scanner(System.in);
+    private final LoginController controller = new LoginController();
+
+    public Optional<Usuario> exibirLogin(){
+        System.out.println("\n_____ LOGIN DO SISTEMA_____");
+        System.out.println("Login: ");
+        String login = scanner.nextLine();
+
+        System.out.println("___Senha:  ___");
+        String senha = scanner.nextLine();
+
+        Optional<Usuario> usuario = controller.autenticar(login, CriptografiUtil.hash(senha));
+        if (usuario.isEmpty()){
+            System.out.println("____\nCredenciais invalidas. Tente novamente.\n____");
+        }
+        return usuario;
+    }
+
+    }
