@@ -53,7 +53,7 @@ public class Aluno extends Usuario {
         return "";
     }
 
-    public boolean estaAtrasado(LocalTime horarioEntrada) {
+    public boolean estaAtrasado(LocalTime horarioEntrada, int tolerancia) {
         return LocalTime.now().isAfter(horarioEntrada.plusMinutes(5));
     }
 

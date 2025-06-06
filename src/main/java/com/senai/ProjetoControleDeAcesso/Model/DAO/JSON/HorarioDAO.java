@@ -71,8 +71,8 @@ public class HorarioDAO {
             return horarios.stream().filter(h -> h.getIdAluno() == idTurma).findFirst();
         }
 
-        public List<Horario> listarTodos() {
+            public List<Horario> listarTodos() {
             return horarios;
         }
-    }
+}
 

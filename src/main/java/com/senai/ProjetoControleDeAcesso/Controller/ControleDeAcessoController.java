@@ -4,17 +4,20 @@ import com.senai.ProjetoControleDeAcesso.Model.Aluno;
 import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.AlunoDAO;
 import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.HorarioDAO;
 import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.ProfessorDAO;
+import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.TurmaDAO;
 import com.senai.ProjetoControleDeAcesso.Model.Horario.Horario;
 import com.senai.ProjetoControleDeAcesso.Model.Professor;
 import com.senai.ProjetoControleDeAcesso.Model.Turma;
 import com.senai.ProjetoControleDeAcesso.WebSocket.WebSocketSender;
 
+import java.time.LocalTime;
 import java.util.Optional;
 
 public class ControleDeAcessoController {
     private final AlunoDAO alunoDAO = new AlunoDAO();
     private final HorarioDAO horarioDAO = new HorarioDAO();
     private final ProfessorDAO professorDAO = new ProfessorDAO();
+    private final TurmaDAO turmaDAO = new TurmaDAO();
 
     public String processarEntrada(int idAcesso) {
         Optional<Aluno> alunoOpt = alunoDAO.buscarAluno(idAcesso);
@@ -30,7 +33,7 @@ public class ControleDeAcessoController {
             return "[ACESSO] Aluno: " + aluno.getNome() + " - Nenhuma turma atribuída.";
         }
 
-        Optional<Horario> horarioOpt = horarioDAO.buscarHorarioDaTurma(tumaOpt.get().getId());
+        Optional<Horario> horarioOpt = horarioDAO.buscarHorarioDaTurma (turmaOpt.get().getIdTurma());
 
         if (horarioOpt.isEmpty()) {
             return "[ACESSO] Aluno: " + aluno.getNome() + " - Nenhum horário atribuído.";
@@ -38,10 +41,14 @@ public class ControleDeAcessoController {
 
         Horario horario = horarioOpt.get();
 
-        boolean atrasado = aluno.estaAtrasado(horario.getHora());
+        LocalTime horarioEntrada = LocalTime.parse(turmaOpt.get().getHorarioEntrada());
+        int tolerancia = turmaOpt.get().getCurso().getTolerancia();
+
+        boolean atrasado = aluno.estaAtrasado(horarioEntrada,tolerancia);
 
         if (atrasado) {
             Optional<Professor> professorOpt = professorDAO.buscarPorId(horario.getIdProfessor());
+
             professorOpt.ifPresent(professor -> {
                 String msg = "[ATRASO] Aluno " + aluno.getNome() + " chegou atrasado.";
                 WebSocketSender.enviarMensagem(msg);
