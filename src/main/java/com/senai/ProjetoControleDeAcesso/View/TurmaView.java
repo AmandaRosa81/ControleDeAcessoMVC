@@ -7,7 +7,6 @@ import com.senai.ProjetoControleDeAcesso.Model.Turma;
 
 import java.util.Scanner;
 
-import static jdk.internal.org.jline.reader.impl.LineReaderImpl.CompletionType.List;
 
 public class TurmaView {
     private final Scanner scanner = new Scanner(System.in);
@@ -55,7 +54,7 @@ public class TurmaView {
         int qtdSemanas = scannerPromptInt("Quantidade de semanas: ");
         String horarioEntrada = scannerPrompt("Horário de entrada: ");
         String periodo = scannerPrompt("Qual o período do curso: ");
-        System.out.println(controller.cadastrarTurma(idTurma, nomeTurma, curso, dataInicio,
+        System.out.println(controller.cadastrarTurma(idTurma, nomeTurma, curso, SubTurma, dataInicio,
                 qtdSemanas, horarioEntrada, periodo));
     }
 
