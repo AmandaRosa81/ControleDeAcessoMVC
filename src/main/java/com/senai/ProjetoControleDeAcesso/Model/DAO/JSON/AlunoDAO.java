@@ -71,9 +71,9 @@ public class AlunoDAO {
         return alunos.stream().filter(a -> a.getId() == idAluno).findFirst();
     }
 
-    // public Optional<Aluno> buscarPorRfid(String rfid) {
-        //return alunos.stream().filter(a -> rfid.equals(a.getIdCartaoRfid())).findFirst();//
-    //}//
+     public Optional<Aluno> buscarPorIdAcesso(String idAcesso) {
+        return alunos.stream().filter(a -> idAcesso.equals(a.getId()).findFirst();
+    }
 
     public Optional<Usuario> buscarPorLoginESenha(String login, String senha) {
         return alunos.stream()
