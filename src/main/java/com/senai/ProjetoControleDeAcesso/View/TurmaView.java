@@ -54,7 +54,7 @@ public class TurmaView {
         int qtdSemanas = scannerPromptInt("Quantidade de semanas: ");
         String horarioEntrada = scannerPrompt("Horário de entrada: ");
         String periodo = scannerPrompt("Qual o período do curso: ");
-        System.out.println(controller.cadastrarTurma(idTurma, nomeTurma, curso, SubTurma, dataInicio,
+        System.out.println(controller.cadastrarTurma(idTurma, nomeTurma, curso, dataInicio,
                 qtdSemanas, horarioEntrada, periodo));
     }
 

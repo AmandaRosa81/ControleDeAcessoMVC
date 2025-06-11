@@ -9,8 +9,7 @@ import java.util.List;
 public class TurmaController {
     private final TurmaDAO turmaDAO = new TurmaDAO();
 
-    public String cadastrarTurma(int idTurma, String nomeTurma, String curso, List<SubTurma> subturmas, String dataInicio, int qtdSemanas,
-                                 String horarioEntrada, String periodo){
+    public String cadastrarTurma(int idTurma, String nomeTurma, String curso, List<SubTurma> subturmas, String dataInicio, int qtdSemanas, String horarioEntrada, String periodo){
         turmaDAO.inserir(new Turma(idTurma, nomeTurma, curso, subturmas, dataInicio, qtdSemanas, horarioEntrada, periodo));
         return "Turma cadastrada.";
     }

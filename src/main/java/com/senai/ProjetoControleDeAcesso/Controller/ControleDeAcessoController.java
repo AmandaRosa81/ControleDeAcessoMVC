@@ -19,10 +19,10 @@ public class ControleDeAcessoController {
     private final ProfessorDAO professorDAO = new ProfessorDAO();
     private final TurmaDAO turmaDAO = new TurmaDAO();
 
-    public String processarEntrada(int idAluno) {
-        Optional<Aluno> alunoOpt = alunoDAO.buscarAluno(idAluno);
+    public String processarEntrada(String idAluno) {
+        Optional<Aluno> alunoOpt = alunoDAO.buscarPorIdAcesso(idAcesso);
         if (alunoOpt.isEmpty()) {
-            return "[ACESSO NEGADO] Aluno não encontrado para RFID: " + idAluno;
+            return "[ACESSO NEGADO] Aluno não encontrado pelo idAcesso: " + idAcesso;
         }
 
         Aluno aluno = alunoOpt.get();

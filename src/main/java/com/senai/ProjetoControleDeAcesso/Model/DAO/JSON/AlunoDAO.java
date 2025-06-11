@@ -4,9 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.senai.ProjetoControleDeAcesso.Model.Aluno;
-import com.senai.ProjetoControleDeAcesso.Model.Aqv;
 import com.senai.ProjetoControleDeAcesso.Model.Usuario;
-import com.senai.ProjetoControleDeAcesso.Model.Aluno;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -67,12 +65,8 @@ public class AlunoDAO {
         salvar(alunos);
     }
 
-    public Optional<Usuario> buscarAluno(int idAluno) {
-        return alunos.stream().filter(a -> a.getId() == idAluno).findFirst();
-    }
-
      public Optional<Aluno> buscarPorIdAcesso(String idAcesso) {
-        return alunos.stream().filter(a -> idAcesso.equals(a.getId2()).findFirst();
+        return alunos.stream().filter(a -> idAcesso.equals(a.getIdAcesso())).findFirst();
     }
 
     public Optional<Usuario> buscarPorLoginESenha(String login, String senha) {
