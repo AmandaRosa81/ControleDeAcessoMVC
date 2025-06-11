@@ -72,7 +72,7 @@ public class AlunoDAO {
     }
 
      public Optional<Aluno> buscarPorIdAcesso(String idAcesso) {
-        return alunos.stream().filter(a -> idAcesso.equals(a.getId()).findFirst();
+        return alunos.stream().filter(a -> idAcesso.equals(a.getId2()).findFirst();
     }
 
     public Optional<Usuario> buscarPorLoginESenha(String login, String senha) {
