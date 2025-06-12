@@ -10,13 +10,16 @@ public class UcController {
 
     private final UcDAO ucDAO = new UcDAO();
 
-    public String CadastrarUc( String nomeUc, int idUC, int idProfessor, int idCurso, int horarioDia, int horarioSemanal ){
-        ucDAO.inserir(new UcDAO(nomeUc, idUC, idProfessor, idCurso, horarioDia,horarioSemanal));
+
+    public String CadastrarUC( String nomeUC, int idUC, int idProfessor, int idCurso, int horarioDia, int horarioSemanal ){
+        Uc uc = new Uc(nomeUC, idUC, idProfessor, idCurso, horarioDia, horarioSemanal);
+        UcDAO.inserir(uc);
         return "Unidade Curricular Cadastrada";
     }
-    public String AtualizarUC(String nomeUc,int  idUC, int idProfessor, int idCurso, int horarioDia, int horarioSemanal) {
+    public String AtualizarUC(String nomeUC,int  idUC, int idProfessor, int idCurso, int horarioDia, int horarioSemanal) {
 
-        ucDAO.atualizar(new UcDAO(nomeUc, idUC, idProfessor, idCurso, horarioDia,horarioSemanal));
+        Uc uc = new Uc(nomeUC, idUC, idProfessor, idCurso, horarioDia, horarioSemanal);
+        UcDAO.atualizar(uc);
         return "A Unidade Curricular foi atualizada";
 
 
