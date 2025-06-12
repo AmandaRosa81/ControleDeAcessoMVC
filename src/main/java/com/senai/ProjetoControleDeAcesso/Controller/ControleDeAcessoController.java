@@ -19,7 +19,7 @@ public class ControleDeAcessoController {
     private final ProfessorDAO professorDAO = new ProfessorDAO();
     private final TurmaDAO turmaDAO = new TurmaDAO();
 
-    public String processarEntrada(String idAluno) {
+    public String processarEntrada(String idAcesso) {
         Optional<Aluno> alunoOpt = alunoDAO.buscarPorIdAcesso(idAcesso);
         if (alunoOpt.isEmpty()) {
             return "[ACESSO NEGADO] Aluno não encontrado pelo idAcesso: " + idAcesso;
@@ -43,6 +43,7 @@ public class ControleDeAcessoController {
 
         LocalTime horarioEntrada = LocalTime.parse(turmaOpt.get().getHorarioEntrada());
         int tolerancia = turmaOpt.get().getCurso().getTolerancia();
+
 
         boolean atrasado = aluno.estaAtrasado(horarioEntrada,tolerancia);
 

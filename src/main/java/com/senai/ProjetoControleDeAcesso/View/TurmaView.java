@@ -1,10 +1,13 @@
 package com.senai.ProjetoControleDeAcesso.View;
 
 import com.senai.ProjetoControleDeAcesso.Controller.TurmaController;
+import com.senai.ProjetoControleDeAcesso.Model.Curso;
 import com.senai.ProjetoControleDeAcesso.Model.SubTurma;
 import com.senai.ProjetoControleDeAcesso.Model.Turma;
 
 
+import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 
@@ -50,6 +53,7 @@ public class TurmaView {
         int idTurma = scannerPromptInt("ID da turma: ");
         String nomeTurma = scannerPrompt("Nome da turma: ");
         String curso = scannerPrompt("Nome do curso: ");
+        List subturmas
         String dataInicio = scannerPrompt("Data do início do curso: ");
         int qtdSemanas = scannerPromptInt("Quantidade de semanas: ");
         String horarioEntrada = scannerPrompt("Horário de entrada: ");
