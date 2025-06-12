@@ -45,8 +45,7 @@ public class ControleDeAcessoController {
         LocalTime horarioEntrada = LocalTime.parse(turmaOpt.get().getHorarioEntrada());
         int tolerancia = turmaOpt.get().getCurso().getTolerancia();
 
-
-        boolean atrasado = aluno.estaAtrasado(horarioEntrada,tolerancia);
+        boolean atrasado = aluno.estaAtrasado(horarioEntrada, tolerancia);
 
         if (atrasado) {
             Optional<Professor> professorOpt = professorDAO.buscarPorId(horario.getIdProfessor());
