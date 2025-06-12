@@ -1,6 +1,6 @@
 package com.senai.ProjetoControleDeAcesso.Controller;
 
-import com.senai.ProjetoControleDeAcesso.Model.DAO.HorarioAtualizadoDAO;
+import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.HorarioAtualizadoDAO;
 import com.senai.ProjetoControleDeAcesso.Model.Horario.HorarioAtualizado;
 
 import java.util.List;
