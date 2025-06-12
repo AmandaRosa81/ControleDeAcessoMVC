@@ -68,7 +68,7 @@ public class WebSocketClienteConsole {
             }
         } catch (Exception e) {
             System.err.println("Erro ao fechar WebSocket: " + e.getMessage());
-            System.out.println("merge");
+
         }
     }
 }
