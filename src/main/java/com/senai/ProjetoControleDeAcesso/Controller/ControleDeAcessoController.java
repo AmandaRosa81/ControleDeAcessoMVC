@@ -1,6 +1,7 @@
 package com.senai.ProjetoControleDeAcesso.Controller;
 
 import com.senai.ProjetoControleDeAcesso.Model.Aluno;
+import com.senai.ProjetoControleDeAcesso.Model.Curso;
 import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.AlunoDAO;
 import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.HorarioDAO;
 import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.ProfessorDAO;

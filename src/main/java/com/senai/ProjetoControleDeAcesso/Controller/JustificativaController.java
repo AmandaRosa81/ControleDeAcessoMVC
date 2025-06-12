@@ -1,10 +1,7 @@
 package com.senai.ProjetoControleDeAcesso.Controller;
 
-import com.senai.ProjetoControleDeAcesso.Model.Aluno;
-import com.senai.ProjetoControleDeAcesso.Model.DAO.AlunoDAO;
-import com.senai.ProjetoControleDeAcesso.Model.DAO.JustificativaDAO;
+import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.JustificativaDAO;
 import com.senai.ProjetoControleDeAcesso.Model.Justificativa;
-import com.senai.ProjetoControleDeAcesso.Model.Usuario;
 
 import java.util.List;
 
