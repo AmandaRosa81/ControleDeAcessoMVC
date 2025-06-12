@@ -1,5 +1,6 @@
 package com.senai.ProjetoControleDeAcesso.Model.DAO.JSON;
 
+import com.senai.ProjetoControleDeAcesso.Model.Aqv;
 import com.senai.ProjetoControleDeAcesso.Model.Professor;
 
 import java.io.FileReader;
@@ -70,6 +71,9 @@ public class ProfessorDAO {
             }
             return false;
         }
+    public Optional<Professor> buscarPorLogin(String login){
+        return professores.stream().filter(a -> a.getLogin().equals(login)).findFirst();
+    }
 
     public Optional<Professor> buscarPorId(int id) {
         return carregar().stream().filter(p -> p.getId() == id).findFirst();

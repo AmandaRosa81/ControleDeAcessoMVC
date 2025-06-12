@@ -7,9 +7,9 @@ public class Curso {
     private String nomeCurso;
     private String cargaHoraria;
     private String tipo;
-    private String tolerancia;
+    private LocalTime tolerancia;
 
-    public Curso(int idCurso, String nomeCurso, String cargaHoraria, String tipo, String tolerancia) {
+    public Curso(int idCurso, String nomeCurso, String cargaHoraria, String tipo, LocalTime tolerancia) {
         this.idCurso = idCurso;
         this.nomeCurso = nomeCurso;
         this.cargaHoraria = cargaHoraria;
@@ -49,11 +49,11 @@ public class Curso {
         this.tipo = tipo;
     }
 
-    public String getTolerancia() {
+    public int getTolerancia() {
         return tolerancia;
     }
 
-    public void setTolerancia(String tolerancia) {
+    public void setTolerancia(LocalTime tolerancia) {
         this.tolerancia = tolerancia;
     }
 
@@ -64,7 +64,7 @@ public class Curso {
                 ", nomeCurso='" + nomeCurso + '\'' +
                 ", cargaHoraria='" + cargaHoraria + '\'' +
                 ", tipo='" + tipo + '\'' +
-                ", tolerancia='" + tolerancia + '\'' +
+                ", tolerancia=" + tolerancia +
                 '}';
     }
 }

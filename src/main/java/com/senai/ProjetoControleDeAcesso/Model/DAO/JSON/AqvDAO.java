@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class AqvDAO  {
     private final String caminho = "aqv.json";
@@ -67,9 +68,10 @@ public class AqvDAO  {
         return AQV;
     }
 
+    public Optional<Aqv> buscarPorLogin(String login){
+        return AQV.stream().filter(a -> a.getLogin().equals(login)).findFirst();
+    }
 
-
-    
 
 }
 

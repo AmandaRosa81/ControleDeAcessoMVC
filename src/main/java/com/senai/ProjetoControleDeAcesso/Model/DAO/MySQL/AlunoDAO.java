@@ -28,7 +28,7 @@ public class AlunoDAO {
             stmt.setString(1, aluno.getNome());
             stmt.setString(2, aluno.getLogin());
             stmt.setString(3, aluno.getSenha());
-            stmt.setInt(5, aluno.getId());
+            stmt.setInt(4, aluno.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

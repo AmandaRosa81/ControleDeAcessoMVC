@@ -1,5 +1,6 @@
 package com.senai.ProjetoControleDeAcesso.Model.DAO.JSON;
 
+import com.senai.ProjetoControleDeAcesso.Model.Aqv;
 import com.senai.ProjetoControleDeAcesso.Model.Coordenador;
 
 import com.google.gson.Gson;
@@ -13,6 +14,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 public class CoordenadorDAO {
     private List<Coordenador> coordenadores;
@@ -70,4 +72,8 @@ public class CoordenadorDAO {
         }
         return false;
     }
+    public Optional<Coordenador> buscarPorLogin(String login){
+        return coordenadores.stream().filter(a -> a.getLogin().equals(login)).findFirst();
+    }
+
 }
