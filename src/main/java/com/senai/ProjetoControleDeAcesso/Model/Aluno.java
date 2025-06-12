@@ -53,8 +53,9 @@ public class Aluno extends Usuario {
         return "";
     }
 
-    public boolean estaAtrasado(LocalTime horarioEntrada, int tolerancia) {
-        return LocalTime.now().isAfter(horarioEntrada.plusMinutes(5));
+    public boolean estaAtrasado(LocalTime horarioEntrada, int toleranciaMinutos) {
+        LocalTime limite = horarioEntrada.plusMinutes(toleranciaMinutos);
+        return LocalTime.now().isAfter(limite);
     }
 
     @Override
