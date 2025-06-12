@@ -1,11 +1,9 @@
-package com.senai.ProjetoControleDeAcesso.Model.DAO;
+package com.senai.ProjetoControleDeAcesso.Model.DAO.JSON;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.senai.ProjetoControleDeAcesso.Model.Aluno;
 import com.senai.ProjetoControleDeAcesso.Model.Justificativa;
-import com.senai.ProjetoControleDeAcesso.Model.Usuario;
 
 import java.io.File;
 import java.io.FileReader;
@@ -14,7 +12,6 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.jar.JarEntry;
 
 public class JustificativaDAO {
 
