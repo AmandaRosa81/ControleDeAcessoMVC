@@ -15,15 +15,16 @@ public class HorarioAtualizadoView {
         AmbienteView ambienteView = new AmbienteView();
         HorarioAtualizadoView horarioAtualizadoView = new HorarioAtualizadoView();
     }
+
     public void menu() {
         String opcao;
         do {
             System.out.println("""
-                ==== MENU HORÁRIO ATUALIZADO ====
-                1. Cadastrar horário
-                2. Listar horários
-                0. Sair
-                """);
+                    ==== MENU HORÁRIO ATUALIZADO ====
+                    1. Cadastrar horário
+                    2. Listar horários
+                    0. Sair
+                    """);
             opcao = scanner.nextLine();
 
             switch (opcao) {
