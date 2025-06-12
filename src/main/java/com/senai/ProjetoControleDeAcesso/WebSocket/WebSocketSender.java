@@ -16,6 +16,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
+
 @ServerEndpoint("/ws")
 public class WebSocketSender {
 
@@ -53,6 +54,7 @@ public class WebSocketSender {
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
         server.setHandler(context);
+        ServletContextHandler
 
 
         JakartaWebSocketServletContainerInitializer.configure(context, (servletContext, wsContainer) -> {
