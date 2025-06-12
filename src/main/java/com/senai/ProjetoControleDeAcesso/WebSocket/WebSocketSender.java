@@ -54,7 +54,6 @@ public class WebSocketSender {
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
         server.setHandler(context);
-        ServletContextHandler
 
 
         JakartaWebSocketServletContainerInitializer.configure(context, (servletContext, wsContainer) -> {
