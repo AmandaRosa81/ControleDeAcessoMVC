@@ -26,5 +26,5 @@ public class AlunoController {
     public List<Aluno> listarAlunos() {
         return alunoDAO.listarTodos();
     }
-
 }
+
