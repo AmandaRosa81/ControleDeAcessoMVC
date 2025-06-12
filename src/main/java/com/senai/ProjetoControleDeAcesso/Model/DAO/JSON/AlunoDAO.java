@@ -22,13 +22,13 @@ public class AlunoDAO {
     private final Gson gson = new GsonBuilder().create();
 
 
-    private final List<Usuario> alunos;
+    private final List<Aluno> alunos;
 
     public AlunoDAO(){
         alunos = carregar();
     }
 
-    private List<Usuario> carregar() {
+    private List<Aluno> carregar() {
         try (FileReader reader = new FileReader(caminho)) {
             Type listType = new TypeToken<List<Usuario>>() {}.getType();
             return gson.fromJson(reader, listType);
@@ -37,7 +37,7 @@ public class AlunoDAO {
         }
     }
 
-    private void salvar(List<Usuario> lista) {
+    private void salvar(List<Aluno> lista) {
         try (FileWriter writer = new FileWriter(caminho)) {
             gson.toJson(lista, writer);
         } catch (IOException e) {
@@ -45,14 +45,14 @@ public class AlunoDAO {
         }
     }
 
-    public void inserir(Usuario aluno) {
-        int novoId = alunos.stream().mapToInt(Usuario::getId).max().orElse(0) + 1;
+    public void inserir(Aluno aluno) {
+        int novoId = alunos.stream().mapToInt(Aluno::getId).max().orElse(0) + 1;
         aluno.setId(novoId);
         alunos.add(aluno);
         salvar(alunos);
     }
 
-    public void atualizar(Usuario aluno) {
+    public void atualizar(Aluno aluno) {
         for (int i = 0; i < alunos.size(); i++) {
             if (alunos.get(i).getId() == aluno.getId()) {
                 alunos.set(i, aluno);
@@ -67,7 +67,7 @@ public class AlunoDAO {
         salvar(alunos);
     }
 
-    public Optional<Usuario> buscarAluno(int idAluno) {
+    public Optional<Aluno> buscarAluno(int idAluno) {
         return alunos.stream().filter(a -> a.getId() == idAluno).findFirst();
     }
 
@@ -75,16 +75,16 @@ public class AlunoDAO {
         //return alunos.stream().filter(a -> rfid.equals(a.getIdCartaoRfid())).findFirst();//
     //}//
 
-    public Optional<Usuario> buscarPorLoginESenha(String login, String senha) {
+    public Optional<Aluno> buscarPorLoginESenha(String login, String senha) {
         return alunos.stream()
                 .filter(a -> a.getLogin().equals(login) && a.getSenha().equals(senha))
                 .findFirst();
     }
 
-    public List<Usuario> listarTodos() {
+    public List<Aluno> listarTodos() {
         return alunos;
     }
-    public Optional<Usuario> buscarPorLogin(String login){
+    public Optional<Aluno> buscarPorLogin(String login){
         return alunos.stream().filter(a -> a.getLogin().equals(login)).findFirst();
     }
 
