@@ -54,13 +54,19 @@ public class AqvView {
     }
 
     public void autorizarAluno() {
-        System.out.print("Digite o nome do aluno para autorizar: ");
-        String nome = scanner.nextLine();
-        boolean sucesso = aqvController.autorizarAluno(nome);
-        if (sucesso) {
-            System.out.println("Aluno autorizado com sucesso.");
+        System.out.print("Digite o ID da ocorrência: ");
+        int id = Integer.parseInt(scanner.nextLine());
+
+        System.out.print("Digite o novo status (Aceita/Negada): ");
+        String status = scanner.nextLine();
+
+        boolean atualizado = ocorrenciaController.atualizarStatusOcorrencia(id, status);
+
+        if (atualizado) {
+            System.out.println("Status atualizado com sucesso.");
         } else {
-            System.out.println("Erro ao autorizar aluno.");
+            System.out.println("Erro: Ocorrência não encontrada.");
         }
     }
+
 }

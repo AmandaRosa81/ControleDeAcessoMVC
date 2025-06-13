@@ -6,15 +6,16 @@ public class Ocorrencia {
     private String data;
     private String tipo;
     private int IdAluno;
+    private String status;
 
-    public Ocorrencia(int id, String descricao, String data, String tipo, int idAluno){
+    public Ocorrencia(int id, String descricao, String data, String tipo, int idAluno, String status){
 
         this.id = id;
         this.descricao = descricao;
         this.data = data;
         this.tipo = tipo;
         this.IdAluno = idAluno;
-
+        this.status = status;
     }
 
     public int getId() {
@@ -56,4 +57,13 @@ public class Ocorrencia {
     public void setIdAluno(int idAluno) {
         IdAluno = idAluno;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 }

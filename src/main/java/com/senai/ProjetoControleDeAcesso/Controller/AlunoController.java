@@ -26,5 +26,17 @@ public class AlunoController {
     public List<Aluno> listarAlunos() {
         return alunoDAO.listarTodos();
     }
+
+    public int buscarIdPorNome(String nome) {
+        List<Aluno> alunos = alunoDAO.listarTodos();
+        for (Aluno aluno : alunos) {
+            if (aluno.getNome().equalsIgnoreCase(nome)) {
+                return aluno.getId();
+            }
+        }
+        return -1;
+    }
+
+
 }
 
