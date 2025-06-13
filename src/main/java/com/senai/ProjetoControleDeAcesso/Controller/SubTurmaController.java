@@ -9,13 +9,13 @@ import java.util.List;
 public class SubTurmaController {
     private final SubTurmaDAO subTurmaDAO = new SubTurmaDAO();
 
-    public String cadastrar(int id, List<Aluno> alunos){
-        subTurmaDAO.inserir(new SubTurma(id, alunos));
+    public String cadastrar(int idSubTurma, String nomeSubTurma, List<Aluno> alunos){
+        subTurmaDAO.inserir(new SubTurma(idSubTurma, nomeSubTurma, alunos));
         return "Subturma cadastrada.";
     }
 
-    public String atualizar(int id, List<Aluno> alunos) {
-        subTurmaDAO.atualizar(new SubTurma(id, alunos));
+    public String atualizar(int id, String nomeSubTurma, List<Aluno> alunos) {
+        subTurmaDAO.atualizar(new SubTurma(id, nomeSubTurma, alunos));
         return "Subturma atualizada.";
     }
 

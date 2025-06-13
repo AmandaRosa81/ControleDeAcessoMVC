@@ -50,7 +50,7 @@ public class CursoView {
         String nomeCurso = scannerPrompt("Nome do curso: ");
         String cargaHoraria = scannerPrompt("Carga horária do curso: ");
         String tipo = scannerPrompt("Tipo do curso: ");
-        LocalTime tolerancia = scannerPromptHora("Tolerância do curso: ");
+        int tolerancia = scannerPromptInt("Tolerância do curso: ");
         System.out.println(controller.cadastrarCurso(idCurso, nomeCurso, cargaHoraria, tipo, tolerancia));
     }
 
@@ -59,7 +59,7 @@ public class CursoView {
         String nomeCurso = scannerPrompt("Nome do curso a ser atualizado: ");
         String cargaHoraria = scannerPrompt("Carga horária do curso a ser atualizada: ");
         String tipo = scannerPrompt("Tipo do curso a ser atualizado: ");
-        LocalTime tolerancia = scannerPromptHora("Tolerância do curso a ser atualizada: ");
+        int tolerancia = scannerPromptInt("Tolerância do curso a ser atualizada: ");
         System.out.println(controller.atualizarCurso(idCurso, nomeCurso, cargaHoraria, tipo, tolerancia));
     }
 

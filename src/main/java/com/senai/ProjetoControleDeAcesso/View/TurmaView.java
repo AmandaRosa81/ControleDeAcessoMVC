@@ -54,32 +54,31 @@ public class TurmaView {
     private void cadastrar() {
         int idTurma = scannerPromptInt("ID da turma: ");
         String nomeTurma = scannerPrompt("Nome da turma: ");
-        String curso = scannerPrompt("Nome do curso: ");
+        Curso curso = scannerPrompt("Nome do curso: ");
         List<SubTurma> subTurmas = new ArrayList<>();
-        int qtdSubTurmas = scannerPromptInt("Quantas subturmas deseja cadastrar? ");
-
-        for (int i = 0; i < qtdSubTurmas; i++) {
-            System.out.println("Cadastrando subturma #" + (i + 1));
-            int idSubTurma = scannerPromptInt("ID da SubTurma: ");
-
-            List<Aluno> alunos = new ArrayList<>();
-            int qtdAlunos = scannerPromptInt("Quantos alunos nesta subturma? ");
-
-            for (int j = 0; j < qtdAlunos; j++) {
-                System.out.println("Aluno #" + (j + 1));
-                int id = scannerPromptInt("ID do Aluno: ");
-                String nome = scannerPrompt("Nome do Aluno: ");
-                String login = scannerPrompt("Login do Aluno: ");
-                String senha = scannerPrompt("Senha: ");
-                String idAcesso = scannerPrompt("IdAcesso: ");
-
-                alunos.add(new Aluno(id, nome, login, senha, idAcesso));
-            }
-
-            SubTurma subTurma = new SubTurma(idSubTurma, alunos);
-            subTurmas.add(subTurma);
-        }
-
+//        int qtdSubTurmas = scannerPromptInt("Quantas subturmas deseja cadastrar? ");
+//
+//        for (int i = 0; i < qtdSubTurmas; i++) {
+//            System.out.println("Cadastrando subturma #" + (i + 1));
+//            int idSubTurma = scannerPromptInt("ID da SubTurma: ");
+//
+//            List<Aluno> alunos = new ArrayList<>();
+//            int qtdAlunos = scannerPromptInt("Quantos alunos nesta subturma? ");
+//
+//            for (int j = 0; j < qtdAlunos; j++) {
+//                System.out.println("Aluno #" + (j + 1));
+//                int id = scannerPromptInt("ID do Aluno: ");
+//                String nome = scannerPrompt("Nome do Aluno: ");
+//                String login = scannerPrompt("Login do Aluno: ");
+//                String senha = scannerPrompt("Senha: ");
+//                String idAcesso = scannerPrompt("IdAcesso: ");
+//
+//                alunos.add(new Aluno(id, nome, login, senha, idAcesso));
+//            }
+//
+//            SubTurma subTurma = new SubTurma(idSubTurma, alunos);
+//            subTurmas.add(subTurma);
+//        }
         String dataInicio = scannerPrompt("Data do início do curso: ");
         int qtdSemanas = scannerPromptInt("Quantidade de semanas: ");
         String horarioEntrada = scannerPrompt("Horário de entrada: ");
@@ -91,33 +90,31 @@ public class TurmaView {
     private void atualizar() {
         int idTurma = scannerPromptInt("ID da turma a ser atualizado: ");
         String nomeTurma = scannerPrompt("Nome da turma a ser atualizado: \n");
-        String curso = scannerPrompt("Nome do curso a ser atualizado: ");
-        //List <SubTurma> subTurmas = new ArrayList<>();
-        //subTurmas.
+        Curso curso = scannerPrompt("Nome do curso a ser atualizado: ");
         List<SubTurma> subTurmas = new ArrayList<>();
-        int qtdSubTurmas = scannerPromptInt("Quantas subturmas deseja atualizar? ");
-
-        for (int i = 0; i < qtdSubTurmas; i++) {
-            System.out.println("Atualizar subturma #" + (i + 1));
-            int idSubTurma = scannerPromptInt("ID da SubTurma: ");
-
-            List<Aluno> alunos = new ArrayList<>();
-            int qtdAlunos = scannerPromptInt("Quantos alunos nesta subturma? ");
-
-            for (int j = 0; j < qtdAlunos; j++) {
-                System.out.println("Aluno #" + (j + 1));
-                int id = scannerPromptInt("ID do Aluno: ");
-                String nome = scannerPrompt("Nome do Aluno: ");
-                String login = scannerPrompt("Login do Aluno: ");
-                String senha = scannerPrompt("Senha: ");
-                String idAcesso = scannerPrompt("IdAcesso: ");
-
-                alunos.add(new Aluno(id, nome, login, senha, idAcesso));
-            }
-
-            SubTurma subTurma = new SubTurma(idSubTurma, alunos);
-            subTurmas.add(subTurma);
-        }
+//        int qtdSubTurmas = scannerPromptInt("Quantas subturmas deseja atualizar? ");
+//
+//        for (int i = 0; i < qtdSubTurmas; i++) {
+//            System.out.println("Atualizar subturma #" + (i + 1));
+//            int idSubTurma = scannerPromptInt("ID da SubTurma: ");
+//
+//            List<Aluno> alunos = new ArrayList<>();
+//            int qtdAlunos = scannerPromptInt("Quantos alunos nesta subturma? ");
+//
+//            for (int j = 0; j < qtdAlunos; j++) {
+//                System.out.println("Aluno #" + (j + 1));
+//                int id = scannerPromptInt("ID do Aluno: ");
+//                String nome = scannerPrompt("Nome do Aluno: ");
+//                String login = scannerPrompt("Login do Aluno: ");
+//                String senha = scannerPrompt("Senha: ");
+//                String idAcesso = scannerPrompt("IdAcesso: ");
+//
+//                alunos.add(new Aluno(id, nome, login, senha, idAcesso));
+//            }
+//
+//            SubTurma subTurma = new SubTurma(idSubTurma, alunos);
+//            subTurmas.add(subTurma);
+//        }
         String dataInicio = scannerPrompt("Data do início do curso a ser atualizada: ");
         int qtdSemanas = scannerPromptInt("Quantidade de semanas a ser atualizada: ");
         String horarioEntrada = scannerPrompt("Horário de entrada a ser atualizado: ");

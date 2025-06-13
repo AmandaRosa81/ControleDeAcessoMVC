@@ -3,20 +3,30 @@ package com.senai.ProjetoControleDeAcesso.Model;
 import java.util.List;
 
 public class SubTurma {
-    private int id;
+    private int idSubTurma;
+    private String nomeSubTurma;
     private List<Aluno> alunos;
 
-    public SubTurma(int id, List<Aluno> alunos) {
-        this.id = id;
+    public SubTurma(int idSubTurma, String nomeSubTurma, List<Aluno> alunos) {
+        this.idSubTurma = idSubTurma;
+        this.nomeSubTurma = nomeSubTurma;
         this.alunos = alunos;
     }
 
-    public int getId() {
-        return id;
+    public int getIdSubTurma() {
+        return idSubTurma;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdSubTurma(int idSubTurma) {
+        this.idSubTurma = idSubTurma;
+    }
+
+    public String getNomeSubTurma() {
+        return nomeSubTurma;
+    }
+
+    public void setNomeSubTurma(String nomeSubTurma) {
+        this.nomeSubTurma = nomeSubTurma;
     }
 
     public List<Aluno> getAlunos() {
@@ -30,7 +40,8 @@ public class SubTurma {
     @Override
     public String toString() {
         return "SubTurma{" +
-                "id=" + id +
+                "idSubTurma=" + idSubTurma +
+                ", nomeSubTurma='" + nomeSubTurma + '\'' +
                 ", alunos=" + alunos +
                 '}';
     }

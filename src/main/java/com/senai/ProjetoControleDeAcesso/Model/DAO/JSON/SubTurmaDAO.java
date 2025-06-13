@@ -41,15 +41,15 @@ public class SubTurmaDAO {
     }
 
     public void inserir(SubTurma subTurma) {
-        int novoId = subTurmas.stream().mapToInt(SubTurma::getId).max().orElse(0) + 1;
-        subTurma.setId(novoId);
+        int novoId = subTurmas.stream().mapToInt(SubTurma::getIdSubTurma).max().orElse(0) + 1;
+        subTurma.setIdSubTurma(novoId);
         subTurmas.add(subTurma);
         salvar(subTurmas);
     }
 
     public void atualizar(SubTurma subTurma) {
         for (int i = 0; i < subTurmas.size(); i++) {
-            if (subTurmas.get(i).getId() == subTurma.getId()) {
+            if (subTurmas.get(i).getIdSubTurma() == subTurma.getIdSubTurma()) {
                 subTurmas.set(i, subTurma);
                 break;
             }
@@ -58,7 +58,7 @@ public class SubTurmaDAO {
     }
 
     public void remover(int idSubTurma) {
-        subTurmas.removeIf(a -> a.getId() == idSubTurma);
+        subTurmas.removeIf(a -> a.getIdSubTurma() == idSubTurma);
         salvar(subTurmas);
     }
 
