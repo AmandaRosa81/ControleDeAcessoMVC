@@ -15,7 +15,7 @@ public class UcView {
         UcView ucView = new UcView();
 
     }
-    public void menu(){
+    public void menu() {
         String opcao;
         String menuUC = """
                  -------------MENU DAS UNIDADES CURRICULARES---------------
@@ -24,21 +24,22 @@ public class UcView {
                      3. Remover UC
                      4.Voltar
                 ------------------------------------------------------------
-                """
-                do{
-                    System.out.println(menuUC);
-                    opcao = scanner.nextLine();
+                """;
+        do {
+            System.out.println(menuUC);
+            opcao = scanner.nextLine();
 
-                    switch (opcao){
-                        case "1" -> cadastrar();
-                        case "2" -> atualizar();
-                        case "3" -> remover();
-                        case "4" -> listar();
-                        case "0" -> System.out.println("Voltando...");
-                        default -> System.out.println("Opção inválida");
-                    }
-                    while (!opcao.equals("0"));
-                }
+            switch (opcao) {
+                case "1" -> cadastrar();
+                case "2" -> atualizar();
+                case "3" -> remover();
+                case "4" -> listar();
+                case "0" -> System.out.println("Voltando...");
+                default -> System.out.println("Opção inválida");
+            }
+        }while (!opcao.equals("0")) ;
+
+    }
         private void Cadastrar(){
             String nomeUC = scannerPromptString("Id do AQV");
             int idUC = scannerPromptInt("Nome do AQV");
@@ -68,7 +69,7 @@ public class UcView {
             List<Uc> lista = UcController.Listar();
             for (Uc UcDAO : lista) {
                 System.out.printf("Nome UC: %d | Id UC: %s | Id Professor: %s | Id Curso: %s | horarioDia: %s | horarioSemanal: %s | : %s\n",
-                        UcDAO.getIdUC(), UcDAO.getNomeUc(), UcDAO.getIdProfessor(), UcDAO.getIdCurso(), UcDAO.getIhorarioDia, UcDAO.getIhorarioSemanal );
+                        UcDAO.getIdUC(), UcDAO.getNomeUc(), UcDAO.getIdProfessor(), UcDAO.getIdCurso(), UcDAO.getIhorarioDia(), UcDAO.getIhorarioSemanal() );
 
             }
         }
