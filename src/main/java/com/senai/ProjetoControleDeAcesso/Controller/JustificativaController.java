@@ -11,23 +11,19 @@ import java.util.List;
 public class JustificativaController {
     private final JustificativaDAO justificativaDAO = new JustificativaDAO();
 
-    public String Tipo ( String Falta, String Ocorrencia) {
-        justificativaDAO.selecionar(new Justificativa(Falta,Ocorrencia));
-        return "Opçao selecionada.";
+    public void criarJustificativa(Justificativa j){
+        justificativaDAO.cadastrar(j);
     }
 
-    public String Descricao ( String Descricao) {
-        justificativaDAO.descricao(new Justificativa(Descricao));
-        return "Descrição:";
+    public List<Ocorrencia> listarJustificativas(){
+        return justificativaDAO.listar();
     }
 
-    public String Status ( String Status) {
-        justificativaDAO.status(new Justificativa(Status));
-        return "Status:";
+    public void atualizarJustificativa(Justificativa j) {
+        justificativaDAO.atualizar(j);
     }
 
-    public String Anexar () {Add commentMore actions
-        justificativaDAO.anexarJustificativa();Add commentMore actions
-        return "Justificativa anexada!!! ";
+    public void deletarJustificativas(int id) {justificativaDAO.deletar(id);
     }
+
 }

@@ -40,6 +40,7 @@ public class AlunoView {
     }
 
     public static void menuJustificativa(){
-
+        JustificativaView justificativaView = new JustificativaView();
+        justificativaView.menu();
     }
 }
