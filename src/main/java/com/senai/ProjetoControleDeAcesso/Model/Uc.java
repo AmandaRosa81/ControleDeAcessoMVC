@@ -7,8 +7,8 @@ public class Uc {
     private String nomeUc;
     private int IdProfessor;
     private int idCurso;
-    private int horarioDia;
-    private int horarioSemanal;
+    private double horarioDia;
+    private double horarioSemanal;
 
     public Uc(String nomeUC, int idUC, int idProfessor, int idCurso, int horarioDia,int horarioSemanal){
         this.nomeUc=nomeUC;
@@ -35,11 +35,11 @@ public class Uc {
         this.idCurso = idCurso;
     }
 
-    public int getHorarioDia() {
+    public double getHorarioDia() {
         return horarioDia;
     }
 
-    public void setHorarioSemanal(int horarioSemanal) {
+    public void setHorarioSemanal(double horarioSemanal) {
         this.horarioSemanal = horarioSemanal;
     }
 

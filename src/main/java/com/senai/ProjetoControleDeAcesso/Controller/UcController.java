@@ -4,6 +4,8 @@ import com.senai.ProjetoControleDeAcesso.Model.Aqv;
 import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.UcDAO;
 import com.senai.ProjetoControleDeAcesso.Model.Uc;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 public class UcController {
@@ -11,15 +13,15 @@ public class UcController {
     private final UcDAO ucDAO = new UcDAO();
 
 
-    public String CadastrarUC( String nomeUC, int idUC, int idProfessor, int idCurso, int horarioDia, int horarioSemanal ){
+    public String cadastrarUC(String nomeUC, int idUC, int idProfessor, int idCurso, LocalTime horarioDia, LocalDateTime horarioSemanal){
         Uc uc = new Uc(nomeUC, idUC, idProfessor, idCurso, horarioDia, horarioSemanal);
-        UcDAO.inserir(uc);
+        ucDAO.inserir(uc);
         return "Unidade Curricular Cadastrada";
     }
-    public String AtualizarUC(String nomeUC,int  idUC, int idProfessor, int idCurso, int horarioDia, int horarioSemanal) {
+    public String atualizarUC(String nomeUC,int  idUC, int idProfessor, int idCurso,LocalTime horarioDia, LocalDateTime horarioSemanal) {
 
         Uc uc = new Uc(nomeUC, idUC, idProfessor, idCurso, horarioDia, horarioSemanal);
-        UcDAO.atualizar(uc);
+        ucDAO.atualizar(uc);
         return "A Unidade Curricular foi atualizada";
 
 
