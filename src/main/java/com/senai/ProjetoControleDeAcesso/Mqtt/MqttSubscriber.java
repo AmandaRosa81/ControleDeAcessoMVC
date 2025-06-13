@@ -7,7 +7,7 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 public class MqttSubscriber {
     private static final String BROKER = "tcp://localhost:1883";
     private static final String CLIENT_ID = "ServidorJava";
-    private static final String TOPICO = "catraca/rfid";
+    private static final String TOPICO = "catraca/idAcesso";
     private static final ControleDeAcessoController controller = new ControleDeAcessoController();
 
     public static void iniciarMqtt() {

@@ -3,65 +3,34 @@ package com.senai.ProjetoControleDeAcesso.Model;
 import java.time.LocalTime;
 
 public class Aluno extends Usuario {
+    private String idAcesso;
 
-    public Aluno(int id, String nome, String login, String senha) {
+    public Aluno(int id, String nome, String login, String senha, String idAcesso) {
         super(id, nome, login, senha);
+        this.idAcesso = idAcesso;
     }
 
-    @Override
-    public int getId() {
-        return super.getId();
+    public String getIdAcesso() {
+        return idAcesso;
     }
 
-    @Override
-    public String getNome() {
-        return super.getNome();
+    public void setIdAcesso(String idAcesso) {
+        this.idAcesso = idAcesso;
     }
 
-    @Override
-    public void setId(int id) {
-        super.setId(id);
-    }
-
-    @Override
-    public void setNome(String nome) {
-        super.setNome(nome);
-    }
-
-    @Override
-    public String getLogin() {
-        return super.getLogin();
-    }
-
-    @Override
-    public void setLogin(String login) {
-        super.setLogin(login);
-    }
-
-    @Override
-    public String getSenha() {
-        return super.getSenha();
-    }
-
-    @Override
-    public void setSenha(String senha) {
-        super.setSenha(senha);
-    }
-
-    @Override
-    public String getTipo() {
-        return "";
-    }
-
-    public boolean estaAtrasado(LocalTime horarioEntrada, int toleranciaMinutos) {
-        LocalTime limite = horarioEntrada.plusMinutes(toleranciaMinutos);
-        return LocalTime.now().isAfter(limite);
+    public boolean estaAtrasado(LocalTime horarioEntrada, int tolerancia) {
+        return LocalTime.now().isAfter(horarioEntrada.plusMinutes(tolerancia));
     }
 
     @Override
     public String toString() {
-        return "Aluno" +
-                "id =" + id +
-                ", nome =" + nome;
+        return "Aluno{" +
+                "idAcesso='" + idAcesso + '\'' +
+                '}';
+    }
+
+    @Override
+    public String getTipo() {
+        return "Aluno";
     }
 }
