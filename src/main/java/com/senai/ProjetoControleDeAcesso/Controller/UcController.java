@@ -20,7 +20,7 @@ public class UcController {
     }
     public String atualizarUC(String nomeUC,int  idUC, int idProfessor, int idCurso,LocalTime horarioDia, LocalDateTime horarioSemanal) {
 
-        Uc uc = new Uc(nomeUC, idUC, idProfessor, idCurso, horarioDia, horarioSemanal);
+        Uc uc = new Uc(nomeUC, idUC, idProfessor, idCurso, horarioDia, ho rarioSemanal);
         ucDAO.atualizar(uc);
         return "A Unidade Curricular foi atualizada";
 
