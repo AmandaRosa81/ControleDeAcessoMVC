@@ -21,7 +21,6 @@ public class AlunoController {
     public String removerAluno(int id) {
         alunoDAO.remover(id);
         return "Aluno removido.";
-        System.out.println("");
     }
 
     public List<Aluno> listarAlunos() {

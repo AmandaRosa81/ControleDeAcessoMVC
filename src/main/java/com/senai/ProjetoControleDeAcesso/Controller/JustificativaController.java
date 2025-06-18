@@ -15,7 +15,7 @@ public class JustificativaController {
         justificativaDAO.cadastrar(j);
     }
 
-    public List<Ocorrencia> listarJustificativas(){
+    public List<Justificativa> listarJustificativas(){
         return justificativaDAO.listar();
     }
 
@@ -23,7 +23,7 @@ public class JustificativaController {
         justificativaDAO.atualizar(j);
     }
 
-    public void deletarJustificativas(int id) {justificativaDAO.deletar(id);
+    public void deletarJustificativas(int id) {justificativaDAO.remover(id);
     }
 
     public List<Justificativa> listarJustificativasPorAluno(int idAluno) {

@@ -7,9 +7,13 @@ import com.senai.ProjetoControleDeAcesso.Model.Ocorrencia;
 import java.util.List;
 import java.util.Scanner;
 
+import static com.senai.ProjetoControleDeAcesso.Mqtt.MqttSubscriber.controller;
+import static java.awt.SystemColor.menu;
+
 public class JustificativaView {
 
     private final Scanner scanner = new Scanner(System.in);
+    private final JustificativaController controller = new JustificativaController();
 
     public static void main(String[] args) {
         JustificativaView justificativaView=  new JustificativaView();
@@ -18,7 +22,7 @@ public class JustificativaView {
     }
     public void menu() {
         String opcao;
-        String menuAluno = """
+        String menu = """
                 --- MENU DE JUSTIFICATIVA ---
               
                     1. Anexar Justificativa
@@ -30,7 +34,7 @@ public class JustificativaView {
                     
                 """;
         do {
-            System.out.print(menuJustificativa();
+            System.out.print(menu);
             opcao = scanner.nextLine();
 
             switch (opcao) {
@@ -63,9 +67,9 @@ public class JustificativaView {
         System.out.println("Anexar Documento: ");
         String anexo = scanner.nextLine();
 
-        Justificativa j = new Ocorrencia(id, data, descricao, idAluno, anexo);
-        controller.criarOcorrencia(j);
-        System.out.println("Ocorrência cadastrada com sucesso!");
+        Justificativa j = new Justificativa(descricao, id, idAluno, data, tipo, status());
+        controller.criarJustificativa(j);
+        System.out.println("Justificativa cadastrada com sucesso!");
 
     }
 
@@ -74,7 +78,7 @@ public class JustificativaView {
         System.out.print("ID da Justificativa a ser removida: ");
         int id = Integer.parseInt(scanner.nextLine());
         controller.deletarJustificativa(id);
-        System.out.println("Ocorrência removida com sucesso!");
+        System.out.println("Justificativa removida com sucesso!");
 
     }
 
@@ -92,9 +96,9 @@ public class JustificativaView {
         System.out.print("Novo ID do Aluno: ");
         int idAluno = Integer.parseInt(scanner.nextLine());
 
-        Justificativa j = new Justificativa (id, data, descricao, idAluno , anexo);
-        Controller.atualizarJustificativa(j);
-        System.out.println("Ocorrência atualizada com sucesso!");
+        Justificativa j = new Justificativa (descricao, id, idAluno, data, tipo, status());
+        controller.atualizarJustificativa(j);
+        System.out.println("Justificativa atualizada com sucesso!");
 
     }
 
@@ -111,7 +115,7 @@ public class JustificativaView {
 
 
         Justificativa j = new Justificativa(id, idAluno, );
-        Controller.statusJustificativas(j);
+        controller.statusJustificativas(j);
 
     }
 
