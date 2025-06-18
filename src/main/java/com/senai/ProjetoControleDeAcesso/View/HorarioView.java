@@ -10,16 +10,18 @@ import java.util.Scanner;
     public class HorarioView {
         private final Scanner scanner = new Scanner(System.in);
         private final HorarioController controller = new HorarioController();
+
         private String scannerPromptString(String msg) {
             System.out.print(msg);
             return scanner.nextLine();
         }
+
         public static void main(String[] args) {
             HorarioView horarioView = new HorarioView();
             horarioView.menu();
         }
 
-            public void menu() {
+        public void menu() {
             String opcao;
             String menuHorario = """
                     --- MENU DE HORÁRIOS ---
@@ -44,6 +46,7 @@ import java.util.Scanner;
                     default -> System.out.println("Opção inválida.");
                 }
             } while (!opcao.equals("0"));
+            scanner.close();
         }
 
         private void cadastrar() {

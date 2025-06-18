@@ -1,9 +1,5 @@
-package com.senai.ProjetoControleDeAcesso;
+package com.senai.ProjetoControleDeAcesso.Controller;
 
-import com.senai.ProjetoControleDeAcesso.Controller.AlunoController;
-import com.senai.ProjetoControleDeAcesso.Controller.AqvController;
-import com.senai.ProjetoControleDeAcesso.Controller.CoordenadorController;
-import com.senai.ProjetoControleDeAcesso.Controller.ProfessorController;
 import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.AlunoDAO;
 import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.AqvDAO;
 import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.CoordenadorDAO;

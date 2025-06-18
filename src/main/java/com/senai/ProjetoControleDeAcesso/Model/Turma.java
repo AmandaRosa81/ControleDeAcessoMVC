@@ -1,18 +1,22 @@
 package com.senai.ProjetoControleDeAcesso.Model;
 
+import java.util.List;
+
 public class Turma {
     private int idTurma;
     private String nomeTurma;
-    private String curso;
+    private Curso curso;
+    private List<SubTurma> subturmas;
     private String dataInicio;
     private int qtdSemanas;
     private String horarioEntrada;
     private String periodo;
 
-    public Turma(int idTurma, String nomeTurma, String curso, String dataInicio, int qtdSemanas, String horarioEntrada, String periodo) {
+    public Turma(int idTurma, String nomeTurma, Curso curso, List<SubTurma> subturmas, String dataInicio, int qtdSemanas, String horarioEntrada, String periodo) {
         this.idTurma = idTurma;
         this.nomeTurma = nomeTurma;
         this.curso = curso;
+        this.subturmas = subturmas;
         this.dataInicio = dataInicio;
         this.qtdSemanas = qtdSemanas;
         this.horarioEntrada = horarioEntrada;
@@ -35,12 +39,16 @@ public class Turma {
         this.nomeTurma = nomeTurma;
     }
 
-    public String getCurso() {
+    public Curso getCurso() {
         return curso;
     }
 
-    public void setCurso(String curso) {
+    public void setCurso(Curso curso) {
         this.curso = curso;
+    }
+
+    public List<SubTurma> getSubturmas() {
+        return subturmas;
     }
 
     public String getDataInicio() {
@@ -80,7 +88,7 @@ public class Turma {
         return "Turma{" +
                 "idTurma=" + idTurma +
                 ", nomeTurma='" + nomeTurma + '\'' +
-                ", curso='" + curso + '\'' +
+                ", curso= " + curso + '\'' +
                 ", dataInicio='" + dataInicio + '\'' +
                 ", qtdSemanas=" + qtdSemanas +
                 ", horarioEntrada='" + horarioEntrada + '\'' +

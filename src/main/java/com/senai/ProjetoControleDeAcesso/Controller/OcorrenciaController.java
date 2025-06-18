@@ -24,4 +24,23 @@ public class OcorrenciaController {
     public void deletarOcorrencia(int id) {
         ocorrenciaDAO.deletar(id);
     }
+
+    public List<Ocorrencia> listarOcorrenciasPorAluno(int idAluno) {
+        return ocorrenciaDAO.listar().stream()
+                .filter(o -> o.getIdAluno() == idAluno)
+                .toList();
+    }
+
+    public boolean atualizarStatusOcorrencia(int idOcorrencia, String novoStatus) {
+        List<Ocorrencia> todas = ocorrenciaDAO.listar();
+        for (Ocorrencia o : todas) {
+            if (o.getId() == idOcorrencia) {
+                o.setStatus(novoStatus);
+                ocorrenciaDAO.atualizar(o);
+                return true;
+            }
+        }
+        return false;
+    }
 }
+

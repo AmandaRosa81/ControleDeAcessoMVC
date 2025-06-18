@@ -1,103 +1,77 @@
 package com.senai.ProjetoControleDeAcesso.View;
 
 import com.senai.ProjetoControleDeAcesso.Controller.AlunoController;
-import com.senai.ProjetoControleDeAcesso.Model.Usuario;
+import com.senai.ProjetoControleDeAcesso.Controller.OcorrenciaController;
 
 import java.util.Scanner;
 
 public class AlunoView {
     private final Scanner scanner = new Scanner(System.in);
-    private final AlunoController alunoController = new AlunoController();
 
     public static void main(String[] args) {
-         AlunoView alunoView =  new AlunoView();
+        AlunoView alunoView =  new AlunoView();
 
-         alunoView.menu();
+        alunoView.menu();
     }
-
     public void menu() {
         String opcao;
         String menuAluno = """
                 --- MENU DE ALUNO ---
                 
-                    1. Cadastrar aluno
-                    2. Atualizar aluno
-                    3. Remover aluno
-                    4. Listar aluno
-                    0. Voltar
-                    
+                    1. Gerar Ocorrência
+                    2. Enviar Justificativa
+                    3. Status ocorrência
+                    0. Volta
                 """;
         do {
             System.out.print(menuAluno);
             opcao = scanner.nextLine();
 
             switch (opcao) {
-                case "1" -> cadastrar();
-                case "2" -> atualizar();
-                case "3" -> remover();
-                case "4" -> listar();
+                case "1" -> menuOcorrencia();
+                case "2" -> menuJustificativa();
+                case "3" -> statusOcorrencias();
                 case "0" -> System.out.println("Voltando...");
                 default -> System.out.println("Opção inválida.");
             }
         } while (!opcao.equals("0"));
+        scanner.close();
     }
 
-    private void cadastrar() {
-        int id = scannerPromptInt("ID do aluno: ");
-        String nome = scannerPrompt("Nome: ");
-        String login = scannerPrompt("Login: ");
-        String senha = scannerPrompt("Senha: ");
-
-        System.out.println(alunoController.cadastrarAluno(id,nome,login,senha));
+    public static void menuOcorrencia (){
+        OcorrenciaView ocorrenciaView = new OcorrenciaView();
+        ocorrenciaView.menu();
     }
 
-    private void atualizar() {
-        int id = scannerPromptInt("ID do aluno: ");
-        String nome = scannerPrompt("Novo nome: ");
-        String login = scannerPrompt("Novo Login: ");
-        String senha = scannerPrompt("Nova Senha: ");
+    public static void menuJustificativa(){
 
-        System.out.println(alunoController.atualizarAluno(id, nome,login,senha));
     }
 
-    private void remover() {
-        listar();
-        int id = scannerPromptInt("ID do aluno: ");
-        System.out.println(alunoController.removerAluno(id));
-    }
+    public void statusOcorrencias() {
+        System.out.print("Digite seu nome: ");
+        String nome = scanner.nextLine();
 
-    public void listar() {
-        for (Usuario u : alunoController.listarAlunos()) {
-            System.out.printf("ID: %d | Nome: %s |", u.getId(), u.getNome());
+        AlunoController alunoController = new AlunoController();
+        int idAluno = alunoController.buscarIdPorNome(nome);
+
+        if (idAluno == -1) {
+            System.out.println("Aluno não encontrado.");
+            return;
         }
-    }
 
-    private String scannerPrompt(String msg) {
-        System.out.print(msg);
-        return scanner.nextLine();
-    }
+        OcorrenciaController ocorrenciaController = new OcorrenciaController();
+        var ocorrencias = ocorrenciaController.listarOcorrenciasPorAluno(idAluno);
 
-
-    private int scannerPromptInt(String msg) {
-        System.out.print(msg);
-        return Integer.parseInt(scanner.nextLine());
+        if (ocorrencias.isEmpty()) {
+            System.out.println("Nenhuma ocorrência registrada.");
+        } else {
+            System.out.println("Suas ocorrências:");
+            for (var o : ocorrencias) {
+                System.out.printf("ID: %d | Tipo: %s | Data: %s | Status: %s | Descrição: %s%n",
+                        o.getId(), o.getTipo(), o.getData(), o.getStatus(), o.getDescricao());
+            }
+        }
     }
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
