@@ -3,7 +3,6 @@ package com.senai.ProjetoControleDeAcesso.Model.DAO.JSON;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.senai.ProjetoControleDeAcesso.Model.Aqv;
 import com.senai.ProjetoControleDeAcesso.Model.Uc;
 
 import java.io.FileReader;
@@ -17,11 +16,11 @@ import java.util.Optional;
 public class UcDAO {
     private final String caminho = "uc.json";
     private final Gson gson = new GsonBuilder().create();
-    private final List<Uc> UC;
+    private final List<Uc> uc;
 
 
     public UcDAO() {
-        UC = carregar();
+        uc = carregar();
     }
 
     private List<Uc> carregar() {
@@ -43,33 +42,33 @@ public class UcDAO {
     }
 
     public void inserir(Uc uc) {
-        int novoId = UC.stream().mapToInt(Uc::getIdUC).max().orElse(0) + 1;
-        Uc.setIdUC(novoId);
-        UC.add(uc);
-        salvar(UC);
+        int novoId = this.uc.stream().mapToInt(Uc::getIdUC).max().orElse(0) + 1;
+        uc.setIdUC(novoId);
+        this.uc.add(uc);
+        salvar(this.uc);
     }
 
     public void atualizar(Uc uc) {
-        for (int i = 0; i < UC.size(); i++) {
-            if (UC.get(i).getIdUC() == uc.getIdUC()) {
-                UC.set(i, uc);
+        for (int i = 0; i < this.uc.size(); i++) {
+            if (this.uc.get(i).getIdUC() == uc.getIdUC()) {
+                this.uc.set(i, uc);
                 break;
             }
         }
-        salvar(UC);
+        salvar(this.uc);
     }
 
     public void remover(int idUC) {
-        UC.removeIf(uc -> uc.getIdUC() == idUC);
-        salvar(UC);
+        uc.removeIf(uc -> uc.getIdUC() == idUC);
+        salvar(uc);
     }
 
 
     public List<Uc> listarTodos() {
-        return UC;
+        return uc;
     }
 
     public Optional<Uc> buscarPorid(int idUC) {
-        return UC.stream().filter(uc -> uc.getIdUC() == idUC).findFirst();
+        return uc.stream().filter(uc -> uc.getIdUC() == idUC).findFirst();
     }
 }

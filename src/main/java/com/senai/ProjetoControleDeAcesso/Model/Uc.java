@@ -1,5 +1,7 @@
 package com.senai.ProjetoControleDeAcesso.Model;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Objects;
 
 public class Uc {
@@ -7,39 +9,64 @@ public class Uc {
     private String nomeUc;
     private int IdProfessor;
     private int idCurso;
-    private double horarioDia;
-    private double horarioSemanal;
+    private LocalTime horarioDia;
+    private LocalDateTime horarioSemanal;
 
-    public Uc(String nomeUC, int idUC, int idProfessor, int idCurso, int horarioDia,int horarioSemanal){
+    public Uc(String nomeUC, int idUC, int idProfessor, int idCurso, LocalTime horarioDia, LocalDateTime horarioSemanal){
         this.nomeUc=nomeUC;
         this.idUC=idUC;
         this.IdProfessor=idProfessor;
         this.idCurso=idCurso;
         this.horarioDia=horarioDia;
         this.horarioSemanal=horarioSemanal;
+
     }
 
     public String getNomeUc() {
         return nomeUc;
     }
 
+    public void setNomeUc(String nomeUc) {
+        this.nomeUc = nomeUc;
+    }
+
     public int getIdUC() {
         return idUC;
+    }
+
+    public void setIdUC(int idUC) {
+        this.idUC = idUC;
     }
 
     public void setIdProfessor(int idProfessor) {
         IdProfessor = idProfessor;
     }
 
+    public int getIdProfessor() {
+        return IdProfessor;
+    }
+
     public void setIdCurso(int idCurso) {
         this.idCurso = idCurso;
     }
 
-    public double getHorarioDia() {
+    public int getIdCurso() {
+        return idCurso;
+    }
+
+    public LocalTime getHorarioDia() {
         return horarioDia;
     }
 
-    public void setHorarioSemanal(double horarioSemanal) {
+    public void setHorarioDia(LocalTime horarioDia) {
+        this.horarioDia = horarioDia;
+    }
+
+    public LocalDateTime getHorarioSemanal() {
+        return horarioSemanal;
+    }
+
+    public void setHorarioSemanal(LocalDateTime horarioSemanal) {
         this.horarioSemanal = horarioSemanal;
     }
 

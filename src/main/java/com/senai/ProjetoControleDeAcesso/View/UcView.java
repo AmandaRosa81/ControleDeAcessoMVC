@@ -2,6 +2,7 @@ package com.senai.ProjetoControleDeAcesso.View;
 
 import com.senai.ProjetoControleDeAcesso.Controller.UcController;
 import com.senai.ProjetoControleDeAcesso.Model.Aqv;
+import com.senai.ProjetoControleDeAcesso.Model.DAO.JSON.UcDAO;
 import com.senai.ProjetoControleDeAcesso.Model.Uc;
 
 import java.time.LocalDateTime;
@@ -73,7 +74,7 @@ public class UcView {
             List<Uc> lista = controller.Listar();
             for (Uc ucDAO : lista) {
                 System.out.printf("Nome UC: %d | Id UC: %s | Id Professor: %s | Id Curso: %s | horarioDia: %s | horarioSemanal: %s | : %s\n",
-                        ucDAO.getIdUC(), ucDAO.getNomeUc(), ucDAO.getIdProfessor(), ucDAO.getIdCurso(), ucDAO.getHorarioDia(), ucDAO.gethorarioSemanal());
+                        ucDAO.getIdUC(), ucDAO.getNomeUc(), ucDAO.getIdProfessor(), ucDAO.getIdCurso(), ucDAO.getHorarioDia(), ucDAO.getHorarioSemanal());
 
             }
         }
