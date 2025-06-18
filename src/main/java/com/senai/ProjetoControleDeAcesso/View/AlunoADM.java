@@ -48,8 +48,9 @@ public class AlunoADM {
         String nome = scannerPrompt("Nome: ");
         String login = scannerPrompt("Login: ");
         String senha = scannerPrompt("Senha: ");
+        String idAcesso = scannerPrompt("IdAcesso: ");
 
-        System.out.println(alunoController.cadastrarAluno(id,nome,login,senha));
+        System.out.println(alunoController.cadastrarAluno(id,nome,login,senha,idAcesso));
     }
 
     private void atualizar() {
@@ -57,8 +58,9 @@ public class AlunoADM {
         String nome = scannerPrompt("Novo nome: ");
         String login = scannerPrompt("Novo Login: ");
         String senha = scannerPrompt("Nova Senha: ");
+        String idAcesso = scannerPrompt("Novo IdAcesso: ");
 
-        System.out.println(alunoController.atualizarAluno(id, nome,login,senha));
+        System.out.println(alunoController.atualizarAluno(id, nome,login,senha,idAcesso));
     }
 
     private void remover() {

@@ -8,13 +8,13 @@ import java.util.List;
 public class AlunoController {
     private final AlunoDAO alunoDAO = new AlunoDAO();
 
-    public String cadastrarAluno(int id, String nome, String login, String senha) {
-        alunoDAO.inserir(new Aluno(id, nome, login, senha));
+    public String cadastrarAluno(int id, String nome, String login, String senha, String idAcesso) {
+        alunoDAO.inserir(new Aluno(id, nome, login, senha, idAcesso));
         return "Aluno cadastrado.";
     }
 
-    public String atualizarAluno(int id, String nome, String login, String senha) {
-        alunoDAO.atualizar(new Aluno(id, nome, login, senha));
+    public String atualizarAluno(int id, String nome, String login, String senha, String idAcesso) {
+        alunoDAO.atualizar(new Aluno(id, nome, login, senha, idAcesso));
         return "Aluno atualizado.";
     }
 
@@ -27,5 +27,17 @@ public class AlunoController {
     public List<Aluno> listarAlunos() {
         return alunoDAO.listarTodos();
     }
+
+    public int buscarIdPorNome(String nome) {
+        List<Aluno> alunos = alunoDAO.listarTodos();
+        for (Aluno aluno : alunos) {
+            if (aluno.getNome().equalsIgnoreCase(nome)) {
+                return aluno.getId();
+            }
+        }
+        return -1;
+    }
+
+
 }
 

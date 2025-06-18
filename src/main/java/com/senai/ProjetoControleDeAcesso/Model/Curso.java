@@ -1,15 +1,13 @@
 package com.senai.ProjetoControleDeAcesso.Model;
 
-import java.time.LocalTime;
-
 public class Curso {
     private int idCurso;
     private String nomeCurso;
     private String cargaHoraria;
     private String tipo;
-    private LocalTime tolerancia;
+    private int tolerancia;
 
-    public Curso(int idCurso, String nomeCurso, String cargaHoraria, String tipo, LocalTime tolerancia) {
+    public Curso(int idCurso, String nomeCurso, String cargaHoraria, String tipo, int tolerancia) {
         this.idCurso = idCurso;
         this.nomeCurso = nomeCurso;
         this.cargaHoraria = cargaHoraria;
@@ -53,7 +51,7 @@ public class Curso {
         return tolerancia;
     }
 
-    public void setTolerancia(LocalTime tolerancia) {
+    public void setTolerancia(int tolerancia) {
         this.tolerancia = tolerancia;
     }
 
@@ -68,3 +66,4 @@ public class Curso {
                 '}';
     }
 }
+

@@ -1,5 +1,8 @@
 package com.senai.ProjetoControleDeAcesso.View;
 
+import com.senai.ProjetoControleDeAcesso.Controller.AlunoController;
+import com.senai.ProjetoControleDeAcesso.Controller.OcorrenciaController;
+
 import java.util.Scanner;
 
 public class AlunoView {
@@ -17,8 +20,8 @@ public class AlunoView {
                 
                     1. Gerar Ocorrência
                     2. Enviar Justificativa
-                    0. Voltar
-                    
+                    3. Status ocorrência
+                    0. Volta
                 """;
         do {
             System.out.print(menuAluno);
@@ -27,6 +30,7 @@ public class AlunoView {
             switch (opcao) {
                 case "1" -> menuOcorrencia();
                 case "2" -> menuJustificativa();
+                case "3" -> statusOcorrencias();
                 case "0" -> System.out.println("Voltando...");
                 default -> System.out.println("Opção inválida.");
             }
@@ -43,4 +47,32 @@ public class AlunoView {
         JustificativaView justificativaView = new JustificativaView();
         justificativaView.menu();
     }
+
+    public void statusOcorrencias() {
+        System.out.print("Digite seu nome: ");
+        String nome = scanner.nextLine();
+
+        AlunoController alunoController = new AlunoController();
+        int idAluno = alunoController.buscarIdPorNome(nome);
+
+        if (idAluno == -1) {
+            System.out.println("Aluno não encontrado.");
+            return;
+        }
+
+        OcorrenciaController ocorrenciaController = new OcorrenciaController();
+        var ocorrencias = ocorrenciaController.listarOcorrenciasPorAluno(idAluno);
+
+        if (ocorrencias.isEmpty()) {
+            System.out.println("Nenhuma ocorrência registrada.");
+        } else {
+            System.out.println("Suas ocorrências:");
+            for (var o : ocorrencias) {
+                System.out.printf("ID: %d | Tipo: %s | Data: %s | Status: %s | Descrição: %s%n",
+                        o.getId(), o.getTipo(), o.getData(), o.getStatus(), o.getDescricao());
+            }
+        }
+    }
+
+
 }
