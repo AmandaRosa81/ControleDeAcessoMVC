@@ -26,4 +26,20 @@ public class JustificativaController {
     public void deletarJustificativas(int id) {justificativaDAO.deletar(id);
     }
 
+    public List<Justificativa> listarJustificativasPorAluno(int idAluno) {
+        return justificativaDAO.listar().stream().filter(o-> o.getIdAluno() == idAluno).toList();
+    }
+
+    public boolean atualizarStatusJustificativas(int idJustificativas, String novoStatus) {
+        List<Justificativa> todas = justificativaDAO.listar();
+        for (Justificativa j : todas) {
+            if (j.getId() == idJustificativas) {
+                j.setStatus(novoStatus);
+                justificativaDAO.atualizar(j);
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

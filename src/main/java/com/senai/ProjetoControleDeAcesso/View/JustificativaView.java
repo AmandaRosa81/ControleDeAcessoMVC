@@ -113,7 +113,6 @@ public class JustificativaView {
         Justificativa j = new Justificativa(id, idAluno, );
         Controller.statusJustificativas(j);
 
-
     }
 
     private void listar(){
@@ -123,8 +122,8 @@ public class JustificativaView {
             System.out.println("Nenhuma justificativa encontrada.");
         } else {
             for (Justificativa j : lista) {
-                System.out.printf("ID: %d  | Data: %s | Descrição: %s | ID do aluno: %d%n | Anexo: %",
-                        j.getId(), j.getDescricao(), j.getData(), j.getIdAluno(), j.getAnexo());
+                System.out.printf("ID: %d  | Data: %s | Descrição: %s | ID do aluno: %d%n | Tipo: %",
+                        j.getId(), j.getDescricao(), j.getData(), j.getIdAluno(), j.getTipo());
             }
         }
 
