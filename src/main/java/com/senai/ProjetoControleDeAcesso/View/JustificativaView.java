@@ -5,6 +5,7 @@ import com.senai.ProjetoControleDeAcesso.Model.Justificativa;
 import com.senai.ProjetoControleDeAcesso.Model.Ocorrencia;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 import static com.senai.ProjetoControleDeAcesso.Mqtt.MqttSubscriber.controller;
@@ -41,7 +42,7 @@ public class JustificativaView {
                 case "1" -> criarJustificativa();
                 case "2" -> remover();
                 case "3" -> atualizar();
-                case "4" -> status();
+                case "4" -> exibirStatus();
                 case "5" -> listar();
                 case "0" -> System.out.println("Voltando...");
                 default -> System.out.println("Opção inválida.");
@@ -67,7 +68,7 @@ public class JustificativaView {
         System.out.println("Anexar Documento: ");
         String anexo = scanner.nextLine();
 
-        Justificativa j = new Justificativa(descricao, id, idAluno, data, tipo, status());
+        Justificativa j = new Justificativa(descricao, id, idAluno, data, tipo, exibirStatus());
         controller.criarJustificativa(j);
         System.out.println("Justificativa cadastrada com sucesso!");
 
@@ -77,7 +78,7 @@ public class JustificativaView {
 
         System.out.print("ID da Justificativa a ser removida: ");
         int id = Integer.parseInt(scanner.nextLine());
-        controller.deletarJustificativa(id);
+        controller.deletarJustificativas(id);
         System.out.println("Justificativa removida com sucesso!");
 
     }
@@ -96,27 +97,22 @@ public class JustificativaView {
         System.out.print("Novo ID do Aluno: ");
         int idAluno = Integer.parseInt(scanner.nextLine());
 
-        Justificativa j = new Justificativa (descricao, id, idAluno, data, tipo, status());
+        Justificativa j = new Justificativa (descricao, id, idAluno, data, tipo, exibirStatus());
         controller.atualizarJustificativa(j);
         System.out.println("Justificativa atualizada com sucesso!");
 
     }
 
-    private void status(){
-
+    private void exibirStatus() {
         System.out.print("ID da Justificativa: ");
         int id = Integer.parseInt(scanner.nextLine());
-        controller.statusJustificativa(id);
 
-        System.out.print("ID do Aluno: ");
-        int idAluno = Integer.parseInt(scanner.nextLine());
-
-        /* aqv aprovar */
-
-
-        Justificativa j = new Justificativa(id, idAluno, );
-        controller.statusJustificativas(j);
-
+        Optional<String> statusOpt = controller.exibirStatus(id);
+        if (statusOpt.isPresent()) {
+            System.out.println("Status da justificativa: " + statusOpt.get());
+        } else {
+            System.out.println("Justificativa não encontrada.");
+        }
     }
 
     private void listar(){

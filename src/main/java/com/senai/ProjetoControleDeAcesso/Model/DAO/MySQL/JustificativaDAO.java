@@ -38,6 +38,21 @@ public class JustificativaDAO {
         }
     }
 
+    public Optional<String> buscarStatusPorId(int id) {
+        String sql = "SELECT status FROM justificativa WHERE id = ?";
+        try (Connection conn = ConexaoMySQL.conectar();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return Optional.of(rs.getString("status"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
+    }
+
     public void remover(int id) {
         String sql = "DELETE FROM justificativa WHERE id = ?";
         try (Connection conn = ConexaoMySQL.conectar();
@@ -80,12 +95,13 @@ public class JustificativaDAO {
     }
 
     private Justificativa mapResultSet(ResultSet rs) throws SQLException {
-        return new Justificativa(  // Corrigido para a classe Justificativa
+        return new Justificativa(
                 rs.getInt("id"),
                 rs.getString("descricao"),
                 rs.getString("data"),
                 rs.getString("tipo"),
-                rs.getInt("idAluno")
+                rs.getInt("idAluno"),
+                rs.getString("status") // <-- adicionado
         );
     }
 

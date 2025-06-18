@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.senai.ProjetoControleDeAcesso.Model.Aluno;
+import com.senai.ProjetoControleDeAcesso.Model.DAO.MySQL.ConexaoMySQL;
 import com.senai.ProjetoControleDeAcesso.Model.Justificativa;
 import com.senai.ProjetoControleDeAcesso.Model.Ocorrencia;
 import com.senai.ProjetoControleDeAcesso.Model.Usuario;
@@ -12,6 +13,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -62,6 +67,21 @@ public class JustificativaDAO {
     public void remover(int id) {
         justificativas.removeIf(a -> a.getId() == id);
         salvar();
+    }
+
+    public Optional<String> buscarStatusPorId(int id) {
+        String sql = "SELECT status FROM justificativa WHERE id = ?";
+        try (Connection conn = ConexaoMySQL.conectar();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return Optional.of(rs.getString("status"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
     }
 
     public List<Justificativa> listar() {

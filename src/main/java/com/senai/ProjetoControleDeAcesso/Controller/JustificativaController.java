@@ -7,8 +7,10 @@ import com.senai.ProjetoControleDeAcesso.Model.Justificativa;
 import com.senai.ProjetoControleDeAcesso.Model.Ocorrencia;
 
 import java.util.List;
+import java.util.Optional;
 
 public class JustificativaController {
+
     private final JustificativaDAO justificativaDAO = new JustificativaDAO();
 
     public void criarJustificativa(Justificativa j){
@@ -23,23 +25,14 @@ public class JustificativaController {
         justificativaDAO.atualizar(j);
     }
 
+    public Optional<String> exibirStatus(int id) {
+        return justificativaDAO.buscarStatusPorId(id);
+    }
+
     public void deletarJustificativas(int id) {justificativaDAO.remover(id);
     }
 
     public List<Justificativa> listarJustificativasPorAluno(int idAluno) {
         return justificativaDAO.listar().stream().filter(o-> o.getIdAluno() == idAluno).toList();
     }
-
-    public boolean atualizarStatusJustificativas(int idJustificativas, String novoStatus) {
-        List<Justificativa> todas = justificativaDAO.listar();
-        for (Justificativa j : todas) {
-            if (j.getId() == idJustificativas) {
-                j.setStatus(novoStatus);
-                justificativaDAO.atualizar(j);
-                return true;
-            }
-        }
-        return false;
-    }
-
 }
